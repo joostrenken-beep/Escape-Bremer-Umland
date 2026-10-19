@@ -73,5 +73,5 @@ export function RouteMap({ points, route, height = 280 }: { points: MapPoint[]; 
     else if (all.length > 1) map.current.fitBounds(all.map((p) => [p.lat, p.lng] as [number, number]), { padding: [30, 30], maxZoom: 17 });
   }
 
-  return <div ref={el} class="route-map" style={{ height }} role="img" aria-label="Karte mit Route" />;
+  return <div ref={el} class="route-map" style={{ height: `${height}px` }} role="img" aria-label="Karte mit Route" />;
 }

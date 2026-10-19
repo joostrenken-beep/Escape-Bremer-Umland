@@ -659,6 +659,7 @@ a.btn {
 }
 .route-map {
   width: 100%;
+  isolation: isolate; /* Leaflet-Ebenen nicht über Kopfleiste/Buttons legen */
   border-radius: 10px;
   border: 1px solid var(--line);
   z-index: 0;
