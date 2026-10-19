@@ -3,94 +3,895 @@
   "$id": "https://escape-bremer-umland.local/schema/station.schema.json",
   "title": "Station (content/<stadt>/stations/<id>.json)",
   "type": "object",
-  "required": ["id", "title", "location", "directions", "story", "steps"],
+  "required": [
+    "id",
+    "title",
+    "location",
+    "directions",
+    "story",
+    "steps"
+  ],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
-    "id": { "$ref": "common.schema.json#/$defs/id" },
-    "title": { "$ref": "common.schema.json#/$defs/LocalizedText" },
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "title": {
+      "$ref": "common.schema.json#/$defs/LocalizedText"
+    },
     "location": {
-      "allOf": [{ "$ref": "common.schema.json#/$defs/GeoPoint" }],
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/GeoPoint"
+        }
+      ],
       "type": "object",
-      "required": ["name"],
+      "required": [
+        "name"
+      ],
       "properties": {
-        "lat": true, "lng": true, "verified": true, "note": true,
-        "name": { "$ref": "common.schema.json#/$defs/LocalizedText" }
+        "lat": true,
+        "lng": true,
+        "verified": true,
+        "note": true,
+        "name": {
+          "$ref": "common.schema.json#/$defs/LocalizedText"
+        }
       },
       "additionalProperties": false
     },
-    "directions": { "$ref": "common.schema.json#/$defs/LeveledText" },
-    "story": { "$ref": "common.schema.json#/$defs/LeveledText" },
-    "audio": { "$ref": "common.schema.json#/$defs/mediaPath" },
+    "directions": {
+      "$ref": "common.schema.json#/$defs/LeveledText"
+    },
+    "story": {
+      "$ref": "common.schema.json#/$defs/LeveledText"
+    },
+    "audio": {
+      "$ref": "common.schema.json#/$defs/mediaPath"
+    },
     "steps": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/Step" }
+      "items": {
+        "$ref": "#/$defs/Step"
+      }
     },
     "notebook": {
       "type": "array",
-      "items": { "$ref": "#/$defs/NotebookEntry" }
+      "items": {
+        "$ref": "#/$defs/NotebookEntry"
+      }
     },
     "didYouKnow": {
       "type": "object",
-      "required": ["text", "verified"],
+      "required": [
+        "text",
+        "verified"
+      ],
       "additionalProperties": false,
       "properties": {
-        "text": { "$ref": "common.schema.json#/$defs/LocalizedText" },
-        "sources": { "type": "array", "items": { "type": "string" } },
-        "verified": { "type": "boolean" },
-        "verifyNote": { "type": "string" }
+        "text": {
+          "$ref": "common.schema.json#/$defs/LocalizedText"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        }
       }
     }
   },
   "$defs": {
     "Step": {
-      "description": "Rätsel-Schritt. Der 'type' wählt die Rätsel-Komponente in der App.",
+      "description": "Rätsel-Schritt. Der 'type' wählt die Rätsel-Komponente (Plugin) in der App.",
       "type": "object",
-      "required": ["type"],
-      "properties": { "type": { "enum": ["code"] } },
-      "oneOf": [{ "$ref": "#/$defs/CodeStep" }]
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "code",
+            "audio",
+            "morse",
+            "colorfilter",
+            "overlay",
+            "lock",
+            "slider",
+            "compass",
+            "accuse"
+          ]
+        }
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/CodeStep"
+        },
+        {
+          "$ref": "#/$defs/AudioStep"
+        },
+        {
+          "$ref": "#/$defs/MorseStep"
+        },
+        {
+          "$ref": "#/$defs/ColorFilterStep"
+        },
+        {
+          "$ref": "#/$defs/OverlayStep"
+        },
+        {
+          "$ref": "#/$defs/LockStep"
+        },
+        {
+          "$ref": "#/$defs/SliderStep"
+        },
+        {
+          "$ref": "#/$defs/CompassStep"
+        },
+        {
+          "$ref": "#/$defs/AccuseStep"
+        }
+      ]
+    },
+    "NotebookEntry": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "text"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "kind": {
+          "enum": [
+            "clue",
+            "suspect",
+            "code",
+            "note"
+          ]
+        },
+        "title": {
+          "$ref": "common.schema.json#/$defs/LocalizedText"
+        },
+        "text": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "image": {
+          "$ref": "common.schema.json#/$defs/mediaPath"
+        }
+      }
     },
     "CodeStep": {
       "type": "object",
-      "required": ["type", "id", "prompt", "codeId", "hints", "verified"],
+      "required": [
+        "type",
+        "id",
+        "prompt",
+        "hints",
+        "verified",
+        "codeId"
+      ],
       "additionalProperties": false,
       "properties": {
-        "type": { "const": "code" },
-        "id": { "$ref": "common.schema.json#/$defs/id" },
-        "prompt": { "$ref": "common.schema.json#/$defs/LeveledText" },
-        "codeId": { "$ref": "common.schema.json#/$defs/id" },
-        "input": { "enum": ["text", "number"] },
+        "type": {
+          "const": "code"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
         "hints": {
           "type": "array",
           "minItems": 3,
           "maxItems": 3,
-          "items": { "$ref": "common.schema.json#/$defs/LeveledText" }
+          "items": {
+            "$ref": "common.schema.json#/$defs/LeveledText"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        },
+        "codeId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "input": {
+          "enum": [
+            "text",
+            "number"
+          ]
         },
         "fallback": {
           "type": "object",
-          "required": ["prompt", "codeId"],
+          "required": [
+            "prompt",
+            "codeId"
+          ],
           "additionalProperties": false,
           "properties": {
-            "prompt": { "$ref": "common.schema.json#/$defs/LeveledText" },
-            "codeId": { "$ref": "common.schema.json#/$defs/id" },
-            "input": { "enum": ["text", "number"] }
+            "prompt": {
+              "$ref": "common.schema.json#/$defs/LeveledText"
+            },
+            "codeId": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "input": {
+              "enum": [
+                "text",
+                "number"
+              ]
+            }
           }
         },
-        "verified": { "type": "boolean" },
-        "verifyNote": { "type": "string" }
+        "image": {
+          "$ref": "common.schema.json#/$defs/mediaPath"
+        }
       }
     },
-    "NotebookEntry": {
+    "AudioStep": {
       "type": "object",
-      "required": ["id", "kind", "title", "text"],
+      "required": [
+        "type",
+        "id",
+        "prompt",
+        "hints",
+        "verified",
+        "codeId",
+        "speech"
+      ],
       "additionalProperties": false,
       "properties": {
-        "id": { "$ref": "common.schema.json#/$defs/id" },
-        "kind": { "enum": ["clue", "suspect", "code", "note"] },
-        "title": { "$ref": "common.schema.json#/$defs/LocalizedText" },
-        "text": { "$ref": "common.schema.json#/$defs/LeveledText" },
-        "image": { "$ref": "common.schema.json#/$defs/mediaPath" }
+        "type": {
+          "const": "audio"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "hints": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "common.schema.json#/$defs/LeveledText"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        },
+        "codeId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "input": {
+          "enum": [
+            "text",
+            "number"
+          ]
+        },
+        "fallback": {
+          "type": "object",
+          "required": [
+            "prompt",
+            "codeId"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "prompt": {
+              "$ref": "common.schema.json#/$defs/LeveledText"
+            },
+            "codeId": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "input": {
+              "enum": [
+                "text",
+                "number"
+              ]
+            }
+          }
+        },
+        "speech": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "audio": {
+          "$ref": "common.schema.json#/$defs/mediaPath"
+        },
+        "speaker": {
+          "$ref": "common.schema.json#/$defs/LocalizedText"
+        }
+      }
+    },
+    "MorseStep": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "prompt",
+        "hints",
+        "verified",
+        "codeId",
+        "message",
+        "showTable"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "morse"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "hints": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "common.schema.json#/$defs/LeveledText"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        },
+        "codeId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "input": {
+          "enum": [
+            "text",
+            "number"
+          ]
+        },
+        "fallback": {
+          "type": "object",
+          "required": [
+            "prompt",
+            "codeId"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "prompt": {
+              "$ref": "common.schema.json#/$defs/LeveledText"
+            },
+            "codeId": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "input": {
+              "enum": [
+                "text",
+                "number"
+              ]
+            }
+          }
+        },
+        "message": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "all": {
+              "type": "string",
+              "pattern": "^[A-Z0-9 ]+$"
+            },
+            "easy": {
+              "type": "string",
+              "pattern": "^[A-Z0-9 ]+$"
+            },
+            "medium": {
+              "type": "string",
+              "pattern": "^[A-Z0-9 ]+$"
+            },
+            "hard": {
+              "type": "string",
+              "pattern": "^[A-Z0-9 ]+$"
+            }
+          }
+        },
+        "showTable": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "all": {
+              "type": "boolean"
+            },
+            "easy": {
+              "type": "boolean"
+            },
+            "medium": {
+              "type": "boolean"
+            },
+            "hard": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "ColorFilterStep": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "prompt",
+        "hints",
+        "verified",
+        "codeId",
+        "message"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "colorfilter"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "hints": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "common.schema.json#/$defs/LeveledText"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        },
+        "codeId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "input": {
+          "enum": [
+            "text",
+            "number"
+          ]
+        },
+        "fallback": {
+          "type": "object",
+          "required": [
+            "prompt",
+            "codeId"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "prompt": {
+              "$ref": "common.schema.json#/$defs/LeveledText"
+            },
+            "codeId": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "input": {
+              "enum": [
+                "text",
+                "number"
+              ]
+            }
+          }
+        },
+        "message": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "all": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 14
+            },
+            "easy": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 14
+            },
+            "medium": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 14
+            },
+            "hard": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 14
+            }
+          }
+        }
+      }
+    },
+    "OverlayStep": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "prompt",
+        "hints",
+        "verified",
+        "codeId",
+        "image",
+        "credit"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "overlay"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "hints": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "common.schema.json#/$defs/LeveledText"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        },
+        "codeId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "input": {
+          "enum": [
+            "text",
+            "number"
+          ]
+        },
+        "fallback": {
+          "type": "object",
+          "required": [
+            "prompt",
+            "codeId"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "prompt": {
+              "$ref": "common.schema.json#/$defs/LeveledText"
+            },
+            "codeId": {
+              "$ref": "common.schema.json#/$defs/id"
+            },
+            "input": {
+              "enum": [
+                "text",
+                "number"
+              ]
+            }
+          }
+        },
+        "image": {
+          "$ref": "common.schema.json#/$defs/mediaPath"
+        },
+        "credit": {
+          "$ref": "common.schema.json#/$defs/LocalizedText"
+        }
+      }
+    },
+    "LockStep": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "prompt",
+        "hints",
+        "verified",
+        "codeId",
+        "digits"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "lock"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "hints": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "common.schema.json#/$defs/LeveledText"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        },
+        "codeId": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "digits": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 8
+        }
+      }
+    },
+    "SliderStep": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "prompt",
+        "hints",
+        "verified",
+        "image",
+        "size",
+        "solutionText"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "slider"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "hints": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "common.schema.json#/$defs/LeveledText"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        },
+        "image": {
+          "$ref": "common.schema.json#/$defs/mediaPath"
+        },
+        "size": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "all": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 5
+            },
+            "easy": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 5
+            },
+            "medium": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 5
+            },
+            "hard": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 5
+            }
+          }
+        },
+        "solutionText": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        }
+      }
+    },
+    "CompassStep": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "prompt",
+        "hints",
+        "verified",
+        "bearing",
+        "tolerance",
+        "ar",
+        "revealText",
+        "solutionText"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "compass"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "hints": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "common.schema.json#/$defs/LeveledText"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        },
+        "bearing": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 360
+        },
+        "tolerance": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": false,
+          "properties": {
+            "all": {
+              "type": "number",
+              "minimum": 5,
+              "maximum": 90
+            },
+            "easy": {
+              "type": "number",
+              "minimum": 5,
+              "maximum": 90
+            },
+            "medium": {
+              "type": "number",
+              "minimum": 5,
+              "maximum": 90
+            },
+            "hard": {
+              "type": "number",
+              "minimum": 5,
+              "maximum": 90
+            }
+          }
+        },
+        "ar": {
+          "type": "boolean"
+        },
+        "revealText": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "solutionText": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        }
+      }
+    },
+    "AccuseStep": {
+      "type": "object",
+      "required": [
+        "type",
+        "id",
+        "prompt",
+        "hints",
+        "verified",
+        "questions",
+        "solutionText"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "const": "accuse"
+        },
+        "id": {
+          "$ref": "common.schema.json#/$defs/id"
+        },
+        "prompt": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        },
+        "hints": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "common.schema.json#/$defs/LeveledText"
+          }
+        },
+        "verified": {
+          "type": "boolean"
+        },
+        "verifyNote": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "prompt",
+              "codeId",
+              "options"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "prompt": {
+                "$ref": "common.schema.json#/$defs/LeveledText"
+              },
+              "codeId": {
+                "$ref": "common.schema.json#/$defs/id"
+              },
+              "options": {
+                "type": "array",
+                "minItems": 2,
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "id",
+                    "label"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "$ref": "common.schema.json#/$defs/id"
+                    },
+                    "label": {
+                      "$ref": "common.schema.json#/$defs/LeveledText"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "solutionText": {
+          "$ref": "common.schema.json#/$defs/LeveledText"
+        }
       }
     }
   }

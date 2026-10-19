@@ -40,29 +40,129 @@ export type Leveled<T> = Partial<Record<Difficulty | 'all', T>>;
 // Rätsel-Komponente (Plugin) auswählt. Neue Typen kommen in Meilenstein 4 dazu.
 // ---------------------------------------------------------------------------
 
-/** Eingabe eines Codes, der vor Ort gefunden wird (Inschrift, Jahreszahl, Anzahl …). */
-export interface CodeStepSource {
-  type: 'code';
+/** Gemeinsame Felder aller Rätsel-Schritte. */
+interface StepBase {
   id: string;
   prompt: LeveledText;
-  /** Verweis auf einen Eintrag in codes.json (Klartext, nicht im Repo). */
-  codeId: string;
-  input?: 'text' | 'number';
   /** Genau 3 gestufte Hinweise. */
   hints: [LeveledText, LeveledText, LeveledText];
-  /** Ersatzfrage für den Button „Hier stimmt etwas nicht“. */
-  fallback?: {
-    prompt: LeveledText;
-    codeId: string;
-    input?: 'text' | 'number';
-  };
   /** Ortsbezogene Angabe – false, bis vor Ort bestätigt. */
   verified: boolean;
   /** Was genau vor Ort zu prüfen ist (nur Entwickler-Ansicht). */
   verifyNote?: string;
 }
 
-export type StepSource = CodeStepSource;
+/** Rätsel, deren Lösung als Code eingegeben wird (gehasht, siehe codes.json). */
+export interface CodeAnswer {
+  /** Verweis auf einen Eintrag in codes.json (Klartext, nicht im Repo). */
+  codeId: string;
+  input?: 'text' | 'number';
+  /** Ersatzfrage für den Button „Hier stimmt etwas nicht“. */
+  fallback?: {
+    prompt: LeveledText;
+    codeId: string;
+    input?: 'text' | 'number';
+  };
+}
+
+/** Code vor Ort finden (Inschrift, Jahreszahl, Anzahl …) – optional mit Bild (z. B. Bildausschnitt). */
+export interface CodeStepSource extends StepBase, CodeAnswer {
+  type: 'code';
+  image?: string;
+}
+
+/** Zeugenaussage zum Anhören (Audiodatei oder Sprachausgabe), danach Frage. */
+export interface AudioStepSource extends StepBase, CodeAnswer {
+  type: 'audio';
+  /** Text der Aussage – wird vorgelesen und ist auch als Abschrift lesbar. */
+  speech: LeveledText;
+  audio?: string;
+  speaker?: LocalizedText;
+}
+
+/** Morse-Töne + Blinklicht, danach Eingabe der entschlüsselten Nachricht. */
+export interface MorseStepSource extends StepBase, CodeAnswer {
+  type: 'morse';
+  message: Leveled<string>;
+  /** Morse-Tabelle direkt anzeigen? (sonst nur über Hinweis) */
+  showTable: Leveled<boolean>;
+}
+
+/** Versteckte Nachricht, die erst durch einen Rotfilter lesbar wird. */
+export interface ColorFilterStepSource extends StepBase, CodeAnswer {
+  type: 'colorfilter';
+  message: Leveled<string>;
+}
+
+/** Historisches Foto halbtransparent über dem Kamerabild (Schieberegler). */
+export interface OverlayStepSource extends StepBase, CodeAnswer {
+  type: 'overlay';
+  image: string;
+  credit: LocalizedText;
+}
+
+/** Zahlenschloss mit Drehrädern. */
+export interface LockStepSource extends StepBase {
+  type: 'lock';
+  codeId: string;
+  digits: number;
+}
+
+/** Schiebepuzzle eines Bildes. */
+export interface SliderStepSource extends StepBase {
+  type: 'slider';
+  image: string;
+  /** Raster je Stufe, z. B. 3 = 3×3 */
+  size: Leveled<number>;
+  solutionText: LeveledText;
+}
+
+/** Handy in eine Himmelsrichtung halten – optional mit AR-Einblendung über dem Kamerabild. */
+export interface CompassStepSource extends StepBase {
+  type: 'compass';
+  /** Zielrichtung in Grad (0 = Nord) */
+  bearing: number;
+  /** erlaubte Abweichung in Grad je Stufe */
+  tolerance: Leveled<number>;
+  ar: boolean;
+  /** Was eingeblendet wird, wenn die Richtung stimmt */
+  revealText: LeveledText;
+  solutionText: LeveledText;
+}
+
+/** Anklage am Ende: mehrere Fragen mit Antwortmöglichkeiten. Bringt den Finale-Bonus. */
+export interface AccuseStepSource extends StepBase {
+  type: 'accuse';
+  questions: {
+    id: string;
+    prompt: LeveledText;
+    codeId: string;
+    options: { id: string; label: LeveledText }[];
+  }[];
+  solutionText: LeveledText;
+}
+
+export type StepSource =
+  | CodeStepSource
+  | AudioStepSource
+  | MorseStepSource
+  | ColorFilterStepSource
+  | OverlayStepSource
+  | LockStepSource
+  | SliderStepSource
+  | CompassStepSource
+  | AccuseStepSource;
+
+export type StepType = StepSource['type'];
+
+/** Alle codeIds, die ein Schritt benutzt (für Build-Prüfung und Hashing). */
+export function codeIdsOfStep(step: StepSource): string[] {
+  const ids: string[] = [];
+  if ('codeId' in step) ids.push(step.codeId);
+  if ('fallback' in step && step.fallback) ids.push(step.fallback.codeId);
+  if (step.type === 'accuse') ids.push(...step.questions.map((q) => q.codeId));
+  return ids;
+}
 
 export interface NotebookEntrySource {
   id: string;

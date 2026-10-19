@@ -20,10 +20,10 @@
   },
   "story": {
     "all": {
-      "de": "Am Bahnhof hängt ein Frachtzettel, morgen 6:15 Uhr, Spedition nach Hamburg: „Absender K. Albers. Inhalt: 1 Gemälde, Mondnacht, ORIGINAL.“ Auf der Rückseite hat jemand mit Bleistift ein Fragment notiert. Albers wollte das echte Bild also heimlich wegschaffen!"
+      "de": "Am Bahnhof hängt ein Frachtzettel, morgen 6:15 Uhr, Spedition nach Hamburg: „Absender K. Albers. Inhalt: 1 Gemälde, Mondnacht, ORIGINAL.“ Und aus dem alten Signalkasten am Gleis piept es – jemand hat eine Nachricht hinterlassen."
     },
     "easy": {
-      "de": "Am alten Bahnhof wartet eine Überraschung: An der Tür klebt ein Zettel mit Luftballons. Darauf steht: „Für Oma Lindenhof“ und eine Zahl. Sammelt sie für euer Notizbuch – ihr braucht sie am Ende!"
+      "de": "Am alten Bahnhof wartet eine Überraschung: Aus einem alten Kasten piept es! Kurze und lange Töne – das ist Morse-Code, eine Geheimsprache von früher."
     }
   },
   "steps": [
@@ -65,6 +65,50 @@
       },
       "verified": false,
       "verifyNote": "Seite zu den Gleisen öffentlich zugänglich? Zählbare Eigenschaft wählen. (In M4 kommt hier zusätzlich ein Morse-Rätsel dazu.)"
+    },
+    {
+      "type": "morse",
+      "id": "signal",
+      "message": {
+        "all": "NULL"
+      },
+      "showTable": {
+        "easy": true,
+        "medium": true,
+        "hard": false
+      },
+      "prompt": {
+        "all": {
+          "de": "Was wird gemorst? Schreibt das Wort auf."
+        },
+        "easy": {
+          "de": "Welches Wort piept der Kasten?"
+        }
+      },
+      "codeId": "s08-morse",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Die Morse-Tabelle ist jetzt freigeschaltet. Kurz = •, lang = –."
+          },
+          "easy": {
+            "de": "Schaut in die Tabelle: Kurz = •, lang = –."
+          }
+        },
+        {
+          "all": {
+            "de": "Der erste Buchstabe ist lang–kurz: N."
+          }
+        },
+        {
+          "all": {
+            "de": "Das Wort ist eine Zahl mit vier Buchstaben."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Morse-Rätsel ohne Ortsbezug."
     }
   ],
   "notebook": [
@@ -91,10 +135,10 @@
       },
       "text": {
         "all": {
-          "de": "Bleistiftnotiz auf dem Frachtzettel: „C = 0“"
+          "de": "Gemorst wurde: NULL → „C = 0“"
         },
         "hard": {
-          "de": "Bleistiftnotiz auf dem Frachtzettel: eine 0."
+          "de": "Gemorst wurde: NULL."
         }
       }
     }

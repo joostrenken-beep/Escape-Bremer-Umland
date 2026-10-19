@@ -65,6 +65,60 @@
       },
       "verified": false,
       "verifyNote": "Jahreszahl/Inschrift am Denkmal vorhanden und lesbar? Ersatzfrage (Tierform, vermutlich Adler) prüfen."
+    },
+    {
+      "type": "compass",
+      "id": "lookout",
+      "prompt": {
+        "medium": {
+          "de": "Das Atelier am Moorgraben liegt im Südwesten. Richtet das Handy in diese Richtung und haltet es still."
+        },
+        "hard": {
+          "de": "Das Atelier liegt in Richtung 225°. Richtet das Handy genau dorthin."
+        },
+        "easy": {
+          "de": "Lottes Atelier liegt im Südwesten. Dreht euch langsam, bis der Kreis grün leuchtet!"
+        }
+      },
+      "bearing": 225,
+      "tolerance": {
+        "easy": 30,
+        "medium": 20,
+        "hard": 12
+      },
+      "ar": true,
+      "revealText": {
+        "all": {
+          "de": "Dort unten am Moorgraben: ein Dach mit Oberlicht – das Restaurierungsatelier G. Vogt. In einem Fenster brennt noch Licht."
+        },
+        "easy": {
+          "de": "Da unten! Ein kleines Haus mit bunten Luftballons am Fenster – das ist Lottes Atelier!"
+        }
+      },
+      "solutionText": {
+        "all": {
+          "de": "Die gesuchte Richtung ist Südwesten (225°). Dort liegt das Atelier am Moorgraben."
+        }
+      },
+      "hints": [
+        {
+          "all": {
+            "de": "Die Sonne steht mittags im Süden – Südwesten liegt etwas rechts davon."
+          }
+        },
+        {
+          "all": {
+            "de": "Haltet das Handy flach vor euch und dreht euch langsam im Kreis."
+          }
+        },
+        {
+          "all": {
+            "de": "Kein Kompass? Tippt auf „Ohne Kompass lösen“ und wählt Südwesten."
+          }
+        }
+      ],
+      "verified": false,
+      "verifyNote": "Ist vom Niedersachsenstein aus Richtung Südwesten freie Sicht über das Moor (Bäume)? Sonst Richtung (bearing) anpassen."
     }
   ],
   "notebook": [

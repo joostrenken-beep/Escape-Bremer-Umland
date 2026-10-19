@@ -20,7 +20,7 @@
   },
   "story": {
     "all": {
-      "de": "Gretas Atelier am Moorgraben ist verschlossen. Vor der Tür steht eine alte Truhe mit Zahlenschloss: vier Ziffern. Greta hat euch eine Nachricht hinterlassen: „Wer die Fragmente gefunden hat, kann die Mondnacht sehen.“"
+      "de": "Gretas Atelier am Moorgraben ist verschlossen. Vor der Tür steht eine alte Truhe mit Zahlenschloss: vier Ziffern. Daran ein Zettel in Gretas Schrift: „Wer die Fragmente gefunden hat, darf die Mondnacht sehen.“"
     },
     "easy": {
       "de": "Lottes kleines Atelier! Davor steht eine bunte Kiste mit Zahlenschloss. Darauf klebt ein Zettel: „Nur wer alle Zahlen gesammelt hat, darf hineinschauen!“ Schaut in euer Notizbuch."
@@ -28,8 +28,10 @@
   },
   "steps": [
     {
-      "type": "code",
+      "type": "lock",
       "id": "lock",
+      "codeId": "s10-lock",
+      "digits": 4,
       "prompt": {
         "easy": {
           "de": "Öffnet das Zahlenschloss! Schaut im Notizbuch nach den Fragmenten A, B, C und D und setzt ihre Zahlen der Reihe nach zusammen."
@@ -41,8 +43,6 @@
           "de": "Ihr habt vier Ziffern gefunden. In der richtigen Reihenfolge ergeben sie das Jahr, in dem die Mondnacht gemalt wurde. Wie lautet die Kombination?"
         }
       },
-      "codeId": "s10-lock",
-      "input": "number",
       "hints": [
         {
           "all": {
@@ -71,6 +71,191 @@
       ],
       "verified": true,
       "verifyNote": "Kombinationsrätsel aus den Notizbuch-Fragmenten (A=1, B=9, C=0, D=2), kein Ortsbezug."
+    },
+    {
+      "type": "accuse",
+      "id": "report",
+      "prompt": {
+        "all": {
+          "de": "Die Mondnacht ist gefunden! Jetzt fehlt nur noch euer Ermittlungsbericht. Beantwortet alle drei Fragen – beim ersten Versuch ohne Hinweis gibt es 100 Bonuspunkte."
+        },
+        "easy": {
+          "de": "Ihr habt die Mondnacht gefunden! Jetzt noch drei Detektiv-Fragen – wenn ihr alles beim ersten Mal richtig habt, gibt es 100 Bonuspunkte!"
+        }
+      },
+      "questions": [
+        {
+          "id": "who",
+          "codeId": "s10-who",
+          "prompt": {
+            "all": {
+              "de": "Wer hat die Mondnacht aus dem Haus Lindenhof geholt?"
+            },
+            "easy": {
+              "de": "Wer hat das Bild mitgenommen?"
+            }
+          },
+          "options": [
+            {
+              "id": "greta",
+              "label": {
+                "all": {
+                  "de": "Greta Vogt, Restauratorin"
+                }
+              }
+            },
+            {
+              "id": "albers",
+              "label": {
+                "all": {
+                  "de": "Konrad Albers, Kunsthändler"
+                }
+              }
+            },
+            {
+              "id": "ben",
+              "label": {
+                "all": {
+                  "de": "Ben Harms, Enkel"
+                }
+              }
+            },
+            {
+              "id": "lotte",
+              "label": {
+                "all": {
+                  "de": "Lotte Mewes, Doktorandin"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "why",
+          "codeId": "s10-why",
+          "prompt": {
+            "all": {
+              "de": "Warum?"
+            }
+          },
+          "options": [
+            {
+              "id": "geld",
+              "label": {
+                "all": {
+                  "de": "Um sie heimlich zu verkaufen"
+                }
+              }
+            },
+            {
+              "id": "schutz",
+              "label": {
+                "all": {
+                  "de": "Um sie vor dem Austausch gegen eine Fälschung zu schützen"
+                }
+              }
+            },
+            {
+              "id": "geschenk",
+              "label": {
+                "all": {
+                  "de": "Um sie als Geburtstagsgeschenk abzumalen"
+                }
+              }
+            },
+            {
+              "id": "erbe",
+              "label": {
+                "all": {
+                  "de": "Um sich das Erbe zu sichern"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "who2",
+          "codeId": "s10-who2",
+          "prompt": {
+            "all": {
+              "de": "Wer wollte das Original heimlich gegen eine Kopie tauschen?"
+            },
+            "easy": {
+              "de": "Wer hat die blauen Farbkleckse gefunden und euch auf die Spur gebracht?"
+            }
+          },
+          "options": [
+            {
+              "id": "greta",
+              "label": {
+                "all": {
+                  "de": "Greta Vogt"
+                }
+              }
+            },
+            {
+              "id": "albers",
+              "label": {
+                "all": {
+                  "de": "Konrad Albers"
+                }
+              }
+            },
+            {
+              "id": "ben",
+              "label": {
+                "all": {
+                  "de": "Ben Harms"
+                }
+              }
+            },
+            {
+              "id": "lotte",
+              "label": {
+                "all": {
+                  "de": "Lotte Mewes"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "solutionText": {
+        "all": {
+          "de": "Greta Vogt hat die Mondnacht versteckt – um sie zu schützen. Konrad Albers wollte das Original gegen seine Fälschung tauschen und nach Hamburg schaffen."
+        },
+        "easy": {
+          "de": "Lotte hat das Bild mitgenommen, um es als Geburtstagsgeschenk für Oma Lindenhof abzumalen. Ben hat die blauen Farbkleckse gefunden."
+        }
+      },
+      "hints": [
+        {
+          "all": {
+            "de": "Lest im Notizbuch das Restaurierungsprotokoll und den Frachtzettel."
+          },
+          "easy": {
+            "de": "Wer hatte blaue Farbe an den Händen?"
+          }
+        },
+        {
+          "all": {
+            "de": "Wer trägt einen grünen Schal – wie die Person mit dem Paket?"
+          },
+          "easy": {
+            "de": "Lest die Einladung im Notizbuch: Wer hat bald Geburtstag?"
+          }
+        },
+        {
+          "all": {
+            "de": "Greta hat das Bild genommen, Albers wollte tauschen. Und warum Greta?"
+          },
+          "easy": {
+            "de": "Es war Lotte – und sie wollte jemandem eine Freude machen."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Abschlussfragen ohne Ortsbezug."
     }
   ],
   "didYouKnow": {

@@ -7,14 +7,14 @@ const supported = () => typeof speechSynthesis !== 'undefined' && typeof SpeechS
  * Liest einen Text vor – mit Audiodatei, falls vorhanden, sonst mit der
  * Sprachausgabe des Geräts (funktioniert auf dem iPhone auch offline).
  */
-export function ReadAloud({ text, audioSrc }: { text: string; audioSrc?: string }) {
+export function ReadAloud({ text, audioSrc, label }: { text: string; audioSrc?: string; label?: string }) {
   const [speaking, setSpeaking] = useState(false);
 
   useEffect(() => () => stop(), [text]);
 
   if (!audioSrc && !supported()) return null;
   if (audioSrc) {
-    return <audio class="story-audio" controls preload="none" src={audioSrc} aria-label={ui('readAloud')} />;
+    return <audio class="story-audio" controls preload="none" src={audioSrc} aria-label={label ?? ui('readAloud')} />;
   }
 
   function stop() {
@@ -35,7 +35,7 @@ export function ReadAloud({ text, audioSrc }: { text: string; audioSrc?: string 
 
   return (
     <button class="btn btn-small btn-secondary read-aloud" onClick={speaking ? stop : start} aria-pressed={speaking}>
-      {speaking ? `⏹ ${ui('stopReading')}` : `🔊 ${ui('readAloud')}`}
+      {speaking ? `⏹ ${ui('stopReading')}` : `🔊 ${label ?? ui('readAloud')}`}
     </button>
   );
 }

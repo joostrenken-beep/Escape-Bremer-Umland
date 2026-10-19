@@ -4,6 +4,8 @@
  *  - Abzüge je Rätsel-Schritt: Hinweis 1/2/3 = −10/−20/−30, Auflösung −60, Überspringen −50.
  *  - „Hier stimmt etwas nicht“ + Ersatzfrage gelöst = kein Abzug.
  *  - Eine Station kann nicht unter 0 fallen.
+ *  - Finale-Bonus für die Anklage: +100 beim ersten Versuch ohne Hilfe, +50 wenn
+ *    selbst gelöst (ohne Auflösung/Überspringen), sonst 0. Kommt erst am Ende dazu.
  *  - Die Zeit wird nur angezeigt, sie kostet keine Punkte.
  */
 
@@ -34,4 +36,11 @@ export function stationScore(steps: StepScoreInput[]): number {
 /** Kosten des nächsten Hinweises (oder null, wenn alle Hinweise genutzt sind). */
 export function nextHintCost(hintsUsed: number): number | null {
   return hintsUsed < HINT_COSTS.length ? HINT_COSTS[hintsUsed] : null;
+}
+
+export const FINALE_BONUS = 100;
+
+export function finaleBonus(step: StepScoreInput & { solved: boolean; attempts: number }): number {
+  if (!step.solved || step.revealed || step.skipped) return 0;
+  return step.attempts <= 1 && step.hintsUsed === 0 ? FINALE_BONUS : FINALE_BONUS / 2;
 }

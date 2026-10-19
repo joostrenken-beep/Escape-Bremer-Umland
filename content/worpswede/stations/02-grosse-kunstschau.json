@@ -65,6 +65,50 @@
       },
       "verified": false,
       "verifyNote": "Gibt es eine Jahreszahl/Inschrift außen am Gebäude? Sonst andere sichtbare Angabe wählen."
+    },
+    {
+      "type": "colorfilter",
+      "id": "filter",
+      "prompt": {
+        "all": {
+          "de": "Albers hat hier einen Zettel liegen lassen – über und über mit rotem Gekritzel. Legt den Rotfilter auf! Welches Wort steht darunter?"
+        },
+        "easy": {
+          "de": "Hier liegt ein Zettel voller rotem Gekritzel. Legt den Rotfilter auf! Welches Wort ist versteckt?"
+        }
+      },
+      "message": {
+        "medium": "KOPIE",
+        "hard": "KOPIE",
+        "easy": "TORTE"
+      },
+      "codeId": "s02-filter",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Tippt auf „Rotfilter auflegen“."
+          }
+        },
+        {
+          "all": {
+            "de": "Mit Filter verschwindet das Rote – das dunkle Wort bleibt stehen."
+          }
+        },
+        {
+          "all": {
+            "de": "Das Wort hat fünf Buchstaben."
+          },
+          "medium": {
+            "de": "Das Wort hat fünf Buchstaben und beginnt mit K."
+          },
+          "hard": {
+            "de": "Das Wort hat fünf Buchstaben und beginnt mit K."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Digitales Rätsel ohne Ortsbezug."
     }
   ],
   "notebook": [
@@ -80,6 +124,21 @@
         },
         "easy": {
           "de": "Er kauft und verkauft Bilder und hätte die Mondnacht so gern gehabt."
+        }
+      }
+    },
+    {
+      "id": "clue-note-albers",
+      "kind": "clue",
+      "title": {
+        "de": "Zettel mit Gekritzel"
+      },
+      "text": {
+        "all": {
+          "de": "Unter dem roten Gekritzel stand: KOPIE. Was will Albers kopieren lassen?"
+        },
+        "easy": {
+          "de": "Unter dem roten Gekritzel stand: TORTE. Wer plant hier eine Feier?"
         }
       }
     }

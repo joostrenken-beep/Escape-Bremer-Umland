@@ -182,6 +182,107 @@
       "reveal": {
         "de": "Die Fragmente lauten A = 1, B = 9, C = 0, D = 2 – die Kombination ist 1902, das Jahr, in dem die Mondnacht gemalt wurde."
       }
+    },
+    "s02-filter": {
+      "answers": {
+        "medium": [
+          "kopie"
+        ],
+        "hard": [
+          "kopie"
+        ],
+        "easy": [
+          "torte"
+        ]
+      },
+      "reveal": {
+        "de": "Mit Rotfilter wird das Wort lesbar: KOPIE (Leicht: TORTE)."
+      }
+    },
+    "s05-witness": {
+      "answers": {
+        "medium": [
+          "grün",
+          "gruen",
+          "dunkelgrün"
+        ],
+        "hard": [
+          "grün",
+          "gruen",
+          "dunkelgrün"
+        ],
+        "easy": [
+          "Bruno"
+        ]
+      },
+      "reveal": {
+        "de": "Die Person trug einen grünen Schal (Leicht: Der Dackel heißt Bruno)."
+      }
+    },
+    "s08-morse": {
+      "answers": [
+        "null",
+        "0"
+      ],
+      "reveal": {
+        "de": "Gemorst wird NULL: –• / ••– / •–•• / •–••"
+      }
+    },
+    "s09-compare": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s10-who": {
+      "answers": {
+        "medium": [
+          "greta"
+        ],
+        "hard": [
+          "greta"
+        ],
+        "easy": [
+          "lotte"
+        ]
+      },
+      "reveal": {
+        "de": "Mittel/Schwer: Greta. Leicht: Lotte."
+      }
+    },
+    "s10-why": {
+      "answers": {
+        "medium": [
+          "schutz"
+        ],
+        "hard": [
+          "schutz"
+        ],
+        "easy": [
+          "geschenk"
+        ]
+      },
+      "reveal": {
+        "de": "Mittel/Schwer: Schutz vor dem Fälschungstausch. Leicht: Geburtstagsgeschenk."
+      }
+    },
+    "s10-who2": {
+      "answers": {
+        "medium": [
+          "albers"
+        ],
+        "hard": [
+          "albers"
+        ],
+        "easy": [
+          "ben"
+        ]
+      },
+      "reveal": {
+        "de": "Mittel/Schwer: Albers. Leicht: Ben."
+      }
     }
   }
 }

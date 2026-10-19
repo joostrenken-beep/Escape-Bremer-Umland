@@ -11,7 +11,7 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
 | 1 Grundgerüst (Setup, PWA/Offline, Schema, Stadt- & Stufenwahl) | ✅ fertig |
 | 2 Spielkern (Stationen, Codes, Hinweise, Notizbuch, Speichern, Punkte/Zeit, Testmodus) | ✅ fertig |
 | 3 Worpswede-Content v1 + Entwickler-Ansicht + Navigation | ✅ fertig |
-| 4 Digitale Rätsel (Mini-Games, Audio, Kamera, AR) | offen |
+| 4 Digitale Rätsel (Mini-Games, Audio, Kamera, AR) | ✅ fertig |
 | 5 Finale, Urkunde, Design, Gerätetests | offen |
 | 6 Backend-Vorbereitung, Freischaltmodul, Anleitung neue Stadt | offen |
 
@@ -30,8 +30,11 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
 - **Rätsel-Kette Worpswede:** Station 3 Logikrätsel (Albers + Greta im Haus, Albers lügt), Station 4 Caesar (mittel +3,
   schwer +5 „Paula“, leicht rückwärts) → „neun“. Notizbuch-Fragmente A=1 (St. 3), B=9 (St. 4), C=0 (St. 8), D=2 (St. 9)
   → Finale-Zahlenschloss **1902** (= Entstehungsjahr der Mondnacht; schwer: Reihenfolge aus Fallakte ableiten).
-  Geplante digitale Rätsel (M4): St. 2 Bildausschnitt, St. 5 Zeugenaussage (Audio), St. 6 Kompass/AR,
-  St. 7 Schiebepuzzle, St. 8 Morse, St. 9 Foto-Vergleich alt/neu.
+  Digitale Rätsel (M4): St. 2 Rotfilter (KOPIE/leicht TORTE), St. 5 Zeugenaussage Audio (grüner Schal/leicht Dackel
+  Bruno), St. 6 Kompass+AR (225° SW), St. 7 Schiebepuzzle (media/mondnacht.svg – eigene Illustration, Bild ist fiktiv),
+  St. 8 Morse (NULL), St. 9 Foto-Vergleich (media/barkenhoff-historisch.svg = PLATZHALTER, gemeinfreies Foto fehlt),
+  St. 10 Zahlenschloss 1902 + Anklage (wer/warum/wer2; Finale-Bonus).
+- **Finale-Bonus:** Anklage (accuse) +100 beim ersten Versuch ohne Hinweis, +50 selbst gelöst, sonst 0.
 - **Punkte:** Punktekonto – Start mit 100/Station (volles Konto), Hilfen ziehen sofort ab (Nutzerwunsch, damit man
   in Runde 1 nicht mit Punkten „bezahlt“, die man noch nicht hat); Hinweise −10/−20/−30; Auflösung −60; Überspringen −50; „Hier stimmt etwas nicht“ +
   Ersatzfrage gelöst = 0 Abzug; Finale-Bonus. Zeit wird nur angezeigt, kein Abzug.
@@ -80,8 +83,13 @@ tests/                      Vitest; tests/fixtures/content/testtour = feste 2-St
 ### Wichtige Konzepte
 - **LocalizedText** `{de, en?}`; **LeveledText** `{all?, easy?, medium?, hard?}` – Stufe fällt auf `all` zurück.
   Build prüft, dass jede Stufe einen Text bekommt.
-- **Rätsel-Schritte** (`steps[]`) mit `type` → Plugin-Komponente. Bisher nur `code`.
-  Neuer Typ = Schema (`station.schema.json` → `$defs/Step`), Typ in `types.ts`, Komponente + Registry (ab M2).
+- **Rätsel-Schritte** (`steps[]`) mit `type` → Plugin-Komponente in `src/puzzles/`:
+  code (+image), audio, morse, colorfilter, overlay (Kamera), lock, slider, compass (+AR), accuse.
+  Code-Rätsel nutzen `CodeAnswer` (Eingabe + Ersatzfrage); Rätsel ohne Code haben `solutionText` für die Auflösung.
+  Neuer Typ = Schema (`station.schema.json` → `$defs/Step` + eigener `$defs/<Typ>Step`), Typ in `types.ts`
+  (+ `codeIdsOfStep`), Komponente + Eintrag in `puzzles/registry.tsx`.
+- **Kamera** (`puzzles/camera.ts`): nur nach Tipp, Stream wird beim Verlassen gestoppt, nichts gespeichert/hochgeladen.
+- **Preact 11:** Zahlen in `style` bekommen KEIN automatisches „px“ – immer Einheit als String angeben!
 - **Codes:** Station referenziert `codeId`; Klartext in codes.json; Build schreibt nur
   `sha256(salt:codeId:normalize(answer))` + AES-GCM-verschleierten Auflösungstext. Reihenfolge der Code-Quelle:
   Env `TOUR_CODES` (GitHub-Secret, JSON `{ "<stadt>": {codes…} }`) → `codes.json` → `codes.example.json` (Warnung).

@@ -29,7 +29,7 @@ import type {
   TourSource,
   TourSummary,
 } from '../src/content/types.ts';
-import { DIFFICULTIES } from '../src/content/types.ts';
+import { codeIdsOfStep, DIFFICULTIES } from '../src/content/types.ts';
 import { hashAnswer, obscureReveal } from '../src/game/codes.ts';
 import { leveled } from '../src/i18n/text.ts';
 import { collectUnverified } from '../src/content/verification.ts';
@@ -102,7 +102,7 @@ function wordCount(s: string) {
 }
 
 function codeIdsOf(station: StationSource): string[] {
-  return station.steps.flatMap((s) => [s.codeId, ...(s.fallback ? [s.fallback.codeId] : [])]);
+  return station.steps.flatMap(codeIdsOfStep);
 }
 
 async function listFiles(dir: string): Promise<string[]> {

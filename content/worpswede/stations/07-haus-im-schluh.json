@@ -65,6 +65,48 @@
       },
       "verified": false,
       "verifyNote": "Straßenname (vermutlich „Im Schluh“) und Ersatzfrage vor Ort prüfen."
+    },
+    {
+      "type": "slider",
+      "id": "puzzle",
+      "image": "media/mondnacht.svg",
+      "size": {
+        "easy": 3,
+        "medium": 3,
+        "hard": 4
+      },
+      "prompt": {
+        "all": {
+          "de": "Neben dem Protokoll liegt ein zerschnittenes Foto der Mondnacht. Setzt es wieder zusammen – vielleicht verrät es mehr über das Original!"
+        },
+        "easy": {
+          "de": "Lotte hat ein Foto der Mondnacht als Vorlage zerschnitten. Setzt es wieder zusammen!"
+        }
+      },
+      "solutionText": {
+        "all": {
+          "de": "Das Foto zeigt die Mondnacht: Weyerberg mit Kirchturm, Birken, eine Kate mit Licht und ein großer Mond über dem Moor – signiert „J. Behrens 1902“."
+        }
+      },
+      "hints": [
+        {
+          "all": {
+            "de": "Beginnt mit der obersten Reihe: Mond und Himmel."
+          }
+        },
+        {
+          "all": {
+            "de": "Löst erst die oberen Reihen, dann die unteren – die letzten Teile schiebt ihr im Kreis."
+          }
+        },
+        {
+          "all": {
+            "de": "Unten rechts steht die Signatur – dieses Teil gehört ganz nach unten rechts."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Digitales Rätsel ohne Ortsbezug (Bild: eigene Illustration)."
     }
   ],
   "notebook": [

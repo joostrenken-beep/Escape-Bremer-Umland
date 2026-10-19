@@ -6,7 +6,7 @@
  * durchspielen (tests/engine.test.ts).
  */
 import type { BuiltTour, StationSource, StepSource } from '../content/types';
-import { stationScore, type StepScoreInput } from './scoring';
+import { FINALE_BONUS, finaleBonus, STATION_POINTS, stationScore, type StepScoreInput } from './scoring';
 import type { GameSession, NotebookItem, StepProgress } from './session';
 
 export type GameAction =
@@ -77,12 +77,17 @@ function startClock(s: GameSession, now: number): GameSession {
 export function scoreOf(tour: BuiltTour, s: GameSession): number {
   return tour.stations.reduce((sum, station) => {
     const steps: StepScoreInput[] = station.steps.map((st) => progressOf(s, station.id, st.id));
-    return sum + stationScore(steps);
+    const bonus = station.steps.reduce(
+      (b, st) => (st.type === 'accuse' ? b + finaleBonus(progressOf(s, station.id, st.id)) : b),
+      0,
+    );
+    return sum + stationScore(steps) + bonus;
   }, 0);
 }
 
 export function maxScore(tour: BuiltTour): number {
-  return tour.stations.length * 100;
+  const accuseSteps = tour.stations.flatMap((st) => st.steps).filter((st) => st.type === 'accuse').length;
+  return tour.stations.length * STATION_POINTS + accuseSteps * FINALE_BONUS;
 }
 
 // --- Reducer ------------------------------------------------------------
@@ -164,7 +169,10 @@ export function reduce(s: GameSession, tour: BuiltTour, action: GameAction, now:
       return progressOfCurrent(s, tour)?.solved ? advanceStep(s, tour, nowIso) : s;
 
     case 'useFallback':
-      if (s.phase !== 'solve' || !currentStep(tour, s)?.fallback) return s;
+      {
+        const st = currentStep(tour, s);
+        if (s.phase !== 'solve' || !st || !('fallback' in st) || !st.fallback) return s;
+      }
       return updateStep(s, tour, (p) => ({ ...p, fallback: true }));
 
     case 'skip':

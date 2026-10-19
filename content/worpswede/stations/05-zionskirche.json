@@ -20,10 +20,10 @@
   },
   "story": {
     "all": {
-      "de": "Frau Gerdes führt hier jeden Abend ihren Hund aus. Gestern gegen halb eins sah sie eine Gestalt mit einem großen, flachen Paket – eingewickelt in braunes Packpapier. „Die Person ging eilig Richtung Gipfel“, sagt sie. „Und sie hatte einen Schlüsselbund in der Hand.“"
+      "de": "Frau Gerdes führt hier jeden Abend ihren Hund aus. Gestern Nacht hat sie etwas beobachtet – und es der Polizei schon erzählt. Hört euch ihre Aussage genau an. Jedes Detail kann wichtig sein."
     },
     "easy": {
-      "de": "Frau Gerdes geht hier abends mit ihrem Dackel spazieren. Gestern sah sie eine junge Frau mit einem großen, flachen Paket. „Sie hat ein Geburtstagslied gesummt“, erzählt Frau Gerdes. „Und sie lief Richtung Berg.“"
+      "de": "Frau Gerdes geht hier abends mit ihrem Hund spazieren. Gestern hat sie etwas gesehen! Hört gut zu, was sie erzählt."
     }
   },
   "steps": [
@@ -65,6 +65,56 @@
       },
       "verified": false,
       "verifyNote": "Jahreszahl außen an Kirche/Turm vorhanden? Bitte nur Angaben an der Kirche selbst, nicht auf dem Friedhof (keine Spielaktion an Gräbern)."
+    },
+    {
+      "type": "audio",
+      "id": "witness",
+      "speaker": {
+        "de": "Frau Gerdes, Nachbarin"
+      },
+      "speech": {
+        "all": {
+          "de": "Also, ich war mit meinem Dackel Bruno unterwegs, so gegen zwanzig vor eins. Da kam jemand den Weg hoch, mit einem großen, flachen Paket in braunem Packpapier. Die Person trug einen langen grünen Schal und hatte einen Schlüsselbund in der Hand. Sie ging eilig Richtung Gipfel. Erkannt habe ich sie nicht, es war ja dunkel."
+        },
+        "easy": {
+          "de": "Ich war mit meinem Dackel Bruno spazieren. Da kam eine junge Frau mit einem großen, flachen Paket. Sie hat fröhlich ein Geburtstagslied gesummt und ist Richtung Berg gelaufen."
+        }
+      },
+      "prompt": {
+        "all": {
+          "de": "Welche Farbe hatte der Schal der Person?"
+        },
+        "easy": {
+          "de": "Wie heißt der Hund von Frau Gerdes?"
+        }
+      },
+      "codeId": "s05-witness",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Hört euch die Aussage noch einmal an – oder lest sie als Text."
+          }
+        },
+        {
+          "all": {
+            "de": "Es geht um ein Kleidungsstück am Hals."
+          },
+          "easy": {
+            "de": "Der Hund ist ein Dackel."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Farbe passt zu Birkenblättern im Sommer."
+          },
+          "easy": {
+            "de": "Der Name beginnt mit B."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Audio-Rätsel ohne Ortsbezug (Sprachausgabe; eigene Aufnahme später möglich)."
     }
   ],
   "notebook": [
@@ -76,7 +126,7 @@
       },
       "text": {
         "all": {
-          "de": "Gegen 0:30 Uhr: Person mit großem, flachem Paket in Packpapier, Schlüsselbund in der Hand, eilig Richtung Weyerberg-Gipfel."
+          "de": "Gegen 0:40 Uhr: Person mit großem, flachem Paket in Packpapier, langer grüner Schal, Schlüsselbund – eilig Richtung Weyerberg-Gipfel."
         },
         "easy": {
           "de": "Eine junge Frau mit einem flachen Paket hat ein Geburtstagslied gesummt und lief zum Berg."

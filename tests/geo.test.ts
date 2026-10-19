@@ -28,3 +28,13 @@ describe('Geo', () => {
     expect(routeLengthM([a, b, a])).toBeCloseTo(2 * distanceM(a, b), 3);
   });
 });
+
+describe('Kompass-Abweichung', () => {
+  it('kleinster Winkel mit Vorzeichen', async () => {
+    const { angleDiff } = await import('../src/puzzles/CompassPuzzle');
+    expect(angleDiff(10, 350)).toBe(20);
+    expect(angleDiff(350, 10)).toBe(-20);
+    expect(angleDiff(225, 225)).toBe(0);
+    expect(Math.abs(angleDiff(0, 180))).toBe(180);
+  });
+});

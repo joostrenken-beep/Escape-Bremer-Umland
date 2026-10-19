@@ -28,6 +28,10 @@ export function StepShell({ tour, station, step, session, dispatch }: Props) {
 
   useEffect(() => {
     if (!progress.revealed) return setSolution(null);
+    if (!codeId) {
+      // Rätsel ohne Code (Schiebepuzzle, Kompass, Anklage): Auflösung steht offen im Content
+      return setSolution('solutionText' in step ? leveled(step.solutionText, session.difficulty, lang) : '—');
+    }
     const code = tour.codes[codeId];
     if (!code) return setSolution('—');
     revealSolution(tour.codeSalt, codeId, code.reveal).then(
@@ -89,7 +93,7 @@ export function StepShell({ tour, station, step, session, dispatch }: Props) {
         ) : (
           <div class="card trouble" role="group" aria-label={ui('somethingWrong')}>
             <p>{ui('somethingWrongText')}</p>
-            {step.fallback && !progress.fallback && (
+            {'fallback' in step && step.fallback && !progress.fallback && (
               <button
                 class="btn btn-secondary"
                 onClick={() => {
