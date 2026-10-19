@@ -121,14 +121,14 @@ async function loadCodes(
   tourId: string,
   override: Record<string, CodesFile> | undefined,
   warnings: string[],
-): Promise<CodesFile | null> {
-  if (override?.[tourId]) return override[tourId];
+): Promise<{ file: CodesFile; source: BuiltTour['codesSource'] } | null> {
+  if (override?.[tourId]) return { file: override[tourId], source: 'secret' };
   const real = join(tourDir, 'codes.json');
-  if (existsSync(real)) return readJson<CodesFile>(real);
+  if (existsSync(real)) return { file: await readJson<CodesFile>(real), source: 'local' };
   const example = join(tourDir, 'codes.example.json');
   if (existsSync(example)) {
     warnings.push(`${tourId}: keine echten Codes gefunden – nutze Platzhalter aus codes.example.json`);
-    return readJson<CodesFile>(example);
+    return { file: await readJson<CodesFile>(example), source: 'example' };
   }
   return null;
 }
@@ -204,7 +204,8 @@ async function buildTour(
   }
 
   // Codes
-  const codesFile = await loadCodes(tourDir, tour.id, opts.codesOverride, warnings);
+  const loaded = await loadCodes(tourDir, tour.id, opts.codesOverride, warnings);
+  const codesFile = loaded?.file;
   const codes: Record<string, BuiltCode> = {};
   if (!codesFile) {
     errors.push(`${rel}: keine Codes gefunden (codes.json oder codes.example.json)`);
@@ -243,6 +244,7 @@ async function buildTour(
     ...meta,
     stations,
     codes,
+    codesSource: loaded?.source ?? 'example',
     files: ['tour.json', ...mediaFiles],
     builtAt: new Date().toISOString(),
   };

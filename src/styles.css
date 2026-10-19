@@ -618,6 +618,87 @@ a.btn {
   accent-color: #6b3fa0;
 }
 
+/* --- Navigation & Karte ---------------------------------------------- */
+
+.navigator {
+  display: grid;
+  gap: 10px;
+}
+.nav-live {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-arrow-wrap {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--moor);
+  display: grid;
+  place-items: center;
+}
+.nav-arrow {
+  font-size: 2.6rem;
+  line-height: 1;
+  color: #fff;
+  transition: transform 0.3s ease-out;
+}
+.nav-north {
+  position: absolute;
+  top: 2px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.nav-distance {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+}
+.route-map {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  z-index: 0;
+}
+
+/* --- Entwickler-Ansicht ---------------------------------------------- */
+
+.dev-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.dev-warn {
+  border-color: var(--gold);
+  background: #fff6d8;
+}
+.dev-coords {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.dev-route {
+  padding-left: 1.4em;
+}
+.dev-station ul {
+  padding-left: 1.1em;
+  display: grid;
+  gap: 10px;
+}
+.dev-station li {
+  display: grid;
+  gap: 2px;
+}
+.dev-path {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  word-break: break-all;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

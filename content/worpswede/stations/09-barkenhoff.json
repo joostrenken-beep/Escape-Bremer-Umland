@@ -1,0 +1,109 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "09-barkenhoff",
+  "title": {
+    "de": "Barkenhoff"
+  },
+  "location": {
+    "name": {
+      "de": "Barkenhoff, Ostendorfer Straße 10"
+    },
+    "lat": 53.2177,
+    "lng": 8.9333,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Geht zurück Richtung Ortsmitte und biegt in die Ostendorfer Straße ein. Der Barkenhoff liegt am Hang zwischen Birken."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Lotte wartet am Barkenhoff. Sie zeigt euch einen Brief von Johanna Behrens aus dem Jahr 1903: „Auf die Rückseite meiner Mondnacht habe ich einen kleinen Mond gezeichnet – so erkennt man das Original.“ Dann gesteht Lotte: „Greta hat mich um Mitternacht angerufen. Sie bringt das Bild in Sicherheit.“"
+    },
+    "easy": {
+      "de": "Am Barkenhoff wohnte früher der Maler Heinrich Vogeler. Hier findet ihr Lottes Einkaufszettel: „Pinsel, blaue Farbe, Rahmen, Kuchen.“ Auf der Rückseite steht noch eine Zahl. Was hat Lotte nur vor?"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Wie viele Stufen führen zum Eingang des Barkenhoffs?"
+        }
+      },
+      "codeId": "s09-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Die Treppe liegt vor dem Haupteingang."
+          }
+        },
+        {
+          "all": {
+            "de": "Zählt jede Stufe, auch die unterste."
+          }
+        },
+        {
+          "all": {
+            "de": "Geht die Treppe in Gedanken hinauf und zählt mit."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welche Farbe haben die Fensterläden?"
+          }
+        },
+        "codeId": "s09-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Treppe öffentlich zugänglich/sichtbar? Stufen zählen. (In M4 kommt hier zusätzlich der Vergleich mit einem historischen Foto dazu.)"
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-letter",
+      "kind": "clue",
+      "title": {
+        "de": "Brief von Johanna Behrens, 1903"
+      },
+      "text": {
+        "all": {
+          "de": "Das Original hat auf der Rückseite einen kleinen gezeichneten Mond. Lotte: „Greta bringt das Bild in Sicherheit.“"
+        },
+        "easy": {
+          "de": "Lottes Einkaufszettel: Pinsel, blaue Farbe, Rahmen, Kuchen."
+        }
+      }
+    },
+    {
+      "id": "fragment-d",
+      "kind": "clue",
+      "title": {
+        "de": "Skizzenbuch-Fragment D"
+      },
+      "text": {
+        "all": {
+          "de": "Am Rand des Briefes: „D = 2“"
+        },
+        "hard": {
+          "de": "Am Rand des Briefes: eine 2."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Heinrich Vogeler kaufte den Barkenhoff in den 1890er-Jahren und baute das Bauernhaus im Jugendstil um. Hier trafen sich Künstlerinnen und Dichter wie Paula Modersohn-Becker und Rainer Maria Rilke. Heute ist der Barkenhoff ein Museum über Heinrich Vogeler."
+    },
+    "verified": false,
+    "verifyNote": "Kaufjahr (vermutlich 1895), Umbau, Rilke-Bezug und heutige Nutzung prüfen."
+  }
+}

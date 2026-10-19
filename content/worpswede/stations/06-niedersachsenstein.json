@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "06-niedersachsenstein",
+  "title": {
+    "de": "Niedersachsenstein"
+  },
+  "location": {
+    "name": {
+      "de": "Niedersachsenstein auf dem Weyerberg"
+    },
+    "lat": 53.2245,
+    "lng": 8.9236,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Steigt weiter auf den Weyerberg. Folgt den Wegen durch den Wald bis zum großen Denkmal aus Backstein."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Am Fuß des Denkmals liegt ein Fetzen braunes Packpapier. Darauf ein Stempel, halb verwischt: „…ierungsatelier G. V…“. Von hier oben überblickt ihr das ganze Teufelsmoor. Irgendwo dort unten, am Moorgraben, hat jemand eine Werkstatt."
+    },
+    "easy": {
+      "de": "Puh, geschafft – ihr seid oben! Am Denkmal liegt ein Stück braunes Papier mit einem bunten Luftballon-Aufkleber. Von hier oben seht ihr weit über das Moor. Irgendwo dort unten hat Lotte ihr kleines Atelier."
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Welche Jahreszahl steht am Denkmal?"
+        }
+      },
+      "codeId": "s06-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Geht einmal um das Denkmal herum."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Zahl steht auf einer Tafel oder ist in den Stein gearbeitet."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Zahl beginnt mit 19."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welches Tier stellt das Denkmal dar?"
+          }
+        },
+        "codeId": "s06-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Jahreszahl/Inschrift am Denkmal vorhanden und lesbar? Ersatzfrage (Tierform, vermutlich Adler) prüfen."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-paper",
+      "kind": "clue",
+      "title": {
+        "de": "Packpapier mit Stempel"
+      },
+      "text": {
+        "all": {
+          "de": "Stempel: „…ierungsatelier G. V…“ – Restaurierungsatelier Greta Vogt? Ihr Atelier liegt am Moorgraben."
+        },
+        "easy": {
+          "de": "Braunes Papier mit Luftballon-Aufkleber. Lotte hat ein kleines Atelier am Moorgraben."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Der Niedersachsenstein auf dem Weyerberg ist ein expressionistisches Denkmal von Bernhard Hoetger aus Backstein. Er wurde Anfang der 1920er-Jahre fertiggestellt und erinnert an die Gefallenen des Ersten Weltkriegs. Der Weyerberg ist nur gut 50 Meter hoch – im flachen Moor ringsum wirkt er trotzdem wie ein Berg."
+    },
+    "verified": false,
+    "verifyNote": "Fertigstellung (vermutlich 1922), Material, Höhe des Weyerbergs prüfen."
+  }
+}

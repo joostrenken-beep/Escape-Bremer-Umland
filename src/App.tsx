@@ -3,6 +3,7 @@ import { UpdateBanner } from './components/PwaBanners';
 import { loadSession, type GameSession } from './game/session';
 import { ui } from './i18n/ui';
 import { navigate, useRoute } from './router';
+import { DevView } from './screens/DevView';
 import { Notebook } from './screens/Notebook';
 import { Play } from './screens/Play';
 import { SettingsScreen } from './screens/Settings';
@@ -50,6 +51,7 @@ export function App() {
   else if (page === 'notebook' && (param || session))
     screen = <Notebook session={session} tourId={param ?? session!.tourId} initialTab={param && session?.tourId !== param ? 'knowledge' : 'notes'} />;
   else if (page === 'settings') screen = <SettingsScreen onResetAll={resetAll} />;
+  else if (page === 'dev') screen = <DevView tourId={param} />;
   else
     screen = (
       <main class="screen">

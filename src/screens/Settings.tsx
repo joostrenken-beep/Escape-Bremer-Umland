@@ -21,6 +21,11 @@ export function SettingsScreen({ onResetAll }: { onResetAll: () => void }) {
           onChange={(e) => update({ testMode: (e.target as HTMLInputElement).checked })}
         />
       </label>
+      {settings.testMode && (
+        <a class="btn btn-secondary" href="#/dev">
+          🛠 Entwickler-Ansicht (Prüfliste vor Ort)
+        </a>
+      )}
       <button
         class="btn btn-ghost"
         onClick={() => {

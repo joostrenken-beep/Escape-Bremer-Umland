@@ -1,0 +1,163 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "04-kunsthalle",
+  "title": {
+    "de": "Worpsweder Kunsthalle"
+  },
+  "location": {
+    "name": {
+      "de": "Worpsweder Kunsthalle, Bergstraße"
+    },
+    "lat": 53.2192,
+    "lng": 8.9284,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Geht zurück Richtung Ortsmitte und dann die Bergstraße entlang bis zur Kunsthalle."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Die Doktorandin Lotte Mewes forscht über Johanna Behrens. In einem alten Brief der Malerin hat sie eine verschlüsselte Zeile entdeckt – Johanna liebte Geheimschriften. Lotte vermutet: Die Zeile verrät eine Ziffer des Verstecks."
+    },
+    "easy": {
+      "de": "Hier treffen wir Lotte. Sie liest alte Briefe der Malerin Johanna Behrens. In einem Brief steht ein Geheimwort – rückwärts geschrieben! Johanna mochte solche Spiele."
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Welches Wort steht groß über dem Eingang?"
+        }
+      },
+      "codeId": "s04-unlock",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Schaut nach oben über die Tür."
+          }
+        },
+        {
+          "all": {
+            "de": "Es ist ein Wort aus Buchstaben, keine Zahl."
+          }
+        },
+        {
+          "all": {
+            "de": "Es hat mit Kunst zu tun."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welche Hausnummer hat das Gebäude?"
+          }
+        },
+        "codeId": "s04-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Inschrift/Schriftzug außen am Gebäude vorhanden? Wortlaut notieren."
+    },
+    {
+      "type": "code",
+      "id": "cipher",
+      "prompt": {
+        "easy": {
+          "de": "Lies rückwärts: NUEN\nWelche Zahl ist das?"
+        },
+        "medium": {
+          "de": "Johannas Geheimzeile: CLIIHU CZHL LVW QHXQ\nJeder Buchstabe ist im Alphabet um 3 Stellen nach hinten verschoben (A wurde zu D). Welche Ziffer verrät die Zeile?"
+        },
+        "hard": {
+          "de": "Johannas Geheimzeile: ENKKJW EBJN NXY SJZS\nDie Buchstaben sind verschoben – um so viele Stellen, wie Paulas Vorname Buchstaben hat. Welche Ziffer verrät die Zeile?"
+        }
+      },
+      "codeId": "s04-cipher",
+      "input": "text",
+      "hints": [
+        {
+          "easy": {
+            "de": "Lies von rechts nach links: N – E – U – N."
+          },
+          "medium": {
+            "de": "Geht im Alphabet 3 Buchstaben zurück: D → A, E → B …"
+          },
+          "hard": {
+            "de": "Paula hat 5 Buchstaben. Geht im Alphabet 5 Stellen zurück."
+          }
+        },
+        {
+          "easy": {
+            "de": "Es ist eine Zahl zwischen 8 und 10."
+          },
+          "medium": {
+            "de": "C wird zu Z, L wird zu I. Das erste Wort beginnt mit „ZI…“."
+          },
+          "hard": {
+            "de": "E wird zu Z. Das erste Wort beginnt mit „ZI…“."
+          }
+        },
+        {
+          "easy": {
+            "de": "Die Zahl heißt neun."
+          },
+          "medium": {
+            "de": "Die Zeile lautet: ZIFFER ZWEI IST …"
+          },
+          "hard": {
+            "de": "Die Zeile lautet: ZIFFER ZWEI IST …"
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Chiffre ohne Ortsbezug (per Programm geprüft)."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "suspect-lotte",
+      "kind": "suspect",
+      "title": {
+        "de": "Lotte Mewes, Doktorandin"
+      },
+      "text": {
+        "all": {
+          "de": "Schreibt ihre Doktorarbeit über Johanna Behrens und kennt deren Briefe. Laut Nachbarin war sie nachts nicht im Haus."
+        },
+        "easy": {
+          "de": "Sie weiß alles über die Malerin Johanna Behrens – und hatte gestern blaue Farbe an den Händen."
+        }
+      }
+    },
+    {
+      "id": "fragment-b",
+      "kind": "clue",
+      "title": {
+        "de": "Skizzenbuch-Fragment B"
+      },
+      "text": {
+        "all": {
+          "de": "Johannas Geheimzeile: „Ziffer zwei ist neun.“ → B = 9"
+        },
+        "hard": {
+          "de": "Johannas Geheimzeile verrät eine 9."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Die Worpsweder Kunsthalle gilt als eines der ältesten Ausstellungshäuser im Ort. Schon zur Zeit der Künstlerkolonie konnten Besucher hier Bilder der Worpsweder Maler sehen und kaufen."
+    },
+    "verified": false,
+    "verifyNote": "Gründungsjahr und Gründer prüfen (vermutlich um 1902, Familie Netzel)."
+  }
+}

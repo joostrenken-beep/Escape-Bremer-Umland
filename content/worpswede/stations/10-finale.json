@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "10-finale",
+  "title": {
+    "de": "Finale: Das Versteck"
+  },
+  "location": {
+    "name": {
+      "de": "Zurück in der Ortsmitte (Lindenallee)"
+    },
+    "lat": 53.2203,
+    "lng": 8.9311,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Kehrt zurück zum Treffpunkt in der Lindenallee. Sucht euch eine Bank und schlagt euer Notizbuch auf."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Gretas Atelier am Moorgraben ist verschlossen. Vor der Tür steht eine alte Truhe mit Zahlenschloss: vier Ziffern. Greta hat euch eine Nachricht hinterlassen: „Wer die Fragmente gefunden hat, kann die Mondnacht sehen.“"
+    },
+    "easy": {
+      "de": "Lottes kleines Atelier! Davor steht eine bunte Kiste mit Zahlenschloss. Darauf klebt ein Zettel: „Nur wer alle Zahlen gesammelt hat, darf hineinschauen!“ Schaut in euer Notizbuch."
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "lock",
+      "prompt": {
+        "easy": {
+          "de": "Öffnet das Zahlenschloss! Schaut im Notizbuch nach den Fragmenten A, B, C und D und setzt ihre Zahlen der Reihe nach zusammen."
+        },
+        "medium": {
+          "de": "Öffnet das Zahlenschloss! Setzt die Ziffern der Skizzenbuch-Fragmente A, B, C und D in dieser Reihenfolge zusammen."
+        },
+        "hard": {
+          "de": "Ihr habt vier Ziffern gefunden. In der richtigen Reihenfolge ergeben sie das Jahr, in dem die Mondnacht gemalt wurde. Wie lautet die Kombination?"
+        }
+      },
+      "codeId": "s10-lock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Öffnet das Notizbuch – oben rechts – und sucht die Fragmente."
+          },
+          "hard": {
+            "de": "Die Ziffern sind 1, 9, 0 und 2. Lest noch einmal die Fallakte vom Anfang."
+          }
+        },
+        {
+          "all": {
+            "de": "A = 1 und B = 9."
+          },
+          "hard": {
+            "de": "Die Mondnacht wurde „um 1902“ gemalt."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Kombination beginnt mit 19…"
+          },
+          "hard": {
+            "de": "Die Kombination beginnt mit 19…"
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Kombinationsrätsel aus den Notizbuch-Fragmenten (A=1, B=9, C=0, D=2), kein Ortsbezug."
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Um 1900 lebten und arbeiteten in Worpswede zahlreiche Malerinnen und Maler – angezogen vom Licht über dem Teufelsmoor. Die erste Künstlergruppe um Fritz Mackensen, Otto Modersohn und Hans am Ende zeigte ihre Bilder 1895 im Münchner Glaspalast und machte das Dorf berühmt."
+    },
+    "verified": false,
+    "verifyNote": "Jahr der Glaspalast-Ausstellung (vermutlich 1895) und Namen prüfen."
+  }
+}

@@ -1,3 +1,4 @@
+import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { buildContent } from '../scripts/build-content';
 import type { BuiltTour } from '../src/content/types';
@@ -7,13 +8,14 @@ import { migrateSession, newSession, type GameSession } from '../src/game/sessio
 
 let tour: BuiltTour;
 beforeAll(async () => {
-  const { tours, errors } = await buildContent({ dryRun: true });
+  // Feste Testtour (2 Stationen) – unabhängig vom echten Worpswede-Content
+  const { tours, errors } = await buildContent({ dryRun: true, contentDir: join(__dirname, 'fixtures/content'), codesOverride: {} });
   expect(errors).toEqual([]);
-  tour = tours.find((t) => t.id === 'worpswede')!;
+  tour = tours.find((t) => t.id === 'testtour')!;
 });
 
 const T0 = 1_000_000;
-function play(actions: GameAction[], start = newSession('worpswede', '0.1.0', 'medium', T0)): GameSession {
+function play(actions: GameAction[], start = newSession('testtour', '0.1.0', 'medium', T0)): GameSession {
   return actions.reduce((s, a, i) => reduce(s, tour, a, T0 + (i + 1) * 1000), start);
 }
 
@@ -104,7 +106,7 @@ describe('Spielablauf', () => {
 
 describe('Zeit & Pause', () => {
   it('Pause hält die Uhr an, Weiter startet sie wieder', () => {
-    let s = newSession('worpswede', '0.1.0', 'easy', 0);
+    let s = newSession('testtour', '0.1.0', 'easy', 0);
     s = reduce(s, tour, { type: 'pause' }, 10_000);
     expect(elapsedMs(s, 500_000)).toBe(10_000);
     s = reduce(s, tour, { type: 'resume' }, 500_000);
@@ -112,7 +114,7 @@ describe('Zeit & Pause', () => {
   });
 
   it('eine Spielaktion beendet die Pause automatisch', () => {
-    let s = reduce(newSession('worpswede', '0.1.0', 'easy', 0), tour, { type: 'pause' }, 1000);
+    let s = reduce(newSession('testtour', '0.1.0', 'easy', 0), tour, { type: 'pause' }, 1000);
     s = reduce(s, tour, { type: 'begin' }, 9000);
     expect(isPaused(s)).toBe(false);
   });
@@ -125,7 +127,7 @@ describe('Spielstand speichern & laden', () => {
   });
 
   it('migriert Spielstände aus Meilenstein 1', () => {
-    const old = { schemaVersion: 1, tourId: 'worpswede', tourVersion: '0.1.0', difficulty: 'hard', startedAt: '2026-10-19T10:00:00.000Z' };
+    const old = { schemaVersion: 1, tourId: 'testtour', tourVersion: '0.1.0', difficulty: 'hard', startedAt: '2026-10-19T10:00:00.000Z' };
     const s = migrateSession(old)!;
     expect(s).toMatchObject({ schemaVersion: 2, phase: 'intro', difficulty: 'hard', startedAt: old.startedAt });
   });

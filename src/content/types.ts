@@ -147,6 +147,8 @@ export interface BuiltCode {
 export interface BuiltTour extends Omit<TourSource, 'stations'> {
   stations: StationSource[];
   codes: Record<string, BuiltCode>;
+  /** Woher die Codes beim Build kamen: GitHub-Secret, lokale codes.json oder Platzhalter. */
+  codesSource: 'secret' | 'local' | 'example';
   /** Alle Dateien des Pakets (für den Offline-Download), relativ zu tours/<id>/. */
   files: string[];
   builtAt: string;

@@ -1,0 +1,83 @@
+{
+  "$schema": "../../../../schema/tour.schema.json",
+  "id": "testtour",
+  "version": "0.1.0",
+  "published": false,
+  "town": {
+    "de": "Testdorf"
+  },
+  "title": {
+    "de": "Testfall"
+  },
+  "teaser": {
+    "de": "Ein Gemälde aus der Zeit der Künstlerkolonie ist verschwunden. Folgt den Spuren durch das Künstlerdorf – vom Weyerberg bis ins Moor."
+  },
+  "durationMinutes": [
+    90,
+    120
+  ],
+  "distanceKm": 3.5,
+  "codeSalt": "c664320a26f7c14975e00197",
+  "start": {
+    "name": {
+      "de": "Ortsmitte, vor dem Kaffee Worpswede (Lindenallee)"
+    },
+    "lat": 53.2186,
+    "lng": 8.9291,
+    "verified": false,
+    "note": "Startpunkt und Koordinaten vor Ort prüfen (Parken, Bushaltestelle in der Nähe?)",
+    "description": {
+      "all": {
+        "de": "Trefft euch vor dem Kaffee Worpswede in der Lindenallee – das Haus mit den ungewöhnlichen, runden Formen."
+      }
+    }
+  },
+  "difficulties": {
+    "easy": {
+      "label": {
+        "de": "Leicht"
+      },
+      "description": {
+        "de": "Für Familien mit Grundschulkindern. Kurze Texte, viele Hilfen, kein Gruseln."
+      }
+    },
+    "medium": {
+      "label": {
+        "de": "Mittel"
+      },
+      "description": {
+        "de": "Für alle, die Worpswede entdecken wollen. Knifflig, aber machbar."
+      }
+    },
+    "hard": {
+      "label": {
+        "de": "Schwer"
+      },
+      "description": {
+        "de": "Für Rätselprofis. Weniger Hilfen, mehr Kombinieren."
+      }
+    }
+  },
+  "story": {
+    "intro": {
+      "all": {
+        "de": "Worpswede, heute Nacht: Aus der Privatsammlung Haus Lindenhof ist das Gemälde „Mondnacht am Weyerberg“ verschwunden – gemalt um 1902 von Johanna Behrens, einer Freundin Paula Modersohn-Beckers. Morgen sollte die Ausstellung eröffnen. Zurück blieben ein leerer Rahmen und eine Skizzenbuchseite mit rätselhaften Zeichen. Vier Personen hatten Zugang. Ihr übernehmt die Ermittlungen."
+      },
+      "easy": {
+        "de": "Oh nein! Aus dem Haus Lindenhof ist ein wertvolles Bild verschwunden: die „Mondnacht am Weyerberg“ der Malerin Johanna Behrens. Morgen soll es in einer Ausstellung hängen. Im leeren Rahmen steckt ein Zettel mit geheimen Zeichen. Wer hat das Bild versteckt – und warum? Ihr seid die Detektive!"
+      }
+    },
+    "outro": {
+      "all": {
+        "de": "[Auflösung folgt in Meilenstein 5]"
+      }
+    }
+  },
+  "stations": [
+    "01-kaffee-worpswede",
+    "02-grosse-kunstschau"
+  ],
+  "access": {
+    "requireUnlockCode": false
+  }
+}

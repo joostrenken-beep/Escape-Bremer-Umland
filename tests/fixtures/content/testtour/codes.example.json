@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../../schema/codes.schema.json",
+  "codes": {
+    "s01-unlock": {
+      "answers": ["0000"],
+      "reveal": { "de": "[PLATZHALTER] Die richtige Antwort lautet 0000." }
+    },
+    "s01-fallback": {
+      "answers": ["test"],
+      "reveal": { "de": "[PLATZHALTER] Die richtige Antwort lautet „test“." }
+    },
+    "s02-unlock": {
+      "answers": ["0000"],
+      "reveal": { "de": "[PLATZHALTER] Die richtige Antwort lautet 0000." }
+    }
+  }
+}

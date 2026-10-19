@@ -1,23 +1,29 @@
 {
   "$schema": "../../../schema/station.schema.json",
   "id": "02-grosse-kunstschau",
-  "title": { "de": "Große Kunstschau" },
+  "title": {
+    "de": "Große Kunstschau"
+  },
   "location": {
-    "name": { "de": "Große Kunstschau, Lindenallee" },
-    "lat": 53.2188,
-    "lng": 8.9296,
+    "name": {
+      "de": "Große Kunstschau, Lindenallee 5"
+    },
+    "lat": 53.2206,
+    "lng": 8.9317,
     "verified": false,
-    "note": "Koordinaten aus Karte geschätzt"
+    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
   },
   "directions": {
-    "all": { "de": "[PLATZHALTER] Geht wenige Schritte die Lindenallee entlang zum Museumsbau mit dem markanten Dach." }
+    "all": {
+      "de": "[PLATZHALTER] Geht nur wenige Schritte die Lindenallee entlang zum Museumsbau gleich nebenan."
+    }
   },
   "story": {
     "all": {
-      "de": "Der Kunsthändler Konrad Albers wurde gestern hier gesehen, wie er lange ein Bild betrachtete – und telefonierte. „Ein Sammler zahlt jeden Preis“, soll er gesagt haben. Hat er schon einen Käufer für die Mondnacht?"
+      "de": "Der Kunsthändler Konrad Albers wurde gestern hier gesehen. Er stand lange vor einem Bild von Paula Modersohn-Becker und telefonierte leise: „Der Sammler zahlt jeden Preis. Morgen früh ist die Ware unterwegs.“ Welche Ware meint er?"
     },
     "easy": {
-      "de": "Hier war gestern Herr Albers. Er kauft und verkauft Bilder. Er hat gesagt: „Ich hätte die Mondnacht so gern!“ Hat er etwas mit dem verschwundenen Bild zu tun?"
+      "de": "Hier war gestern Herr Albers. Er kauft und verkauft Bilder. Er hat gesagt: „Die Mondnacht hätte ich zu gern!“ Hat er etwas mit dem verschwundenen Bild zu tun?"
     }
   },
   "steps": [
@@ -25,34 +31,64 @@
       "type": "code",
       "id": "unlock",
       "prompt": {
-        "all": { "de": "[PLATZHALTER] Welche Jahreszahl findet ihr am Gebäude?" }
+        "all": {
+          "de": "[PLATZHALTER] Welche Jahreszahl findet ihr außen am Gebäude?"
+        }
       },
       "codeId": "s02-unlock",
       "input": "number",
       "hints": [
-        { "all": { "de": "Schaut euch den Eingangsbereich genau an." } },
-        { "all": { "de": "Die Zahl beginnt mit 19." } },
-        { "all": { "de": "Das Gebäude wurde in den 1920er-Jahren gebaut." } }
+        {
+          "all": {
+            "de": "Schaut euch den Eingangsbereich genau an."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Zahl beginnt mit 19."
+          }
+        },
+        {
+          "all": {
+            "de": "Das Haus wurde in den 1920er-Jahren gebaut."
+          }
+        }
       ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Wie viele Stufen führen zum Eingang?"
+          }
+        },
+        "codeId": "s02-fallback",
+        "input": "text"
+      },
       "verified": false,
-      "verifyNote": "Gibt es eine sichtbare Jahreszahl/Inschrift außen am Gebäude?"
+      "verifyNote": "Gibt es eine Jahreszahl/Inschrift außen am Gebäude? Sonst andere sichtbare Angabe wählen."
     }
   ],
   "notebook": [
     {
       "id": "suspect-albers",
       "kind": "suspect",
-      "title": { "de": "Konrad Albers, Kunsthändler" },
+      "title": {
+        "de": "Konrad Albers, Kunsthändler"
+      },
       "text": {
-        "all": { "de": "Wollte die „Mondnacht“ unbedingt kaufen. Telefonierte gestern mit einem unbekannten Sammler." }
+        "all": {
+          "de": "Wollte die „Mondnacht“ unbedingt kaufen – die Sammlerin lehnte ab. Telefonierte gestern mit einem unbekannten Sammler: „Morgen früh ist die Ware unterwegs.“"
+        },
+        "easy": {
+          "de": "Er kauft und verkauft Bilder und hätte die Mondnacht so gern gehabt."
+        }
       }
     }
   ],
   "didYouKnow": {
     "text": {
-      "de": "Auch die Große Kunstschau geht auf Bernhard Hoetger zurück. Sie wurde in den 1920er-Jahren als Ausstellungshaus für die Kunst der Worpsweder Maler gebaut."
+      "de": "Auch die Große Kunstschau geht auf Bernhard Hoetger zurück. Sie wurde in den 1920er-Jahren als Ausstellungshaus gebaut und zeigt Werke der Worpsweder Künstlerinnen und Künstler – darunter Paula Modersohn-Becker."
     },
     "verified": false,
-    "verifyNote": "Baujahr (vermutlich 1927) und Architekt prüfen."
+    "verifyNote": "Baujahr (vermutlich 1927), Architekt und heutige Sammlung prüfen."
   }
 }

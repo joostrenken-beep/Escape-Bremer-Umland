@@ -2,16 +2,186 @@
   "$schema": "../../schema/codes.schema.json",
   "codes": {
     "s01-unlock": {
-      "answers": ["0000"],
-      "reveal": { "de": "[PLATZHALTER] Die richtige Antwort lautet 0000." }
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
     },
     "s01-fallback": {
-      "answers": ["test"],
-      "reveal": { "de": "[PLATZHALTER] Die richtige Antwort lautet „test“." }
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
     },
     "s02-unlock": {
-      "answers": ["0000"],
-      "reveal": { "de": "[PLATZHALTER] Die richtige Antwort lautet 0000." }
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s02-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s03-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s03-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s04-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s04-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s05-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s05-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s06-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s06-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s07-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s07-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s08-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s08-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s09-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s09-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s03-alibi": {
+      "answers": {
+        "medium": [
+          "Albers",
+          "Konrad Albers",
+          "Konrad"
+        ],
+        "hard": [
+          "Albers",
+          "Konrad Albers",
+          "Konrad"
+        ],
+        "easy": [
+          "Lotte",
+          "Lotte Mewes"
+        ]
+      },
+      "reveal": {
+        "de": "Albers und Lotte widersprechen sich – einer lügt. Also sagen Ben und Greta die Wahrheit: Ben war nicht im Haus, Greta schon, Lotte nicht. Die zweite Person im Haus war Konrad Albers – und er hat gelogen. (Leicht: Lotte hatte die blaue Farbe an den Händen.)"
+      }
+    },
+    "s04-cipher": {
+      "answers": [
+        "9",
+        "neun"
+      ],
+      "reveal": {
+        "de": "Die Antwort ist 9 (neun). Mittel und Schwer: Die entschlüsselte Zeile lautet ZIFFER ZWEI IST NEUN. Leicht: NUEN rückwärts gelesen ergibt NEUN."
+      }
+    },
+    "s10-lock": {
+      "answers": [
+        "1902"
+      ],
+      "reveal": {
+        "de": "Die Fragmente lauten A = 1, B = 9, C = 0, D = 2 – die Kombination ist 1902, das Jahr, in dem die Mondnacht gemalt wurde."
+      }
     }
   }
 }

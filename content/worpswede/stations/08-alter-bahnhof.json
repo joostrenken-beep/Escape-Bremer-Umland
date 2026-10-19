@@ -1,0 +1,109 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "08-alter-bahnhof",
+  "title": {
+    "de": "Alter Bahnhof"
+  },
+  "location": {
+    "name": {
+      "de": "Alter Bahnhof Worpswede, Bahnhofstraße"
+    },
+    "lat": 53.213,
+    "lng": 8.9283,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Geht Richtung Süden zur Bahnhofstraße. Das Bahnhofsgebäude erkennt ihr an seinen geschwungenen Formen."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Am Bahnhof hängt ein Frachtzettel, morgen 6:15 Uhr, Spedition nach Hamburg: „Absender K. Albers. Inhalt: 1 Gemälde, Mondnacht, ORIGINAL.“ Auf der Rückseite hat jemand mit Bleistift ein Fragment notiert. Albers wollte das echte Bild also heimlich wegschaffen!"
+    },
+    "easy": {
+      "de": "Am alten Bahnhof wartet eine Überraschung: An der Tür klebt ein Zettel mit Luftballons. Darauf steht: „Für Oma Lindenhof“ und eine Zahl. Sammelt sie für euer Notizbuch – ihr braucht sie am Ende!"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Wie viele Fenster hat das Bahnhofsgebäude auf der Seite zu den Gleisen?"
+        }
+      },
+      "codeId": "s08-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Stellt euch so hin, dass ihr die ganze Seite seht."
+          }
+        },
+        {
+          "all": {
+            "de": "Zählt auch kleine Fenster mit."
+          }
+        },
+        {
+          "all": {
+            "de": "Zählt in Ruhe von links nach rechts."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welche Farbe hat das Dach?"
+          }
+        },
+        "codeId": "s08-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Seite zu den Gleisen öffentlich zugänglich? Zählbare Eigenschaft wählen. (In M4 kommt hier zusätzlich ein Morse-Rätsel dazu.)"
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-freight",
+      "kind": "clue",
+      "title": {
+        "de": "Frachtzettel"
+      },
+      "text": {
+        "all": {
+          "de": "Albers wollte morgen 6:15 Uhr ein „Original“ nach Hamburg schicken. Er wollte das echte Bild gegen die Fälschung tauschen!"
+        },
+        "easy": {
+          "de": "Lotte hat am Bahnhof Luftballons für die Geburtstagsfeier abgeholt."
+        }
+      }
+    },
+    {
+      "id": "fragment-c",
+      "kind": "clue",
+      "title": {
+        "de": "Skizzenbuch-Fragment C"
+      },
+      "text": {
+        "all": {
+          "de": "Bleistiftnotiz auf dem Frachtzettel: „C = 0“"
+        },
+        "hard": {
+          "de": "Bleistiftnotiz auf dem Frachtzettel: eine 0."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Den Bahnhof von Worpswede hat Heinrich Vogeler entworfen – mit vielen Jugendstil-Details. Er wurde um 1910 an der Strecke zwischen Bremen und Stade eröffnet. Heute fährt hier in der Saison der „Moorexpress“."
+    },
+    "verified": false,
+    "verifyNote": "Eröffnungsjahr (vermutlich 1910), Entwurf Vogeler, Moorexpress-Angaben und heutige Nutzung prüfen."
+  }
+}

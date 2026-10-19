@@ -1,0 +1,169 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "03-kaeseglocke",
+  "title": {
+    "de": "Käseglocke"
+  },
+  "location": {
+    "name": {
+      "de": "Käseglocke"
+    },
+    "lat": 53.2209,
+    "lng": 8.9324,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Folgt der Lindenallee ein Stück weiter. Haltet Ausschau nach einem Haus, das aussieht wie eine umgedrehte Schüssel."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Ben Harms, der Enkel der Sammlerin Hedwig Lindenhof, wohnt gleich um die Ecke. Er erbt einmal die ganze Sammlung. Die Nachbarin hat notiert, wer in der Nacht ins Haus Lindenhof ging – aber die Aussagen der Verdächtigen widersprechen sich."
+    },
+    "easy": {
+      "de": "Was für ein rundes Haus! Hier wohnt Ben in der Nähe, der Enkel von Oma Lindenhof. Ben hat im Haus Lindenhof Farbkleckse gefunden – kleine blaue Punkte auf dem Boden. Wer hatte gestern blaue Farbe an den Händen?"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Wie viele Fenster hat die Käseglocke auf der Seite, die zur Straße zeigt?"
+        }
+      },
+      "codeId": "s03-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Bleibt auf dem Gehweg – das Grundstück ist privat."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Fenster sitzen im runden Dach."
+          }
+        },
+        {
+          "all": {
+            "de": "Zählt langsam von links nach rechts."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Aus welchem Material ist das Dach?"
+          }
+        },
+        "codeId": "s03-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Ist die Käseglocke von der Straße gut zu sehen? Zählbare Eigenschaft ohne Betreten des Grundstücks finden."
+    },
+    {
+      "type": "code",
+      "id": "alibi",
+      "prompt": {
+        "easy": {
+          "de": "Ben verrät euch: Greta malt nur mit Rot. Herr Albers malt gar nicht. Ben selbst hat gestern mit Grün gemalt. Wer bleibt übrig und hatte blaue Farbe an den Händen?"
+        },
+        "medium": {
+          "de": "Die Nachbarin weiß: Zwischen 23 und 1 Uhr waren genau zwei der vier Verdächtigen im Haus. Genau eine Person lügt.\n• Albers: „Ben war im Haus.“\n• Ben: „Ich war nicht im Haus, aber Greta.“\n• Greta: „Lotte war nicht im Haus.“\n• Lotte: „Albers lügt.“\nWer war außer Greta noch im Haus?"
+        },
+        "hard": {
+          "de": "Genau zwei der vier Verdächtigen waren nachts im Haus, genau eine Person lügt.\n• Albers: „Ben war im Haus.“\n• Ben: „Ich war nicht im Haus, aber Greta.“\n• Greta: „Lotte war nicht im Haus.“\n• Lotte: „Albers lügt.“\nWer lügt?"
+        }
+      },
+      "codeId": "s03-alibi",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Albers und Lotte können nicht beide die Wahrheit sagen – also lügt einer von beiden."
+          },
+          "easy": {
+            "de": "Es gibt vier Verdächtige: Greta, Albers, Ben und Lotte."
+          }
+        },
+        {
+          "all": {
+            "de": "Dann sagen Ben und Greta die Wahrheit. Was folgt aus Bens Aussage?"
+          },
+          "easy": {
+            "de": "Streicht Greta, Albers und Ben durch."
+          }
+        },
+        {
+          "all": {
+            "de": "Ben war nicht im Haus, Greta schon. Lotte laut Greta auch nicht. Wer bleibt?"
+          },
+          "easy": {
+            "de": "Es ist die Doktorandin, die alles über die Malerin Johanna Behrens weiß."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Logikrätsel ohne Ortsbezug (Lösung per Programm geprüft: Albers + Greta im Haus, Albers lügt)."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "suspect-ben",
+      "kind": "suspect",
+      "title": {
+        "de": "Ben Harms, Enkel der Sammlerin"
+      },
+      "text": {
+        "all": {
+          "de": "Erbt einmal die Sammlung. War laut Nachbarin in der Nacht NICHT im Haus."
+        },
+        "easy": {
+          "de": "Der Enkel von Oma Lindenhof. Er hat die blauen Farbkleckse gefunden."
+        }
+      }
+    },
+    {
+      "id": "clue-alibi",
+      "kind": "clue",
+      "title": {
+        "de": "Wer war nachts im Haus?"
+      },
+      "text": {
+        "all": {
+          "de": "Greta Vogt und Konrad Albers waren zwischen 23 und 1 Uhr im Haus Lindenhof. Albers hat gelogen."
+        },
+        "easy": {
+          "de": "Lotte hatte gestern blaue Farbe an den Händen. Malt sie heimlich etwas?"
+        }
+      }
+    },
+    {
+      "id": "fragment-a",
+      "kind": "clue",
+      "title": {
+        "de": "Skizzenbuch-Fragment A"
+      },
+      "text": {
+        "all": {
+          "de": "Auf der Rückseite der Skizzenbuchseite steht klein: „A = 1“."
+        },
+        "hard": {
+          "de": "Auf der Rückseite der Skizzenbuchseite steht klein die Ziffer 1."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Die „Käseglocke“ verdankt ihren Spitznamen der runden Kuppelform. Das Holzhaus entstand in den 1920er-Jahren nach einer Idee des Architekten Bruno Taut – ein Experiment für billiges, schnelles Bauen."
+    },
+    "verified": false,
+    "verifyNote": "Baujahr, Bauherr (vermutlich Edwin Koenemann, 1926) und Bezug zu Bruno Taut prüfen; heutige Nutzung?"
+  }
+}

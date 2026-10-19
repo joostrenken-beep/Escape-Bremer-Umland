@@ -7,6 +7,7 @@ import type { GameSession } from '../../game/session';
 import { formatDuration } from '../../game/useGame';
 import { leveled, localize } from '../../i18n/text';
 import { getLang, ui } from '../../i18n/ui';
+import { Navigator } from '../../components/Navigator';
 import { ReadAloud } from '../../components/ReadAloud';
 import { useSettings } from '../../settings';
 import { StepShell } from './StepShell';
@@ -58,6 +59,11 @@ export function TravelView({ tour, session, dispatch }: PhaseProps) {
         <p class="small">📍 {localize(station.location.name, lang)}</p>
         <p class="lead">{leveled(station.directions, session.difficulty, lang)}</p>
       </section>
+      <Navigator
+        target={station.location}
+        targetLabel={localize(station.title, lang)}
+        from={session.stationIndex > 0 ? tour.stations[session.stationIndex - 1].location : tour.start}
+      />
       {settings.testMode && (
         <label class="card test-jump">
           <span>{ui('testJump')}</span>

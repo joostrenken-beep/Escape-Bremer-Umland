@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "05-zionskirche",
+  "title": {
+    "de": "Zionskirche"
+  },
+  "location": {
+    "name": {
+      "de": "Zionskirche am Weyerberg"
+    },
+    "lat": 53.2218,
+    "lng": 8.9269,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Folgt der Bergstraße bergauf, bis ihr die Kirche am Hang des Weyerbergs seht."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Frau Gerdes führt hier jeden Abend ihren Hund aus. Gestern gegen halb eins sah sie eine Gestalt mit einem großen, flachen Paket – eingewickelt in braunes Packpapier. „Die Person ging eilig Richtung Gipfel“, sagt sie. „Und sie hatte einen Schlüsselbund in der Hand.“"
+    },
+    "easy": {
+      "de": "Frau Gerdes geht hier abends mit ihrem Dackel spazieren. Gestern sah sie eine junge Frau mit einem großen, flachen Paket. „Sie hat ein Geburtstagslied gesummt“, erzählt Frau Gerdes. „Und sie lief Richtung Berg.“"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Welche Jahreszahl entdeckt ihr außen an der Kirche?"
+        }
+      },
+      "codeId": "s05-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Schaut euch den Turm und das Hauptportal an."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Kirche ist deutlich älter als die Künstlerkolonie."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Zahl beginnt mit 17."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Wie viele Zifferblätter hat die Turmuhr, die ihr von hier seht?"
+          }
+        },
+        "codeId": "s05-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Jahreszahl außen an Kirche/Turm vorhanden? Bitte nur Angaben an der Kirche selbst, nicht auf dem Friedhof (keine Spielaktion an Gräbern)."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-witness",
+      "kind": "clue",
+      "title": {
+        "de": "Zeugin Frau Gerdes"
+      },
+      "text": {
+        "all": {
+          "de": "Gegen 0:30 Uhr: Person mit großem, flachem Paket in Packpapier, Schlüsselbund in der Hand, eilig Richtung Weyerberg-Gipfel."
+        },
+        "easy": {
+          "de": "Eine junge Frau mit einem flachen Paket hat ein Geburtstagslied gesummt und lief zum Berg."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Die Zionskirche wurde im 18. Jahrhundert gebaut. Auf dem Friedhof daneben liegen viele Worpsweder Künstlerinnen und Künstler begraben – auch Paula Modersohn-Becker, deren Grabmal Bernhard Hoetger gestaltete. Bitte verhaltet euch auf dem Friedhof leise und respektvoll."
+    },
+    "verified": false,
+    "verifyNote": "Bauzeit der Kirche (vermutlich 1757–1759) und Grabmal von Hoetger prüfen."
+  }
+}

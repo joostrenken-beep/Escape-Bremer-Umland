@@ -10,7 +10,7 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
 |---|---|
 | 1 Grundgerüst (Setup, PWA/Offline, Schema, Stadt- & Stufenwahl) | ✅ fertig |
 | 2 Spielkern (Stationen, Codes, Hinweise, Notizbuch, Speichern, Punkte/Zeit, Testmodus) | ✅ fertig |
-| 3 Worpswede-Content v1 + Entwickler-Ansicht | offen |
+| 3 Worpswede-Content v1 + Entwickler-Ansicht + Navigation | ✅ fertig |
 | 4 Digitale Rätsel (Mini-Games, Audio, Kamera, AR) | offen |
 | 5 Finale, Urkunde, Design, Gerätetests | offen |
 | 6 Backend-Vorbereitung, Freischaltmodul, Anleitung neue Stadt | offen |
@@ -22,16 +22,24 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
   (Modersohn-Becker, Vogeler, Modersohn, Mackensen, Hoetger) nur als Hintergrund, nie Täter. Echte Einrichtungen nie negativ.
   Auflösung (mittel/schwer): Greta hat das Bild versteckt, um es vor Albers' Fälschungstausch zu schützen.
   Leicht: kein Verbrechen – Lotte hat es für eine Geburtstagsüberraschung ausgeliehen.
-- **Route (Entwurf, vor Ort prüfen):** Kaffee Worpswede → Große Kunstschau → Käseglocke → Kunsthalle → Zionskirche
-  (Friedhof nur „Wusstest du?“, keine Spielaktion an Gräbern) → Weyerberg/Niedersachsenstein → Barkenhoff →
-  Alter Bahnhof → Haus im Schluh → Finale Ortsmitte. Alle Rätsel **draußen, ohne Eintritt** lösbar.
+- **Route (Entwurf, vor Ort prüfen):** 1 Kaffee Worpswede → 2 Große Kunstschau → 3 Käseglocke → 4 Kunsthalle →
+  5 Zionskirche (Friedhof nur „Wusstest du?“, keine Spielaktion an Gräbern) → 6 Niedersachsenstein → 7 Haus im Schluh →
+  8 Alter Bahnhof → 9 Barkenhoff → 10 Finale Ortsmitte. (Schluh/Bahnhof/Barkenhoff ggü. erstem Entwurf umsortiert,
+  damit ein Rundweg entsteht – Koordinaten sind GESCHÄTZT, Netz-Zugriff auf OSM/Wikipedia war in der Cloud gesperrt.)
+  Alle Rätsel **draußen, ohne Eintritt**, keine privaten Grundstücke betreten.
+- **Rätsel-Kette Worpswede:** Station 3 Logikrätsel (Albers + Greta im Haus, Albers lügt), Station 4 Caesar (mittel +3,
+  schwer +5 „Paula“, leicht rückwärts) → „neun“. Notizbuch-Fragmente A=1 (St. 3), B=9 (St. 4), C=0 (St. 8), D=2 (St. 9)
+  → Finale-Zahlenschloss **1902** (= Entstehungsjahr der Mondnacht; schwer: Reihenfolge aus Fallakte ableiten).
+  Geplante digitale Rätsel (M4): St. 2 Bildausschnitt, St. 5 Zeugenaussage (Audio), St. 6 Kompass/AR,
+  St. 7 Schiebepuzzle, St. 8 Morse, St. 9 Foto-Vergleich alt/neu.
 - **Punkte:** Punktekonto – Start mit 100/Station (volles Konto), Hilfen ziehen sofort ab (Nutzerwunsch, damit man
   in Runde 1 nicht mit Punkten „bezahlt“, die man noch nicht hat); Hinweise −10/−20/−30; Auflösung −60; Überspringen −50; „Hier stimmt etwas nicht“ +
   Ersatzfrage gelöst = 0 Abzug; Finale-Bonus. Zeit wird nur angezeigt, kein Abzug.
 - **Karte:** Online Leaflet/OSM. **Keine Offline-Karte** (Nutzerwunsch). Offline: Wegbeschreibung + GPS-Pfeil.
 - **Audio:** vorerst Sprachausgabe des Geräts (speechSynthesis); Morse/Töne per WebAudio. Echte Aufnahmen später.
 - **Bilder:** gemeinfreie Werke/Fotos (Wikimedia Commons), Lizenz je Bild prüfen und vermerken.
-- **Repo ist öffentlich** → Klartext-Codes NIE committen (siehe unten).
+- **Repo ist öffentlich** → Klartext der ORTS-Codes NIE committen. Lösungen der reinen Denk-Rätsel (Logik, Chiffre,
+  Zahlenschloss) stehen in codes.example.json – sie folgen ohnehin aus dem Rätseltext; ausgeliefert werden nur Hashes.
 - **Hosting:** GitHub Pages via Actions (`.github/workflows/deploy.yml`), URL
   `https://joostrenken-beep.github.io/Escape-Bremer-Umland/`. Push auf `main` = Deploy.
 
@@ -55,6 +63,9 @@ src/
   game/session.ts           Spielstand (schemaVersion 2, migrateSession für alte Stände) + Speichern
   game/engine.ts            REINE Spiellogik: reduce(session, tour, action, now) → neue session (gut testbar)
   game/scoring.ts           Punkteregeln · game/useGame.ts: Engine + Speichern + Uhr für die UI
+  geo/geo.ts, geo/sensors.ts Entfernung/Richtung (getestet) · GPS/Kompass-Hooks (nur aktiv nach Tipp)
+  components/Navigator.tsx  Richtungspfeil + Entfernung (offline) + Online-Karte (components/RouteMap.tsx, Leaflet lazy)
+  screens/DevView.tsx       #/dev/<tour>: Prüfliste (verified:false + [PLATZHALTER]), Codes-Quelle, Route, Mein Standort
   game/knowledge.ts         „Wusstest du?“-Archiv je Tour (bleibt nach Spielende)
   puzzles/registry.tsx      type → Rätsel-Komponente; puzzles/CodePuzzle.tsx
   screens/play/StepShell    gemeinsamer Rahmen je Rätsel: Hinweise, Auflösung, „Hier stimmt etwas nicht“, Testmodus
@@ -63,7 +74,7 @@ src/
   i18n/ui.ts                UI-Texte (de; en ergänzbar), i18n/text.ts: localize()/leveled()
   router.ts                 Hash-Router (#/, #/tour/<id>, #/play, #/notebook[/<id>], #/settings)
   screens/, components/     Preact-Komponenten
-tests/                      Vitest (Codes, Content-Validierung, Storage, Engine/Punkte/Spielstand)
+tests/                      Vitest; tests/fixtures/content/testtour = feste 2-Stationen-Tour für Engine-Tests
 ```
 
 ### Wichtige Konzepte
@@ -84,6 +95,8 @@ tests/                      Vitest (Codes, Content-Validierung, Storage, Engine/
 - **Zeit:** `timer.elapsedMs` + `runningSince` (null = Pause). Jede Spielaktion beendet eine Pause; nach Ende steht die Uhr.
 - **Notizbuch** speichert nur Verweise (stationId/entryId) + gelöste Codes, Texte kommen aus der Tour.
 - **Testmodus** (⚙️ Einstellungen): unveröffentlichte Touren, „Test: Schritt lösen“, Sprung zu Station; setzt `usedTestMode`.
+  Im Testmodus erscheint in den Einstellungen der Link zur Entwickler-Ansicht (#/dev).
+- **BuiltTour.codesSource** = secret | local | example → Entwickler-Ansicht warnt bei Platzhalter-Codes.
 - Ersatzfrage (fallback) hat keine eigenen Hinweise – nur Auflösung.
 
 ## Konventionen

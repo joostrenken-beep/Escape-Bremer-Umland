@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "07-haus-im-schluh",
+  "title": {
+    "de": "Haus im Schluh"
+  },
+  "location": {
+    "name": {
+      "de": "Haus im Schluh"
+    },
+    "lat": 53.216,
+    "lng": 8.9215,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Steigt auf der anderen Seite vom Weyerberg hinab und folgt den Schildern zum Haus im Schluh."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Im Garten findet ihr eine Seite aus Gretas Restaurierungsprotokoll – offenbar verloren. Notiert ist: „Probe aus der Kiste von K. A.: Titanweiß! Das gab es um 1902 noch gar nicht. Das ist eine KOPIE. Er will tauschen!“"
+    },
+    "easy": {
+      "de": "Hier wurde früher gewebt – mit bunten Fäden! Am Gartenzaun hängt ein Zettel von Lotte: „Einladung zum 90. Geburtstag von Oma Lindenhof – morgen um 15 Uhr! Pssst, Überraschung!“"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Wie heißt die Straße, an der das Haus im Schluh liegt?"
+        }
+      },
+      "codeId": "s07-unlock",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Schaut auf ein Straßenschild in der Nähe."
+          }
+        },
+        {
+          "all": {
+            "de": "Der Name hat nur zwei Wörter."
+          }
+        },
+        {
+          "all": {
+            "de": "Der Straßenname klingt fast wie der Name des Hauses."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welche Farbe haben die Fensterrahmen?"
+          }
+        },
+        "codeId": "s07-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Straßenname (vermutlich „Im Schluh“) und Ersatzfrage vor Ort prüfen."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-protocol",
+      "kind": "clue",
+      "title": {
+        "de": "Gretas Restaurierungsprotokoll"
+      },
+      "text": {
+        "all": {
+          "de": "In Albers' Kiste: ein Bild mit Titanweiß – das gab es um 1902 noch nicht. Also eine Fälschung! Greta notierte: „Er will tauschen!“"
+        },
+        "easy": {
+          "de": "Einladung: Oma Lindenhof wird morgen 90 Jahre alt – Lotte plant eine Überraschung!"
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Das Haus im Schluh war einst ein altes Bauernhaus aus dem Moor. Martha Vogeler, die Frau von Heinrich Vogeler, baute es ab 1920 zu ihrem Zuhause mit Webstuben aus. Bis heute kann man hier Möbel, Bilder und Webarbeiten aus der Zeit der Künstlerkolonie sehen."
+    },
+    "verified": false,
+    "verifyNote": "Jahreszahl 1920 und Geschichte (Umsetzung eines Bauernhauses?) prüfen."
+  }
+}

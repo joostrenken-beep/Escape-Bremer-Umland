@@ -18,15 +18,15 @@ describe('Content im Repo', () => {
       codesOverride: {
         worpswede: {
           codes: Object.fromEntries(
-            ['s01-unlock', 's01-fallback', 's02-unlock'].map((id) => [
+            Object.keys((await buildContent({ dryRun: true })).tours.find((t) => t.id === 'worpswede')!.codes).map((id) => [
               id,
-              { answers: ['GEHEIMWORT'], reveal: { de: 'GEHEIMWORT' } },
+              { answers: ['QXZ4711GEHEIM'], reveal: { de: 'QXZ4711GEHEIM' } },
             ]),
           ),
         },
       },
     });
-    expect(JSON.stringify(tours)).not.toMatch(/geheimwort/i);
+    expect(JSON.stringify(tours)).not.toMatch(/qxz4711geheim/i);
   });
 });
 
@@ -71,5 +71,12 @@ describe('collectUnverified', () => {
     const items = collectUnverified({ a: { verified: true }, b: [{ verified: false, verifyNote: 'prüfen' }] });
     expect(items).toHaveLength(1);
     expect(items[0]).toMatchObject({ path: 'b[0]', note: 'prüfen' });
+  });
+});
+
+describe('collectPlaceholders', () => {
+  it('findet [PLATZHALTER]-Texte samt Pfad', async () => {
+    const { collectPlaceholders } = await import('../src/content/verification');
+    expect(collectPlaceholders({ a: [{ de: '[PLATZHALTER] Weg' }, { de: 'fertig' }] })).toEqual([{ path: 'a[0].de', text: '[PLATZHALTER] Weg' }]);
   });
 });

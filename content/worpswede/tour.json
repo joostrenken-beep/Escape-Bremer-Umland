@@ -1,53 +1,97 @@
 {
   "$schema": "../../schema/tour.schema.json",
   "id": "worpswede",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "published": true,
-  "town": { "de": "Worpswede" },
-  "title": { "de": "Die Mondnacht vom Weyerberg" },
+  "town": {
+    "de": "Worpswede"
+  },
+  "title": {
+    "de": "Die Mondnacht vom Weyerberg"
+  },
   "teaser": {
     "de": "Ein Gemälde aus der Zeit der Künstlerkolonie ist verschwunden. Folgt den Spuren durch das Künstlerdorf – vom Weyerberg bis ins Moor."
   },
-  "durationMinutes": [90, 120],
+  "durationMinutes": [
+    90,
+    120
+  ],
   "distanceKm": 3.5,
   "codeSalt": "c664320a26f7c14975e00197",
   "start": {
-    "name": { "de": "Ortsmitte, vor dem Kaffee Worpswede (Lindenallee)" },
-    "lat": 53.2186,
-    "lng": 8.9291,
+    "name": {
+      "de": "Ortsmitte, vor dem Kaffee Worpswede (Lindenallee)"
+    },
+    "lat": 53.2203,
+    "lng": 8.9311,
     "verified": false,
-    "note": "Startpunkt und Koordinaten vor Ort prüfen (Parken, Bushaltestelle in der Nähe?)",
+    "note": "Startpunkt und Koordinaten vor Ort prüfen (Parken, Bushaltestelle in der Nähe?). Gesamtstrecke (ca. 3,5 km) beim Ablaufen messen.",
     "description": {
-      "all": { "de": "Trefft euch vor dem Kaffee Worpswede in der Lindenallee – das Haus mit den ungewöhnlichen, runden Formen." }
+      "all": {
+        "de": "Trefft euch vor dem Kaffee Worpswede in der Lindenallee – das Haus mit den ungewöhnlichen, runden Formen."
+      }
     }
   },
   "difficulties": {
     "easy": {
-      "label": { "de": "Leicht" },
-      "description": { "de": "Für Familien mit Grundschulkindern. Kurze Texte, viele Hilfen, kein Gruseln." }
+      "label": {
+        "de": "Leicht"
+      },
+      "description": {
+        "de": "Für Familien mit Grundschulkindern. Kurze Texte, viele Hilfen, kein Gruseln."
+      }
     },
     "medium": {
-      "label": { "de": "Mittel" },
-      "description": { "de": "Für alle, die Worpswede entdecken wollen. Knifflig, aber machbar." }
+      "label": {
+        "de": "Mittel"
+      },
+      "description": {
+        "de": "Für alle, die Worpswede entdecken wollen. Knifflig, aber machbar."
+      }
     },
     "hard": {
-      "label": { "de": "Schwer" },
-      "description": { "de": "Für Rätselprofis. Weniger Hilfen, mehr Kombinieren." }
+      "label": {
+        "de": "Schwer"
+      },
+      "description": {
+        "de": "Für Rätselprofis. Weniger Hilfen, mehr Kombinieren."
+      }
     }
   },
   "story": {
     "intro": {
-      "all": {
-        "de": "Worpswede, heute Nacht: Aus der Privatsammlung Haus Lindenhof ist das Gemälde „Mondnacht am Weyerberg“ verschwunden – gemalt um 1902 von Johanna Behrens, einer Freundin Paula Modersohn-Beckers. Morgen sollte die Ausstellung eröffnen. Zurück blieben ein leerer Rahmen und eine Skizzenbuchseite mit rätselhaften Zeichen. Vier Personen hatten Zugang. Ihr übernehmt die Ermittlungen."
+      "medium": {
+        "de": "Worpswede, heute Morgen: Aus der Privatsammlung Haus Lindenhof ist das Gemälde „Mondnacht am Weyerberg“ verschwunden – gemalt um 1902 von Johanna Behrens, einer Freundin Paula Modersohn-Beckers. Morgen soll die Ausstellung eröffnen. Zurück blieben ein leerer Rahmen und eine Skizzenbuchseite voller Zeichen. Vier Personen hatten Zugang. Ihr übernehmt die Ermittlungen."
+      },
+      "hard": {
+        "de": "Worpswede, heute Morgen: Die „Mondnacht am Weyerberg“ ist fort – Johanna Behrens malte sie um 1902, kurz bevor sie mit Paula Modersohn-Becker nach Paris reiste. Die Sammlerin Hedwig Lindenhof ist außer sich. Vier Verdächtige, ein leerer Rahmen, eine Skizzenbuchseite. Merkt euch jedes Detail – auch dieses."
       },
       "easy": {
-        "de": "Oh nein! Aus dem Haus Lindenhof ist ein wertvolles Bild verschwunden: die „Mondnacht am Weyerberg“ der Malerin Johanna Behrens. Morgen soll es in einer Ausstellung hängen. Im leeren Rahmen steckt ein Zettel mit geheimen Zeichen. Wer hat das Bild versteckt – und warum? Ihr seid die Detektive!"
+        "de": "Oh nein! Aus dem Haus Lindenhof ist ein wertvolles Bild verschwunden: die „Mondnacht am Weyerberg“ der Malerin Johanna Behrens. Morgen soll es in einer Ausstellung hängen. Im leeren Rahmen steckt ein Zettel mit geheimen Zeichen. Wer hat das Bild mitgenommen – und warum? Ihr seid die Detektive!"
       }
     },
     "outro": {
-      "all": { "de": "[Auflösung folgt in Meilenstein 5]" }
+      "all": {
+        "de": "Klick – die Truhe springt auf. Darin, sorgfältig in Packpapier gewickelt: die Mondnacht. Auf der Rückseite der kleine Mond – das Original! Greta Vogt hatte in Albers' Kiste die Fälschung entdeckt und das echte Bild in Sicherheit gebracht. Albers wollte es bei der Ausstellung austauschen und nach Hamburg schaffen. Dank euch bleibt die Mondnacht in Worpswede. Fall gelöst!"
+      },
+      "easy": {
+        "de": "Klick – die Kiste geht auf! Darin liegt die Mondnacht, ganz heil. Daneben ein zweites Bild, noch nicht ganz fertig: Lotte hat die Mondnacht abgemalt – als Geschenk zum 90. Geburtstag von Oma Lindenhof! Sie bringt das echte Bild sofort zurück. Morgen hängen beide Bilder in der Ausstellung. Fall gelöst, liebe Detektive!"
+      }
     }
   },
-  "stations": ["01-kaffee-worpswede", "02-grosse-kunstschau"],
-  "access": { "requireUnlockCode": false }
+  "stations": [
+    "01-kaffee-worpswede",
+    "02-grosse-kunstschau",
+    "03-kaeseglocke",
+    "04-kunsthalle",
+    "05-zionskirche",
+    "06-niedersachsenstein",
+    "07-haus-im-schluh",
+    "08-alter-bahnhof",
+    "09-barkenhoff",
+    "10-finale"
+  ],
+  "access": {
+    "requireUnlockCode": false
+  }
 }

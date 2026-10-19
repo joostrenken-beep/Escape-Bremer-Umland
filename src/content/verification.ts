@@ -26,3 +26,18 @@ export function collectUnverified(node: unknown, path = ''): UnverifiedItem[] {
   }
   return out;
 }
+
+export interface PlaceholderItem {
+  path: string;
+  text: string;
+}
+
+/** Sammelt alle Texte, die noch „[PLATZHALTER]“ enthalten. */
+export function collectPlaceholders(node: unknown, path = ''): PlaceholderItem[] {
+  if (typeof node === 'string') return node.includes('[PLATZHALTER]') ? [{ path: path || '(root)', text: node }] : [];
+  if (Array.isArray(node)) return node.flatMap((c, i) => collectPlaceholders(c, `${path}[${i}]`));
+  if (node && typeof node === 'object') {
+    return Object.entries(node).flatMap(([k, v]) => collectPlaceholders(v, path ? `${path}.${k}` : k));
+  }
+  return [];
+}

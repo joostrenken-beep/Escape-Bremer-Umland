@@ -1,0 +1,58 @@
+{
+  "$schema": "../../../../../schema/station.schema.json",
+  "id": "02-grosse-kunstschau",
+  "title": { "de": "Große Kunstschau" },
+  "location": {
+    "name": { "de": "Große Kunstschau, Lindenallee" },
+    "lat": 53.2188,
+    "lng": 8.9296,
+    "verified": false,
+    "note": "Koordinaten aus Karte geschätzt"
+  },
+  "directions": {
+    "all": { "de": "[PLATZHALTER] Geht wenige Schritte die Lindenallee entlang zum Museumsbau mit dem markanten Dach." }
+  },
+  "story": {
+    "all": {
+      "de": "Der Kunsthändler Konrad Albers wurde gestern hier gesehen, wie er lange ein Bild betrachtete – und telefonierte. „Ein Sammler zahlt jeden Preis“, soll er gesagt haben. Hat er schon einen Käufer für die Mondnacht?"
+    },
+    "easy": {
+      "de": "Hier war gestern Herr Albers. Er kauft und verkauft Bilder. Er hat gesagt: „Ich hätte die Mondnacht so gern!“ Hat er etwas mit dem verschwundenen Bild zu tun?"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": { "de": "[PLATZHALTER] Welche Jahreszahl findet ihr am Gebäude?" }
+      },
+      "codeId": "s02-unlock",
+      "input": "number",
+      "hints": [
+        { "all": { "de": "Schaut euch den Eingangsbereich genau an." } },
+        { "all": { "de": "Die Zahl beginnt mit 19." } },
+        { "all": { "de": "Das Gebäude wurde in den 1920er-Jahren gebaut." } }
+      ],
+      "verified": false,
+      "verifyNote": "Gibt es eine sichtbare Jahreszahl/Inschrift außen am Gebäude?"
+    }
+  ],
+  "notebook": [
+    {
+      "id": "suspect-albers",
+      "kind": "suspect",
+      "title": { "de": "Konrad Albers, Kunsthändler" },
+      "text": {
+        "all": { "de": "Wollte die „Mondnacht“ unbedingt kaufen. Telefonierte gestern mit einem unbekannten Sammler." }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Auch die Große Kunstschau geht auf Bernhard Hoetger zurück. Sie wurde in den 1920er-Jahren als Ausstellungshaus für die Kunst der Worpsweder Maler gebaut."
+    },
+    "verified": false,
+    "verifyNote": "Baujahr (vermutlich 1927) und Architekt prüfen."
+  }
+}
