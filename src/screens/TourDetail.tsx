@@ -1,10 +1,9 @@
 import { useState } from 'preact/hooks';
-import { content } from '../adapters';
 import { OfflineButton } from '../components/OfflineButton';
 import { LoadError, Loading } from '../components/Status';
 import { DIFFICULTIES, type Difficulty } from '../content/types';
-import { saveSession, type GameSession } from '../game/session';
-import { useAsync } from '../hooks';
+import { useTour } from '../content/useTour';
+import { newSession, saveSession, type GameSession } from '../game/session';
 import { leveled, localize } from '../i18n/text';
 import { getLang, ui } from '../i18n/ui';
 import { navigate } from '../router';
@@ -16,23 +15,19 @@ interface Props {
 }
 
 export function TourDetail({ tourId, session, onSessionChange }: Props) {
-  const [state, reload] = useAsync(() => content.loadTour(tourId), [tourId]);
+  const [state, reload] = useTour(tourId);
   const [difficulty, setDifficulty] = useState<Difficulty>(session?.tourId === tourId ? session.difficulty : 'medium');
   const lang = getLang();
-  const running = session?.tourId === tourId;
+  const running = session?.tourId === tourId && session.phase !== 'finished';
 
   if (state.status === 'loading') return <Loading />;
   if (state.status === 'error') return <LoadError onRetry={reload} />;
   const tour = state.data;
 
   const start = async () => {
-    const s: GameSession = {
-      schemaVersion: 1,
-      tourId: tour.id,
-      tourVersion: tour.version,
-      difficulty,
-      startedAt: new Date().toISOString(),
-    };
+    // Läuft schon eine andere Ermittlung? Dann nachfragen.
+    if (session && session.phase !== 'finished' && !confirm(ui('abandonConfirm'))) return;
+    const s = newSession(tour.id, tour.version, difficulty, Date.now());
     await saveSession(s);
     onSessionChange(s);
     navigate('play');
@@ -58,6 +53,10 @@ export function TourDetail({ tourId, session, onSessionChange }: Props) {
       </section>
 
       <OfflineButton tourId={tour.id} />
+
+      <a class="btn btn-secondary" href={`#/notebook/${tour.id}`}>
+        💡 {ui('knowledge')}
+      </a>
 
       {running ? (
         <div class="action-bar">

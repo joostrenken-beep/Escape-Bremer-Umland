@@ -7,10 +7,12 @@ import { getLang, ui } from '../i18n/ui';
 import { navigate } from '../router';
 import type { GameSession } from '../game/session';
 import type { TourSummary } from '../content/types';
+import { useSettings } from '../settings';
 
 export function TourList({ session }: { session: GameSession | null }) {
   const [state, reload] = useAsync(() => content.listTours(), []);
   const lang = getLang();
+  const { settings } = useSettings();
 
   return (
     <main class="screen">
@@ -28,7 +30,7 @@ export function TourList({ session }: { session: GameSession | null }) {
           <h2 id="tours-h">{ui('chooseTour')}</h2>
           <ul class="tour-list">
             {state.data
-              .filter((t) => t.published)
+              .filter((t) => t.published || settings.testMode)
               .map((t) => (
                 <li key={t.id}>
                   <TourCard tour={t} lang={lang} active={session?.tourId === t.id} />
@@ -37,6 +39,19 @@ export function TourList({ session }: { session: GameSession | null }) {
           </ul>
         </section>
       )}
+
+      {session && session.phase !== 'finished' && (
+        <div class="action-bar">
+          <button class="btn" onClick={() => navigate('play')}>
+            {ui('continueCase')}
+          </button>
+        </div>
+      )}
+
+      <footer class="footer">
+        <a href="#/settings">⚙️ {ui('settings')}</a>
+        {settings.testMode && <span class="tag tag-test">{ui('testModeBadge')}</span>}
+      </footer>
     </main>
   );
 }
@@ -58,6 +73,7 @@ function TourCard({ tour, lang, active }: { tour: TourSummary; lang: 'de' | 'en'
           📍 {tour.stationCount} {ui('stations')}
         </li>
       </ul>
+      {!tour.published && <p class="tag tag-test">unveröffentlicht</p>}
       {active && <p class="tag">{ui('activeCase')}</p>}
       <button class="btn" onClick={() => navigate('tour', tour.id)}>
         {ui('openCase')}

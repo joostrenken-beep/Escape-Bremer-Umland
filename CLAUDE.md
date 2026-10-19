@@ -9,7 +9,7 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
 | Meilenstein | Status |
 |---|---|
 | 1 Grundgerüst (Setup, PWA/Offline, Schema, Stadt- & Stufenwahl) | ✅ fertig |
-| 2 Spielkern (Stationen, Codes, Hinweise, Notizbuch, Speichern, Punkte/Zeit, Testmodus) | offen |
+| 2 Spielkern (Stationen, Codes, Hinweise, Notizbuch, Speichern, Punkte/Zeit, Testmodus) | ✅ fertig |
 | 3 Worpswede-Content v1 + Entwickler-Ansicht | offen |
 | 4 Digitale Rätsel (Mini-Games, Audio, Kamera, AR) | offen |
 | 5 Finale, Urkunde, Design, Gerätetests | offen |
@@ -51,11 +51,18 @@ src/
   adapters/                 ContentAdapter + StorageAdapter (Interfaces); heute Static/LocalStorage, später ApiAdapter
   adapters/index.ts         EINZIGE Stelle, an der Adapter ausgewählt werden
   game/codes.ts             Normalisierung + SHA-256-Hash + verschleierte Auflösung (Browser & Node)
-  game/session.ts           Spielstand (laufende Ermittlung)
+  game/session.ts           Spielstand (schemaVersion 2, migrateSession für alte Stände) + Speichern
+  game/engine.ts            REINE Spiellogik: reduce(session, tour, action, now) → neue session (gut testbar)
+  game/scoring.ts           Punkteregeln · game/useGame.ts: Engine + Speichern + Uhr für die UI
+  game/knowledge.ts         „Wusstest du?“-Archiv je Tour (bleibt nach Spielende)
+  puzzles/registry.tsx      type → Rätsel-Komponente; puzzles/CodePuzzle.tsx
+  screens/play/StepShell    gemeinsamer Rahmen je Rätsel: Hinweise, Auflösung, „Hier stimmt etwas nicht“, Testmodus
+  screens/play/phases.tsx   Bildschirme je Phase: intro → travel → solve → debrief → … → finished
+  settings.ts               Geräte-Einstellungen (testMode) als Preact-Context
   i18n/ui.ts                UI-Texte (de; en ergänzbar), i18n/text.ts: localize()/leveled()
-  router.ts                 Hash-Router (#/, #/tour/<id>, #/play)
+  router.ts                 Hash-Router (#/, #/tour/<id>, #/play, #/notebook[/<id>], #/settings)
   screens/, components/     Preact-Komponenten
-tests/                      Vitest (Codes, Content-Validierung, Storage)
+tests/                      Vitest (Codes, Content-Validierung, Storage, Engine/Punkte/Spielstand)
 ```
 
 ### Wichtige Konzepte
@@ -71,6 +78,12 @@ tests/                      Vitest (Codes, Content-Validierung, Storage)
 - **Offline:** App-Hülle wird per Workbox vorab gecacht. Stadtpakete (`tours/**`) NICHT – „Für offline speichern“
   lädt alle `files` des Pakets in Cache `tour-content` (gleicher Name wie runtimeCaching in vite.config.ts).
 - Story-Texte ≤ 80 Wörter (Build warnt).
+- **Spielablauf:** Phasen intro → travel („Wir sind da“) → solve (Story + Schritte nacheinander) → debrief
+  (Notizbuch-Einträge, „Wusstest du?“) → nächste Station … → finished. Jede Aktion → engine.reduce → sofort gespeichert.
+- **Zeit:** `timer.elapsedMs` + `runningSince` (null = Pause). Jede Spielaktion beendet eine Pause; nach Ende steht die Uhr.
+- **Notizbuch** speichert nur Verweise (stationId/entryId) + gelöste Codes, Texte kommen aus der Tour.
+- **Testmodus** (⚙️ Einstellungen): unveröffentlichte Touren, „Test: Schritt lösen“, Sprung zu Station; setzt `usedTestMode`.
+- Ersatzfrage (fallback) hat keine eigenen Hinweise – nur Auflösung.
 
 ## Konventionen
 - Sprache im UI und in Kommentaren: Deutsch. Code-Bezeichner: Englisch.
