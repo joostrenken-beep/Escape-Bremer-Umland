@@ -8,6 +8,8 @@
  */
 import { useState } from 'preact/hooks';
 import { RouteMap } from '../components/RouteMap';
+import { FieldCheck } from './FieldCheck';
+import { operatorComplete } from '../legal';
 import { LoadError, Loading } from '../components/Status';
 import type { BuiltTour } from '../content/types';
 import { useTour } from '../content/useTour';
@@ -57,6 +59,10 @@ function DevTour({ tourId }: { tourId: string }) {
         Version {tour.version} · gebaut {new Date(tour.builtAt).toLocaleString('de-DE')}
       </p>
       <CodesStatus tour={tour} />
+      {!operatorComplete && (
+        <p class="card dev-warn">⚠️ Impressum fehlt noch: Name, Anschrift und E-Mail in src/legal.ts eintragen (oder Claude geben).</p>
+      )}
+      <FieldCheck tour={tour} />
       <MyPosition tour={tour} />
       <RouteOverview tour={tour} />
       <Checklist tour={tour} />
@@ -65,12 +71,20 @@ function DevTour({ tourId }: { tourId: string }) {
 }
 
 function CodesStatus({ tour }: { tour: BuiltTour }) {
-  const text = {
-    secret: '✅ Echte Codes aus dem GitHub-Secret TOUR_CODES',
-    local: '✅ Echte Codes aus lokaler codes.json',
-    example: '⚠️ Platzhalter-Codes aus codes.example.json – Orts-Codes sind „0000“, Ersatzfragen „test“',
+  const source = {
+    secret: 'Codes aus dem GitHub-Secret TOUR_CODES',
+    local: 'Codes aus lokaler codes.json',
+    example: 'Nur Platzhalter-Codes aus codes.example.json',
   }[tour.codesSource];
-  return <p class={`card ${tour.codesSource === 'example' ? 'dev-warn' : ''}`}>{text}</p>;
+  const open = tour.placeholderCodes.length;
+  return (
+    <p class={`card ${open ? 'dev-warn' : ''}`}>
+      {open ? '⚠️' : '✅'} {source}.{' '}
+      {open
+        ? `${open} Orts-Codes sind noch Platzhalter (Antwort „0000“, Ersatzfrage „test“) – unten in der Vor-Ort-Erfassung eintragen.`
+        : 'Alle Orts-Codes sind hinterlegt.'}
+    </p>
+  );
 }
 
 /** Vor Ort: aktuelle Koordinaten ablesen und die nächstgelegene Station zeigen. */

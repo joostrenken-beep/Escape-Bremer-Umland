@@ -157,6 +157,7 @@ const de = {
   knowledgeEmpty: 'Hier sammelt sich das Ortswissen jeder Station, die ihr erreicht habt.',
   // Einstellungen
   settings: 'Einstellungen',
+  about: 'Über & Datenschutz',
   testMode: 'Testmodus',
   testModeHelp: 'Zum Ausprobieren am Schreibtisch: Codes überspringen, zwischen Stationen springen, unveröffentlichte Touren anzeigen.',
   resetAll: 'Alle Daten auf diesem Gerät löschen',

@@ -1,7 +1,7 @@
 {
   "name": "escape-bremer-umland",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Outdoor-Escape-Stadtführungen im Bremer Umland als Progressive Web App",
   "scripts": {

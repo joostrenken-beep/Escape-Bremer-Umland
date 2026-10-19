@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'preact/hooks';
 import { UpdateBanner } from './components/PwaBanners';
 import { loadSession, type GameSession } from './game/session';
+import { setShowPlaceholders } from './i18n/text';
 import { ui } from './i18n/ui';
 import { navigate, useRoute } from './router';
+import { About } from './screens/About';
 import { DevView } from './screens/DevView';
 import { Notebook } from './screens/Notebook';
 import { Play } from './screens/Play';
@@ -41,6 +43,7 @@ export function App() {
     navigate();
   };
 
+  setShowPlaceholders(settings.testMode);
   if (session === undefined) return null;
 
   let screen;
@@ -52,6 +55,7 @@ export function App() {
     screen = <Notebook session={session} tourId={param ?? session!.tourId} initialTab={param && session?.tourId !== param ? 'knowledge' : 'notes'} />;
   else if (page === 'settings') screen = <SettingsScreen onResetAll={resetAll} />;
   else if (page === 'dev') screen = <DevView tourId={param} />;
+  else if (page === 'about') screen = <About />;
   else
     screen = (
       <main class="screen">

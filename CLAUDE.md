@@ -32,8 +32,8 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
   → Finale-Zahlenschloss **1902** (= Entstehungsjahr der Mondnacht; schwer: Reihenfolge aus Fallakte ableiten).
   Digitale Rätsel (M4): St. 2 Rotfilter (KOPIE/leicht TORTE), St. 5 Zeugenaussage Audio (grüner Schal/leicht Dackel
   Bruno), St. 6 Kompass+AR (225° SW), St. 7 Schiebepuzzle (media/mondnacht.svg – eigene Illustration, Bild ist fiktiv),
-  St. 8 Morse (NULL), St. 9 Foto-Vergleich (media/barkenhoff-historisch.svg = PLATZHALTER, gemeinfreies Foto fehlt),
-  St. 10 Zahlenschloss 1902 + Anklage (wer/warum/wer2; Finale-Bonus).
+  St. 8 Morse (NULL), St. 10 Zahlenschloss 1902 + Anklage (wer/warum/wer2; Finale-Bonus).
+  Foto-Vergleich (overlay) an St. 9 wieder entfernt, bis ein gemeinfreies Foto da ist (Beispiel in docs/RAETSELTYPEN.md).
 - **Finale-Bonus:** Anklage (accuse) +100 beim ersten Versuch ohne Hinweis, +50 selbst gelöst, sonst 0.
 - **Punkte:** Punktekonto – Start mit 100/Station (volles Konto), Hilfen ziehen sofort ab (Nutzerwunsch, damit man
   in Runde 1 nicht mit Punkten „bezahlt“, die man noch nicht hat); Hinweise −10/−20/−30; Auflösung −60; Überspringen −50; „Hier stimmt etwas nicht“ +
@@ -97,8 +97,14 @@ tests/                      Vitest; tests/fixtures/content/testtour = feste 2-St
 - **Kamera** (`puzzles/camera.ts`): nur nach Tipp, Stream wird beim Verlassen gestoppt, nichts gespeichert/hochgeladen.
 - **Preact 11:** Zahlen in `style` bekommen KEIN automatisches „px“ – immer Einheit als String angeben!
 - **Codes:** Station referenziert `codeId`; Klartext in codes.json; Build schreibt nur
-  `sha256(salt:codeId:normalize(answer))` + AES-GCM-verschleierten Auflösungstext. Reihenfolge der Code-Quelle:
-  Env `TOUR_CODES` (GitHub-Secret, JSON `{ "<stadt>": {codes…} }`) → `codes.json` → `codes.example.json` (Warnung).
+  `sha256(salt:codeId:normalize(answer))` + AES-GCM-verschleierten Auflösungstext. Code-Quelle: `codes.example.json`
+  als Basis, darüber JE CODE Env `TOUR_CODES` (GitHub-Secret, `{ "<stadt>": {codes…} }`) bzw. sonst `codes.json`.
+  `BuiltTour.placeholderCodes` = Orts-Codes (Schritte mit verified:false), die noch aus dem Beispiel kommen.
+- **Vor-Ort-Erfassung** (`screens/FieldCheck.tsx`, in der Entwickler-Ansicht): Nutzer erfasst je Station GPS,
+  Antworten, Häkchen, Notizen (localStorage `fieldcheck:<tour>`). Export: Secret-JSON + Prüfbericht (Text an Claude →
+  Koordinaten/verified/Texte im Content setzen).
+- **[PLATZHALTER]** wird für Spieler ausgeblendet (`i18n/text.ts`, `setShowPlaceholders`), im Testmodus sichtbar.
+- **Impressum/Datenschutz:** `#/about` (`screens/About.tsx`), Betreiberdaten in `src/legal.ts` (noch Platzhalter).
 - **verified:** jede ortsbezogene Angabe (Koordinaten, Code-Schritte, „Wusstest du?“) hat `verified: false`,
   bis der Nutzer sie vor Ort bestätigt. Nie Fakten als gesichert erfinden – `[PLATZHALTER]` nutzen.
 - **Offline:** App-Hülle wird per Workbox vorab gecacht. Stadtpakete (`tours/**`) NICHT – „Für offline speichern“
@@ -123,10 +129,10 @@ tests/                      Vitest; tests/fixtures/content/testtour = feste 2-St
 - Kamera/GPS/Sensoren nur nach Nutzer-Tap aktivieren, immer Fallback ohne.
 - Imports, die vom Build-Skript (Node) erreicht werden, mit `.ts`-Endung.
 
-## Offene Punkte (Stand nach M6)
-- Vor Ort prüfen: Koordinaten, Wegbeschreibungen ([PLATZHALTER]), Orts-Codes + Ersatzfragen, „Wusstest du?“-Fakten
-  (Entwickler-Ansicht → Prüfliste). Echte Codes als Secret TOUR_CODES hinterlegen.
-- Gemeinfreies historisches Foto für den Barkenhoff (St. 9) + Frage/Antwort/Hinweise dazu.
+## Offene Punkte (Stand: App fertig, v1.0.0)
+- Nur durch den Nutzer möglich: Route ablaufen, Vor-Ort-Erfassung ausfüllen → Secret TOUR_CODES setzen,
+  Prüfbericht an Claude → Koordinaten/Wege/Fakten eintragen, verified: true setzen. Impressum in src/legal.ts.
+- Optional: gemeinfreies historisches Foto für den Barkenhoff (St. 9, overlay wieder einbauen).
 - Optional: eigene Audioaufnahme der Zeugenaussage (St. 5, Feld `audio`), Bildausschnitt-Rätsel (code + `image`).
 - Tests auf echten Geräten (docs/GERAETETEST.md). Englische Texte (`en`) ergänzen.
 

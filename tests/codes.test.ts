@@ -60,3 +60,15 @@ describe('Auflösungstexte', () => {
     expect(await revealSolution('s', 'c1', hidden)).toEqual({ de: 'Die Antwort ist 1905.' });
   });
 });
+
+describe('Platzhalter-Vermerke', () => {
+  it('sind für Spieler unsichtbar, im Testmodus sichtbar', async () => {
+    const { localize, setShowPlaceholders } = await import('../src/i18n/text');
+    const t = { de: '[PLATZHALTER] Geht die Lindenallee entlang.' };
+    setShowPlaceholders(false);
+    expect(localize(t)).toBe('Geht die Lindenallee entlang.');
+    setShowPlaceholders(true);
+    expect(localize(t)).toBe('[PLATZHALTER] Geht die Lindenallee entlang.');
+    setShowPlaceholders(false);
+  });
+});

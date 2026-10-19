@@ -64,7 +64,7 @@
         "input": "text"
       },
       "verified": false,
-      "verifyNote": "Seite zu den Gleisen öffentlich zugänglich? Zählbare Eigenschaft wählen. (In M4 kommt hier zusätzlich ein Morse-Rätsel dazu.)"
+      "verifyNote": "Seite zu den Gleisen öffentlich zugänglich? Zählbare Eigenschaft wählen."
     },
     {
       "type": "morse",

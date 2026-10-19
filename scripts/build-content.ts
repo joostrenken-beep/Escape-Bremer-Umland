@@ -116,21 +116,32 @@ async function listFiles(dir: string): Promise<string[]> {
   return out;
 }
 
+/**
+ * Lädt die Codes einer Tour. Echte Codes (Secret oder codes.json) überschreiben
+ * die Platzhalter aus codes.example.json EINZELN – das Secret muss also nur die
+ * Codes enthalten, die man vor Ort findet.
+ */
 async function loadCodes(
   tourDir: string,
   tourId: string,
   override: Record<string, CodesFile> | undefined,
-  warnings: string[],
-): Promise<{ file: CodesFile; source: BuiltTour['codesSource'] } | null> {
-  if (override?.[tourId]) return { file: override[tourId], source: 'secret' };
-  const real = join(tourDir, 'codes.json');
-  if (existsSync(real)) return { file: await readJson<CodesFile>(real), source: 'local' };
-  const example = join(tourDir, 'codes.example.json');
-  if (existsSync(example)) {
-    warnings.push(`${tourId}: keine echten Codes gefunden – nutze Platzhalter aus codes.example.json`);
-    return { file: await readJson<CodesFile>(example), source: 'example' };
-  }
-  return null;
+): Promise<{ file: CodesFile; source: BuiltTour['codesSource']; fromExample: Set<string> } | null> {
+  const examplePath = join(tourDir, 'codes.example.json');
+  const realPath = join(tourDir, 'codes.json');
+  const example = existsSync(examplePath) ? await readJson<CodesFile>(examplePath) : null;
+  const real = override?.[tourId] ?? (existsSync(realPath) ? await readJson<CodesFile>(realPath) : null);
+  if (!example && !real) return null;
+  const source: BuiltTour['codesSource'] = override?.[tourId] ? 'secret' : real ? 'local' : 'example';
+  const realCodes = real?.codes ?? {};
+  const fromExample = new Set(Object.keys(example?.codes ?? {}).filter((id) => !(id in realCodes)));
+  return {
+    file: {
+      codes: { ...(example?.codes ?? {}), ...realCodes },
+      ...((real?.access ?? example?.access) ? { access: real?.access ?? example?.access } : {}),
+    },
+    source,
+    fromExample,
+  };
 }
 
 function codesOverrideFromEnv(): Record<string, CodesFile> | undefined {
@@ -204,8 +215,14 @@ async function buildTour(
   }
 
   // Codes
-  const loaded = await loadCodes(tourDir, tour.id, opts.codesOverride, warnings);
+  const loaded = await loadCodes(tourDir, tour.id, opts.codesOverride);
   const codesFile = loaded?.file;
+  // Codes, die vor Ort gefunden werden (Schritte mit verified: false), aber noch Platzhalter sind
+  const locationCodeIds = stations.flatMap((st) => st.steps.filter((x) => !x.verified).flatMap(codeIdsOfStep));
+  const placeholderCodes = locationCodeIds.filter((id) => loaded?.fromExample.has(id));
+  if (placeholderCodes.length) {
+    warnings.push(`${tour.id}: ${placeholderCodes.length} Orts-Codes sind noch Platzhalter (${placeholderCodes.join(', ')})`);
+  }
   const codes: Record<string, BuiltCode> = {};
   if (!codesFile) {
     errors.push(`${rel}: keine Codes gefunden (codes.json oder codes.example.json)`);
@@ -253,6 +270,7 @@ async function buildTour(
     stations,
     codes,
     codesSource: loaded?.source ?? 'example',
+    placeholderCodes,
     ...(accessHashes ? { accessHashes } : {}),
     files: ['tour.json', ...mediaFiles],
     builtAt: new Date().toISOString(),

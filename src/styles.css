@@ -1030,6 +1030,46 @@ h1:focus {
   float: right;
 }
 
+.plain-list {
+  margin: 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: 8px;
+}
+.footer {
+  flex-wrap: wrap;
+}
+
+/* --- Vor-Ort-Erfassung ----------------------------------------------- */
+
+.field {
+  display: grid;
+  gap: 10px;
+}
+.field-done {
+  border-color: var(--birch-green);
+}
+.field-row {
+  display: grid;
+  gap: 4px;
+}
+.field-check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 600;
+  min-height: 48px;
+}
+.field-check input {
+  width: 26px;
+  height: 26px;
+  accent-color: var(--birch-green);
+}
+textarea.text-input {
+  min-height: 0;
+  resize: vertical;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

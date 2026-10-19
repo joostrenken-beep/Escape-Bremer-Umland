@@ -228,14 +228,6 @@
         "de": "Gemorst wird NULL: –• / ••– / •–•• / •–••"
       }
     },
-    "s09-compare": {
-      "answers": [
-        "test"
-      ],
-      "reveal": {
-        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
-      }
-    },
     "s10-who": {
       "answers": {
         "medium": [

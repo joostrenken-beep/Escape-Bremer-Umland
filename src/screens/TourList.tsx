@@ -51,6 +51,7 @@ export function TourList({ session }: { session: GameSession | null }) {
 
       <footer class="footer">
         <a href="#/settings">⚙️ {ui('settings')}</a>
+        <a href="#/about">ℹ️ {ui('about')}</a>
         {settings.testMode && <span class="tag tag-test">{ui('testModeBadge')}</span>}
       </footer>
     </main>

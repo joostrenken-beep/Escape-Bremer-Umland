@@ -64,41 +64,7 @@
         "input": "text"
       },
       "verified": false,
-      "verifyNote": "Treppe öffentlich zugänglich/sichtbar? Stufen zählen. (In M4 kommt hier zusätzlich der Vergleich mit einem historischen Foto dazu.)"
-    },
-    {
-      "type": "overlay",
-      "id": "compare",
-      "image": "media/barkenhoff-historisch.svg",
-      "credit": {
-        "de": "[PLATZHALTER] Historisches Foto folgt – gemeinfreies Bild mit Quelle und Lizenz einfügen."
-      },
-      "prompt": {
-        "all": {
-          "de": "[PLATZHALTER] Vergleicht das alte Foto mit dem Barkenhoff heute. Was ist auf dem alten Foto zu sehen, das es heute nicht mehr gibt?"
-        }
-      },
-      "codeId": "s09-compare",
-      "input": "text",
-      "hints": [
-        {
-          "all": {
-            "de": "[PLATZHALTER] Hinweis 1"
-          }
-        },
-        {
-          "all": {
-            "de": "[PLATZHALTER] Hinweis 2"
-          }
-        },
-        {
-          "all": {
-            "de": "[PLATZHALTER] Hinweis 3"
-          }
-        }
-      ],
-      "verified": false,
-      "verifyNote": "Gemeinfreies historisches Foto des Barkenhoffs besorgen (z. B. Wikimedia Commons), Standort für den Vergleich wählen, Frage + Antwort + Hinweise festlegen."
+      "verifyNote": "Treppe öffentlich zugänglich/sichtbar? Stufen zählen. Optional später: Foto-Vergleich (type overlay, siehe docs/RAETSELTYPEN.md), sobald ein gemeinfreies Foto da ist."
     }
   ],
   "notebook": [

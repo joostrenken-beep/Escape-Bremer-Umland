@@ -18,6 +18,23 @@ Erste Tour: **Worpswede – „Die Mondnacht vom Weyerberg“**.
 **Testmodus:** Startseite → ⚙️ Einstellungen → Testmodus. Dann lassen sich Rätsel überspringen, Stationen anspringen
 und unveröffentlichte Touren spielen. Dort gibt es auch die **Entwickler-Ansicht** mit der Prüfliste für vor Ort.
 
+## Tour vor Ort fertigstellen (Worpswede)
+
+Die App ist fertig – nur die Angaben, die man **vor Ort** sieht, kann niemand vom Schreibtisch aus kennen.
+Solange sie fehlen, erwartet die App an diesen Stellen „0000“ (Ersatzfrage: „test“).
+
+1. Handy: ⚙️ Einstellungen → **Testmodus** an → **Entwickler-Ansicht** → Worpswede.
+2. Route ablaufen. In der **Vor-Ort-Erfassung** je Station:
+   **„Standort übernehmen“**, die gefundenen **Antworten** eintragen (mehrere Schreibweisen mit Komma),
+   Notizen machen, **„Station geprüft“** abhaken. Alles bleibt auf dem Handy gespeichert.
+3. Danach:
+   - **„Codes fürs GitHub-Secret kopieren“** → auf GitHub unter *Settings → Secrets and variables → Actions*
+     das Secret **`TOUR_CODES`** anlegen bzw. ersetzen und den Text einfügen. Dann *Actions → Test & Deploy →
+     Run workflow* – fertig, die Codes sind aktiv.
+   - **„Prüfbericht kopieren“** → an Claude schicken: Koordinaten, Wegbeschreibungen und Fakten werden eingetragen
+     und auf „geprüft“ gesetzt.
+4. In `src/legal.ts` Name, Anschrift und E-Mail für das **Impressum** eintragen (oder Claude geben).
+
 ## Neue Stadt anlegen
 
 Jede Stadt ist ein eigener Ordner in `content/`. **Programmieren muss man dafür nichts.**
@@ -36,7 +53,7 @@ Jede Stadt ist ein eigener Ordner in `content/`. **Programmieren muss man dafür
    - Story max. ca. 80 Wörter.
    - Jede ortsbezogene Angabe bekommt `"verified": false`, bis sie vor Ort geprüft ist.
    - Rätseltypen (`"type"`): `code`, `audio`, `morse`, `colorfilter`, `overlay`, `lock`, `slider`, `compass`,
-     `accuse` – Beispiele für alle Typen stehen in `content/worpswede/stations/`.
+     `accuse` – kopierfertige Beispiele für alle Typen: [`docs/RAETSELTYPEN.md`](docs/RAETSELTYPEN.md).
    - Bilder und Audio in `media/` ablegen und als `"media/datei.jpg"` angeben (Lizenz beachten!).
 4. **Codes:** Platzhalter in `codes.example.json`. Echte Codes niemals ins Repo (siehe unten).
 5. **Prüfen:** `npm run content` – meldet verständlich, was fehlt oder falsch ist. Jeder Push prüft das automatisch.
@@ -51,7 +68,9 @@ Platzhaltern (und den Lösungen der reinen Denk-Rätsel, die sich ohnehin aus de
 
 - **Lokal:** `codes.example.json` kopieren zu `codes.json` und echte Antworten eintragen (wird von Git ignoriert).
 - **Für die veröffentlichte App:** GitHub → *Settings → Secrets and variables → Actions → New repository secret*,
-  Name **`TOUR_CODES`**, Inhalt: alle Städte in einem JSON:
+  Name **`TOUR_CODES`**. Am einfachsten mit der Vor-Ort-Erfassung erzeugen (siehe oben). Das Secret muss nur die
+  Codes enthalten, die man vor Ort findet – alle übrigen kommen aus `codes.example.json`. Mehrere Städte stehen
+  zusammen in einem JSON:
   ```json
   {
     "worpswede": { "codes": { "s01-unlock": { "answers": ["7"], "reveal": { "de": "Es sind 7 runde Fenster." } } } },

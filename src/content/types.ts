@@ -251,6 +251,8 @@ export interface BuiltTour extends Omit<TourSource, 'stations'> {
   codes: Record<string, BuiltCode>;
   /** Woher die Codes beim Build kamen: GitHub-Secret, lokale codes.json oder Platzhalter. */
   codesSource: 'secret' | 'local' | 'example';
+  /** Orts-Codes, für die noch keine echte Antwort hinterlegt ist (nur Platzhalter). */
+  placeholderCodes: string[];
   /** Gehashte Freischaltcodes (nur wenn access.requireUnlockCode). */
   accessHashes?: string[];
   /** Alle Dateien des Pakets (für den Offline-Download), relativ zu tours/<id>/. */
