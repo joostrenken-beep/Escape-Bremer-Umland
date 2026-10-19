@@ -23,7 +23,8 @@ export type GameAction =
   | { type: 'pause' }
   | { type: 'resume' }
   | { type: 'testSolve' } // Testmodus: Schritt ohne Code lösen
-  | { type: 'testJump'; stationIndex: number }; // Testmodus: zu Station springen
+  | { type: 'testJump'; stationIndex: number } // Testmodus: zu Station springen
+  | { type: 'setTeam'; name: string }; // Teamname für die Urkunde
 
 export const stepKey = (stationId: string, stepId: string) => `${stationId}/${stepId}`;
 
@@ -134,6 +135,8 @@ export function reduce(s: GameSession, tour: BuiltTour, action: GameAction, now:
       return stopClock(s, now);
     case 'resume':
       return startClock(s, now);
+    case 'setTeam':
+      return { ...s, teamName: action.name.slice(0, 40) };
   }
 
   // Jede Spielaktion setzt eine pausierte Uhr wieder in Gang

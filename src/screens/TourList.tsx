@@ -8,6 +8,7 @@ import { navigate } from '../router';
 import type { GameSession } from '../game/session';
 import type { TourSummary } from '../content/types';
 import { useSettings } from '../settings';
+import { mediaUrl } from '../content/media';
 
 export function TourList({ session }: { session: GameSession | null }) {
   const [state, reload] = useAsync(() => content.listTours(), []);
@@ -59,6 +60,7 @@ export function TourList({ session }: { session: GameSession | null }) {
 function TourCard({ tour, lang, active }: { tour: TourSummary; lang: 'de' | 'en'; active: boolean }) {
   return (
     <article class="card tour-card">
+      {tour.cover && <img class="cover" src={mediaUrl(tour.id, tour.cover)} alt="" loading="lazy" />}
       <p class="eyebrow">{localize(tour.town, lang)}</p>
       <h3>{localize(tour.title, lang)}</h3>
       <p>{localize(tour.teaser, lang)}</p>

@@ -28,6 +28,7 @@ const de = {
   startingPoint: 'Treffpunkt',
   // Spielablauf
   caseFile: 'Fallakte',
+  coverAlt: 'Das verschwundene Gemälde (Illustration)',
   letsGo: 'Los geht’s',
   station: 'Station',
   puzzle: 'Rätsel',
@@ -86,7 +87,13 @@ const de = {
   caseClosed: 'Fall abgeschlossen',
   finalScore: 'Punkte',
   finalTime: 'Spielzeit',
-  finaleComing: 'Das große Finale mit Urkunde kommt in Meilenstein 5.',
+  testModeUsed: 'Im Testmodus gespielt – Punkte zählen nur zum Ausprobieren.',
+  certificate: 'Ermittlerurkunde',
+  teamName: 'Name eures Ermittlerteams',
+  teamNamePlaceholder: 'z. B. Die Moordetektive',
+  makeCertificate: 'Urkunde erstellen',
+  shareCertificate: 'Urkunde teilen oder speichern',
+  certificatePrivacy: 'Die Urkunde wird nur auf eurem Handy erstellt – nichts wird hochgeladen.',
   newGame: 'Neue Ermittlung',
   // Digitale Rätsel
   witness: 'Zeugenaussage',

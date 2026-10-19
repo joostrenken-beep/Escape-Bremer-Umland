@@ -383,6 +383,7 @@ a.btn {
 /* --- Spiel ----------------------------------------------------------- */
 
 .game-header {
+  flex-wrap: wrap;
   position: sticky;
   top: 0;
   z-index: 15;
@@ -954,6 +955,59 @@ a.btn {
 }
 .accuse legend {
   font-size: 1.1rem;
+}
+
+/* --- Abschluss, Titelbild, Fortschritt ------------------------------ */
+
+.cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 10px 0 12px;
+  box-shadow: 0 2px 0 rgb(59 42 30 / 0.2);
+}
+.cover-small {
+  aspect-ratio: 3 / 1;
+}
+h1:focus {
+  outline: none;
+}
+.progress {
+  flex-basis: 100%;
+  height: 5px;
+  background: rgb(255 255 255 / 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.5s;
+}
+.certificate {
+  display: grid;
+  gap: 12px;
+}
+.field {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+.text-input {
+  font: inherit;
+  min-height: 52px;
+  padding: 8px 12px;
+  border: 2px solid var(--ink-soft);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+}
+.certificate-preview {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
 }
 
 @media (prefers-reduced-motion: reduce) {

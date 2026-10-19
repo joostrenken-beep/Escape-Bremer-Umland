@@ -55,6 +55,8 @@ export interface GameSession {
   timer: GameTimer;
   /** Wurde der Testmodus benutzt? (Wertung dann nicht ernst gemeint) */
   usedTestMode: boolean;
+  /** Name des Ermittlerteams (für die Urkunde, optional) */
+  teamName?: string;
 }
 
 const KEY = 'session';

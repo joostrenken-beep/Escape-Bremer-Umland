@@ -1,7 +1,9 @@
 /** Bildschirme für die einzelnen Spielphasen. */
 import type { BuiltTour, NotebookEntrySource, StationSource } from '../../content/types';
 import { mediaUrl } from '../../content/media';
-import { elapsedMs, progressOf, type GameAction } from '../../game/engine';
+import { elapsedMs, maxScore, progressOf, scoreOf, type GameAction } from '../../game/engine';
+import { drawCertificate, shareCanvas } from '../../game/certificate';
+import { useRef, useState } from 'preact/hooks';
 import { STATION_POINTS, stationScore } from '../../game/scoring';
 import type { GameSession } from '../../game/session';
 import { formatDuration } from '../../game/useGame';
@@ -25,7 +27,8 @@ export function IntroView({ tour, session, dispatch }: PhaseProps) {
     <>
       <article class="card file">
         <p class="stamp">{ui('caseFile')}</p>
-        <h1>{localize(tour.title, lang)}</h1>
+        <h1 tabIndex={-1}>{localize(tour.title, lang)}</h1>
+        {tour.cover && <img class="cover" src={mediaUrl(tour.id, tour.cover)} alt={ui('coverAlt')} />}
         <p class="lead">{intro}</p>
         <ReadAloud text={intro} />
       </article>
@@ -55,7 +58,7 @@ export function TravelView({ tour, session, dispatch }: PhaseProps) {
         <p class="eyebrow">
           {ui('wayToStation')} {session.stationIndex + 1}
         </p>
-        <h1>{localize(station.title, lang)}</h1>
+        <h1 tabIndex={-1}>{localize(station.title, lang)}</h1>
         <p class="small">📍 {localize(station.location.name, lang)}</p>
         <p class="lead">{leveled(station.directions, session.difficulty, lang)}</p>
       </section>
@@ -99,7 +102,7 @@ export function SolveView({ tour, session, dispatch }: PhaseProps) {
         <p class="eyebrow">
           {ui('station')} {session.stationIndex + 1}
         </p>
-        <h1>{localize(station.title, lang)}</h1>
+        <h1 tabIndex={-1}>{localize(station.title, lang)}</h1>
         <p class="lead">{story}</p>
         <ReadAloud text={story} audioSrc={station.audio ? mediaUrl(tour.id, station.audio) : undefined} />
       </article>
@@ -144,7 +147,7 @@ export function DebriefView({ tour, session, dispatch }: PhaseProps) {
     <>
       <section class="card file" aria-live="polite">
         <p class="stamp">{ui('stationSolved')}</p>
-        <h1>{localize(station.title, lang)}</h1>
+        <h1 tabIndex={-1}>{localize(station.title, lang)}</h1>
         <p class="lead">
           ★ {ui('stationPoints', { points, max: STATION_POINTS })}
         </p>
@@ -169,32 +172,98 @@ export function DebriefView({ tour, session, dispatch }: PhaseProps) {
   );
 }
 
-export function FinishedView({ tour, session, score, onNewGame }: PhaseProps & { score: number; onNewGame: () => void }) {
+export function FinishedView({ tour, session, dispatch, onNewGame }: PhaseProps & { onNewGame: () => void }) {
   const lang = getLang();
   const outro = leveled(tour.story.outro, session.difficulty, lang);
+  const score = scoreOf(tour, session);
+  const max = maxScore(tour);
+  const time = formatDuration(elapsedMs(session, Date.now()));
+  const [team, setTeam] = useState(session.teamName ?? '');
+  const [preview, setPreview] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  const make = async () => {
+    setBusy(true);
+    if (team !== (session.teamName ?? '')) dispatch({ type: 'setTeam', name: team });
+    const canvas = await drawCertificate({
+      team: team.trim(),
+      tourTitle: localize(tour.title, lang),
+      town: localize(tour.town, lang),
+      difficulty: localize(tour.difficulties[session.difficulty].label, lang),
+      score,
+      maxScore: max,
+      time,
+      date: new Date(session.finishedAt ?? Date.now()).toLocaleDateString('de-DE', { day: 'numeric', month: 'long', year: 'numeric' }),
+      imageUrl: tour.cover ? mediaUrl(tour.id, tour.cover) : undefined,
+    });
+    canvasRef.current = canvas;
+    setPreview(canvas.toDataURL('image/png'));
+    setBusy(false);
+  };
+
+  const share = () => {
+    if (canvasRef.current) shareCanvas(canvasRef.current, 'ermittlerurkunde.png', ui('certificate'));
+  };
+
   return (
     <>
       <article class="card file">
         <p class="stamp">{ui('caseClosed')}</p>
-        <h1>{localize(tour.title, lang)}</h1>
+        <h1 tabIndex={-1}>{localize(tour.title, lang)}</h1>
+        {tour.cover && <img class="cover cover-small" src={mediaUrl(tour.id, tour.cover)} alt="" />}
         <p class="lead">{outro}</p>
       </article>
       <section class="card result">
         <p>
           <span class="result-label">{ui('finalScore')}</span>
-          <span class="result-value">★ {score}</span>
+          <span class="result-value">
+            ★ {score} <span class="small">/ {max}</span>
+          </span>
         </p>
         <p>
           <span class="result-label">{ui('finalTime')}</span>
-          <span class="result-value">⏱ {formatDuration(elapsedMs(session, Date.now()))}</span>
+          <span class="result-value">⏱ {time}</span>
         </p>
+        {session.usedTestMode && <p class="small">🧪 {ui('testModeUsed')}</p>}
       </section>
-      <p class="status">{ui('finaleComing')}</p>
-      <div class="action-bar">
-        <button class="btn btn-secondary" onClick={onNewGame}>
-          {ui('newGame')}
-        </button>
-      </div>
+
+      <section class="card certificate">
+        <h2 class="h3">🏅 {ui('certificate')}</h2>
+        <label class="field">
+          <span>{ui('teamName')}</span>
+          <input
+            class="text-input"
+            value={team}
+            maxLength={40}
+            placeholder={ui('teamNamePlaceholder')}
+            onInput={(e) => {
+              setTeam((e.target as HTMLInputElement).value);
+              setPreview(null);
+            }}
+          />
+        </label>
+        {!preview ? (
+          <button class="btn" onClick={make} disabled={busy}>
+            {busy ? ui('loading') : ui('makeCertificate')}
+          </button>
+        ) : (
+          <>
+            <img class="certificate-preview" src={preview} alt={ui('certificate')} />
+            <button class="btn" onClick={share}>
+              📤 {ui('shareCertificate')}
+            </button>
+            <p class="small">{ui('certificatePrivacy')}</p>
+          </>
+        )}
+      </section>
+
+      <a class="btn btn-secondary" href="#/notebook">
+        📓 {ui('notebook')} & {ui('knowledge')}
+      </a>
+      <button class="btn btn-ghost" onClick={onNewGame}>
+        {ui('newGame')}
+      </button>
     </>
   );
 }

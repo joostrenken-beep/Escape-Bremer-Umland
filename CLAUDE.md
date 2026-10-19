@@ -12,7 +12,7 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
 | 2 Spielkern (Stationen, Codes, Hinweise, Notizbuch, Speichern, Punkte/Zeit, Testmodus) | ✅ fertig |
 | 3 Worpswede-Content v1 + Entwickler-Ansicht + Navigation | ✅ fertig |
 | 4 Digitale Rätsel (Mini-Games, Audio, Kamera, AR) | ✅ fertig |
-| 5 Finale, Urkunde, Design, Gerätetests | offen |
+| 5 Finale, Urkunde, Design, Gerätetests | ✅ fertig (echte Gerätetests: docs/GERAETETEST.md) |
 | 6 Backend-Vorbereitung, Freischaltmodul, Anleitung neue Stadt | offen |
 
 ## Entscheidungen (mit Nutzer abgestimmt)
@@ -69,6 +69,7 @@ src/
   geo/geo.ts, geo/sensors.ts Entfernung/Richtung (getestet) · GPS/Kompass-Hooks (nur aktiv nach Tipp)
   components/Navigator.tsx  Richtungspfeil + Entfernung (offline) + Online-Karte (components/RouteMap.tsx, Leaflet lazy)
   screens/DevView.tsx       #/dev/<tour>: Prüfliste (verified:false + [PLATZHALTER]), Codes-Quelle, Route, Mein Standort
+  game/certificate.ts       Ermittlerurkunde als PNG (Canvas, lokal) + Teilen (Web Share API / Download)
   game/knowledge.ts         „Wusstest du?“-Archiv je Tour (bleibt nach Spielende)
   puzzles/registry.tsx      type → Rätsel-Komponente; puzzles/CodePuzzle.tsx
   screens/play/StepShell    gemeinsamer Rahmen je Rätsel: Hinweise, Auflösung, „Hier stimmt etwas nicht“, Testmodus

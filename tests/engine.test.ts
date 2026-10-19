@@ -104,6 +104,14 @@ describe('Spielablauf', () => {
   });
 });
 
+describe('Teamname', () => {
+  it('wird gespeichert, gekürzt und hält die Uhr nicht an', () => {
+    const s = reduce(newSession('testtour', '0.1.0', 'easy', 0), tour, { type: 'setTeam', name: 'x'.repeat(60) }, 1000);
+    expect(s.teamName).toHaveLength(40);
+    expect(isPaused(s)).toBe(false);
+  });
+});
+
 describe('Zeit & Pause', () => {
   it('Pause hält die Uhr an, Weiter startet sie wieder', () => {
     let s = newSession('testtour', '0.1.0', 'easy', 0);

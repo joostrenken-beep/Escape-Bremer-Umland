@@ -11,6 +11,8 @@ export function GameHeader({ tour, session, dispatch }: { tour: BuiltTour; sessi
   const paused = isPaused(session);
   const now = useNow(!paused);
   const stationNo = Math.min(session.stationIndex + 1, tour.stations.length);
+  const progressDone =
+    session.phase === 'finished' ? tour.stations.length : session.stationIndex + (session.phase === 'debrief' ? 1 : 0);
 
   return (
     <header class="game-header">
@@ -35,6 +37,9 @@ export function GameHeader({ tour, session, dispatch }: { tour: BuiltTour; sessi
         <button class="btn icon-btn" onClick={() => navigate('notebook')} aria-label={ui('notebook')} title={ui('notebook')}>
           📓
         </button>
+      </div>
+      <div class="progress" aria-hidden="true">
+        <div class="progress-bar" style={{ width: `${(progressDone / tour.stations.length) * 100}%` }} />
       </div>
     </header>
   );
