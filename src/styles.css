@@ -1,0 +1,351 @@
+/*
+ * Gestaltung: Ermittlungsakte trifft Künstlerkolonie.
+ * Farben aus der Worpsweder Landschaft – Moor, Birke, Himmel – plus Aktenrot.
+ * Kontrast ist für Sonnenlicht ausgelegt (Text ≥ 7:1 auf Papier).
+ */
+
+:root {
+  --paper: #f3ead7;
+  --paper-card: #fffaf0;
+  --ink: #1d1712;
+  --ink-soft: #4a3f35;
+  --moor: #3b2a1e;
+  --birch-green: #3f5f31;
+  --sky: #24527d;
+  --file-red: #9e2b25;
+  --gold: #e2b04a;
+  --line: #cbbd9f;
+
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-stamp: 'Special Elite', 'Courier New', monospace;
+
+  --radius: 14px;
+  --tap: 52px; /* Mindesthöhe für Buttons – gut mit dem Daumen zu treffen */
+  --gutter: 16px;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--paper);
+  /* Dezente Papierstruktur ohne Bilddatei */
+  background-image:
+    radial-gradient(circle at 20% 10%, rgb(255 255 255 / 0.5), transparent 40%),
+    repeating-linear-gradient(0deg, rgb(59 42 30 / 0.025) 0 1px, transparent 1px 4px);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+#app {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.screen {
+  padding: calc(env(safe-area-inset-top) + 20px) var(--gutter) calc(env(safe-area-inset-bottom) + 120px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h1,
+h2,
+h3,
+.h3 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  margin: 0;
+  color: var(--moor);
+}
+h1 {
+  font-size: 1.75rem;
+}
+h2 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+h3,
+.h3 {
+  font-size: 1.15rem;
+}
+p {
+  margin: 0.4em 0;
+}
+.small {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.lead {
+  font-size: 1.05rem;
+}
+
+a {
+  color: var(--sky);
+}
+:focus-visible {
+  outline: 3px solid var(--sky);
+  outline-offset: 2px;
+}
+
+/* --- Bausteine ------------------------------------------------------- */
+
+.hero {
+  padding-top: 8px;
+}
+
+.stamp {
+  display: inline-block;
+  font-family: var(--font-stamp);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--file-red);
+  border: 3px solid var(--file-red);
+  border-radius: 6px;
+  padding: 2px 10px;
+  transform: rotate(-2deg);
+  margin: 0 0 12px;
+}
+
+.eyebrow {
+  font-family: var(--font-stamp);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--birch-green);
+  font-size: 0.9rem;
+  margin: 0 0 4px;
+}
+
+.card {
+  background: var(--paper-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: 0 2px 0 rgb(59 42 30 / 0.12);
+}
+
+/* Aktenblatt mit Büroklammer-Kante */
+.file {
+  border-left: 8px solid var(--moor);
+}
+
+.tag {
+  display: inline-block;
+  background: var(--birch-green);
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tour-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+.tour-card h3 {
+  margin-bottom: 6px;
+}
+.facts {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.status {
+  text-align: center;
+  color: var(--ink-soft);
+  padding: 24px 0;
+}
+
+.back {
+  align-self: flex-start;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 0;
+  min-height: 44px;
+}
+
+/* --- Buttons --------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: var(--tap);
+  padding: 12px 20px;
+  border: 2px solid var(--moor);
+  border-radius: var(--radius);
+  background: var(--moor);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+.btn-secondary {
+  background: var(--paper-card);
+  color: var(--moor);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--moor);
+  border-color: transparent;
+  text-decoration: underline;
+}
+.btn-small {
+  width: auto;
+  min-height: 44px;
+  padding: 8px 14px;
+  font-size: 0.95rem;
+}
+
+/* Hauptaktion unten – im Daumenbereich */
+.action-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 12px var(--gutter) calc(env(safe-area-inset-bottom) + 12px);
+  background: linear-gradient(to top, var(--paper) 70%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 640px;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+/* --- Schwierigkeitswahl ---------------------------------------------- */
+
+.difficulty {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.difficulty legend {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--moor);
+  margin-bottom: 10px;
+  padding: 0;
+}
+.choice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2px 12px;
+  align-items: center;
+  background: var(--paper-card);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  min-height: var(--tap);
+  cursor: pointer;
+}
+.choice input {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  accent-color: var(--moor);
+  grid-row: span 2;
+}
+.choice-label {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.choice-desc {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.choice.selected {
+  border-color: var(--moor);
+  box-shadow: inset 0 0 0 1px var(--moor);
+}
+
+/* --- Offline & Hinweise ---------------------------------------------- */
+
+.offline-box {
+  display: grid;
+  gap: 8px;
+}
+.offline-badge {
+  color: var(--birch-green);
+  font-weight: 700;
+}
+
+.banner {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: calc(env(safe-area-inset-top) + 8px) var(--gutter) 8px;
+  background: var(--sky);
+  color: #fff;
+  font-weight: 600;
+}
+.banner span {
+  flex: 1 1 12em;
+}
+.banner .btn {
+  border-color: #fff;
+  background: #fff;
+  color: var(--sky);
+}
+.banner .btn-ghost {
+  background: transparent;
+  color: #fff;
+}
+
+.install-hint {
+  border-color: var(--sky);
+}
+
+.station-preview {
+  margin: 0;
+  padding-left: 1.4em;
+  color: var(--ink-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

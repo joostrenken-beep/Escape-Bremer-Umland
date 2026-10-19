@@ -1,0 +1,8 @@
+node_modules/
+dist/
+# wird beim Build aus content/ erzeugt
+public/tours/
+# Lösungscodes im Klartext – NIE committen (Repo ist öffentlich)
+content/*/codes.json
+.DS_Store
+*.log

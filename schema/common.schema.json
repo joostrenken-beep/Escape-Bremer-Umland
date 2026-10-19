@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://escape-bremer-umland.local/schema/common.schema.json",
+  "title": "Gemeinsame Bausteine",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "description": "Kleinbuchstaben, Ziffern, Bindestriche"
+    },
+    "LocalizedText": {
+      "type": "object",
+      "description": "Text je Sprache. Deutsch ist Pflicht.",
+      "required": ["de"],
+      "properties": {
+        "de": { "type": "string", "minLength": 1 },
+        "en": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "LeveledText": {
+      "type": "object",
+      "description": "Text je Schwierigkeit; 'all' gilt für Stufen ohne eigenen Text.",
+      "minProperties": 1,
+      "properties": {
+        "all": { "$ref": "#/$defs/LocalizedText" },
+        "easy": { "$ref": "#/$defs/LocalizedText" },
+        "medium": { "$ref": "#/$defs/LocalizedText" },
+        "hard": { "$ref": "#/$defs/LocalizedText" }
+      },
+      "additionalProperties": false
+    },
+    "GeoPoint": {
+      "type": "object",
+      "required": ["lat", "lng", "verified"],
+      "properties": {
+        "lat": { "type": "number", "minimum": -90, "maximum": 90 },
+        "lng": { "type": "number", "minimum": -180, "maximum": 180 },
+        "verified": { "type": "boolean" },
+        "note": { "type": "string" }
+      }
+    },
+    "mediaPath": {
+      "type": "string",
+      "pattern": "^media/[A-Za-z0-9._/-]+$",
+      "description": "Pfad relativ zum Stadtordner, z. B. media/cover.jpg"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://escape-bremer-umland.local/schema/tour.schema.json",
+  "title": "Tour (content/<stadt>/tour.json)",
+  "type": "object",
+  "required": ["id", "version", "published", "town", "title", "teaser", "durationMinutes", "distanceKm", "codeSalt", "start", "difficulties", "story", "stations"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "$ref": "common.schema.json#/$defs/id" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "published": { "type": "boolean" },
+    "town": { "$ref": "common.schema.json#/$defs/LocalizedText" },
+    "title": { "$ref": "common.schema.json#/$defs/LocalizedText" },
+    "teaser": { "$ref": "common.schema.json#/$defs/LocalizedText" },
+    "durationMinutes": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1 },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "distanceKm": { "type": "number", "exclusiveMinimum": 0 },
+    "cover": { "$ref": "common.schema.json#/$defs/mediaPath" },
+    "codeSalt": { "type": "string", "minLength": 8 },
+    "start": {
+      "allOf": [{ "$ref": "common.schema.json#/$defs/GeoPoint" }],
+      "type": "object",
+      "required": ["name", "description"],
+      "properties": {
+        "lat": true, "lng": true, "verified": true, "note": true,
+        "name": { "$ref": "common.schema.json#/$defs/LocalizedText" },
+        "description": { "$ref": "common.schema.json#/$defs/LeveledText" }
+      },
+      "additionalProperties": false
+    },
+    "difficulties": {
+      "type": "object",
+      "required": ["easy", "medium", "hard"],
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(easy|medium|hard)$": {
+          "type": "object",
+          "required": ["label", "description"],
+          "additionalProperties": false,
+          "properties": {
+            "label": { "$ref": "common.schema.json#/$defs/LocalizedText" },
+            "description": { "$ref": "common.schema.json#/$defs/LocalizedText" }
+          }
+        }
+      }
+    },
+    "story": {
+      "type": "object",
+      "required": ["intro", "outro"],
+      "additionalProperties": false,
+      "properties": {
+        "intro": { "$ref": "common.schema.json#/$defs/LeveledText" },
+        "outro": { "$ref": "common.schema.json#/$defs/LeveledText" }
+      }
+    },
+    "stations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "common.schema.json#/$defs/id" }
+    },
+    "access": {
+      "type": "object",
+      "required": ["requireUnlockCode"],
+      "additionalProperties": false,
+      "properties": { "requireUnlockCode": { "type": "boolean" } }
+    }
+  }
+}

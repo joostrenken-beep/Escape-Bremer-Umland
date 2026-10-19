@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "01-kaffee-worpswede",
+  "title": { "de": "Kaffee Worpswede" },
+  "location": {
+    "name": { "de": "Kaffee Worpswede, Lindenallee" },
+    "lat": 53.2186,
+    "lng": 8.9291,
+    "verified": false,
+    "note": "Koordinaten aus Karte geschätzt"
+  },
+  "directions": {
+    "all": { "de": "Ihr steht schon richtig: Die erste Station ist der Startpunkt." }
+  },
+  "story": {
+    "all": {
+      "de": "Hier, im Kaffee Worpswede, saß die Restauratorin Greta Vogt gestern Abend bis kurz vor Mitternacht – sagt sie. Auf der Skizzenbuchseite vom Tatort ist genau dieses Haus gezeichnet. Daneben steht: „Wo die Wände nicht gerade sein wollen, beginnt die Spur.“"
+    },
+    "easy": {
+      "de": "Schaut euch dieses lustige Haus an! Auf dem geheimen Zettel ist genau dieses Haus gemalt. Daneben steht: „Wo die Wände nicht gerade sein wollen, beginnt die Spur.“"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": { "de": "[PLATZHALTER] Zählt die runden Fenster an der Vorderseite des Hauses. Wie viele sind es?" }
+      },
+      "codeId": "s01-unlock",
+      "input": "number",
+      "hints": [
+        { "all": { "de": "Stellt euch auf die Straßenseite gegenüber, dann seht ihr die ganze Front." } },
+        { "all": { "de": "Zählt nur Fenster, die wirklich rund sind – nicht die eckigen." } },
+        { "all": { "de": "Zählt von links nach rechts und zeigt dabei mit dem Finger auf jedes Fenster." } }
+      ],
+      "fallback": {
+        "prompt": { "all": { "de": "[PLATZHALTER] Welche Farbe hat die Eingangstür?" } },
+        "codeId": "s01-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Gibt es eine gut sichtbare, zählbare Eigenschaft an der Fassade (z. B. runde Fenster)? Zahl vor Ort notieren."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "suspect-greta",
+      "kind": "suspect",
+      "title": { "de": "Greta Vogt, Restauratorin" },
+      "text": {
+        "all": { "de": "Hatte einen Schlüssel zum Haus Lindenhof. Alibi: Kaffee Worpswede bis kurz vor Mitternacht." },
+        "easy": { "de": "Sie repariert alte Bilder und hat einen Schlüssel zum Haus Lindenhof. Sie sagt, sie war gestern Abend im Café." }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Das Kaffee Worpswede wurde Mitte der 1920er-Jahre nach Plänen des Bildhauers und Architekten Bernhard Hoetger gebaut. Wegen seiner eigenwilligen Formen nennen es viele „Café Verrückt“."
+    },
+    "verified": false,
+    "verifyNote": "Baujahr und Architekt prüfen (vermutlich 1925, Bernhard Hoetger)."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://escape-bremer-umland.local/schema/station.schema.json",
+  "title": "Station (content/<stadt>/stations/<id>.json)",
+  "type": "object",
+  "required": ["id", "title", "location", "directions", "story", "steps"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": { "$ref": "common.schema.json#/$defs/id" },
+    "title": { "$ref": "common.schema.json#/$defs/LocalizedText" },
+    "location": {
+      "allOf": [{ "$ref": "common.schema.json#/$defs/GeoPoint" }],
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "lat": true, "lng": true, "verified": true, "note": true,
+        "name": { "$ref": "common.schema.json#/$defs/LocalizedText" }
+      },
+      "additionalProperties": false
+    },
+    "directions": { "$ref": "common.schema.json#/$defs/LeveledText" },
+    "story": { "$ref": "common.schema.json#/$defs/LeveledText" },
+    "audio": { "$ref": "common.schema.json#/$defs/mediaPath" },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Step" }
+    },
+    "notebook": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/NotebookEntry" }
+    },
+    "didYouKnow": {
+      "type": "object",
+      "required": ["text", "verified"],
+      "additionalProperties": false,
+      "properties": {
+        "text": { "$ref": "common.schema.json#/$defs/LocalizedText" },
+        "sources": { "type": "array", "items": { "type": "string" } },
+        "verified": { "type": "boolean" },
+        "verifyNote": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "Step": {
+      "description": "Rätsel-Schritt. Der 'type' wählt die Rätsel-Komponente in der App.",
+      "type": "object",
+      "required": ["type"],
+      "properties": { "type": { "enum": ["code"] } },
+      "oneOf": [{ "$ref": "#/$defs/CodeStep" }]
+    },
+    "CodeStep": {
+      "type": "object",
+      "required": ["type", "id", "prompt", "codeId", "hints", "verified"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "code" },
+        "id": { "$ref": "common.schema.json#/$defs/id" },
+        "prompt": { "$ref": "common.schema.json#/$defs/LeveledText" },
+        "codeId": { "$ref": "common.schema.json#/$defs/id" },
+        "input": { "enum": ["text", "number"] },
+        "hints": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": { "$ref": "common.schema.json#/$defs/LeveledText" }
+        },
+        "fallback": {
+          "type": "object",
+          "required": ["prompt", "codeId"],
+          "additionalProperties": false,
+          "properties": {
+            "prompt": { "$ref": "common.schema.json#/$defs/LeveledText" },
+            "codeId": { "$ref": "common.schema.json#/$defs/id" },
+            "input": { "enum": ["text", "number"] }
+          }
+        },
+        "verified": { "type": "boolean" },
+        "verifyNote": { "type": "string" }
+      }
+    },
+    "NotebookEntry": {
+      "type": "object",
+      "required": ["id", "kind", "title", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/id" },
+        "kind": { "enum": ["clue", "suspect", "code", "note"] },
+        "title": { "$ref": "common.schema.json#/$defs/LocalizedText" },
+        "text": { "$ref": "common.schema.json#/$defs/LeveledText" },
+        "image": { "$ref": "common.schema.json#/$defs/mediaPath" }
+      }
+    }
+  }
+}

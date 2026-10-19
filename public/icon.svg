@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#3b2a1e"/>
+  <!-- Himmel / Moor -->
+  <rect x="56" y="56" width="400" height="400" rx="40" fill="#f3ead7"/>
+  <path d="M56 330 Q180 300 256 320 T456 310 V416 a40 40 0 0 1 -40 40 H96 a40 40 0 0 1 -40 -40 Z" fill="#5d7a4a"/>
+  <!-- Mond -->
+  <circle cx="352" cy="150" r="46" fill="#e2b04a"/>
+  <!-- Birke -->
+  <rect x="140" y="120" width="22" height="230" fill="#ffffff" stroke="#2a1f17" stroke-width="6"/>
+  <path d="M146 170 h12 M146 225 h10 M148 280 h12" stroke="#2a1f17" stroke-width="6"/>
+  <!-- Lupe -->
+  <circle cx="270" cy="270" r="74" fill="none" stroke="#a3302a" stroke-width="26"/>
+  <path d="M322 322 L400 400" stroke="#a3302a" stroke-width="34" stroke-linecap="round"/>
+</svg>
