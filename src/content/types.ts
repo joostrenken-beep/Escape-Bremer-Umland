@@ -231,6 +231,8 @@ export interface CodesFile {
       reveal: LocalizedText;
     }
   >;
+  /** Freischaltcodes für die Tour (nur relevant, wenn tour.access.requireUnlockCode). */
+  access?: { codes: string[] };
 }
 
 // ---------------------------------------------------------------------------
@@ -249,6 +251,8 @@ export interface BuiltTour extends Omit<TourSource, 'stations'> {
   codes: Record<string, BuiltCode>;
   /** Woher die Codes beim Build kamen: GitHub-Secret, lokale codes.json oder Platzhalter. */
   codesSource: 'secret' | 'local' | 'example';
+  /** Gehashte Freischaltcodes (nur wenn access.requireUnlockCode). */
+  accessHashes?: string[];
   /** Alle Dateien des Pakets (für den Offline-Download), relativ zu tours/<id>/. */
   files: string[];
   builtAt: string;

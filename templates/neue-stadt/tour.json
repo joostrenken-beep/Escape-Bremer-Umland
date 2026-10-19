@@ -1,0 +1,34 @@
+{
+  "$schema": "../../schema/tour.schema.json",
+  "id": "__ID__",
+  "version": "0.1.0",
+  "published": false,
+  "town": { "de": "__NAME__" },
+  "title": { "de": "[PLATZHALTER] Titel des Falls" },
+  "teaser": { "de": "[PLATZHALTER] Ein Satz, der neugierig macht." },
+  "durationMinutes": [90, 120],
+  "distanceKm": 3,
+  "codeSalt": "__SALT__",
+  "start": {
+    "name": { "de": "[PLATZHALTER] Treffpunkt" },
+    "lat": 53.0,
+    "lng": 9.0,
+    "verified": false,
+    "note": "Koordinaten vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln",
+    "description": { "all": { "de": "[PLATZHALTER] Wo genau trifft man sich?" } }
+  },
+  "difficulties": {
+    "easy": { "label": { "de": "Leicht" }, "description": { "de": "Für Familien mit Grundschulkindern." } },
+    "medium": { "label": { "de": "Mittel" }, "description": { "de": "Für alle, die den Ort entdecken wollen." } },
+    "hard": { "label": { "de": "Schwer" }, "description": { "de": "Für Rätselprofis." } }
+  },
+  "story": {
+    "intro": {
+      "all": { "de": "[PLATZHALTER] Der Fall: Was ist passiert? (max. ca. 80 Wörter)" },
+      "easy": { "de": "[PLATZHALTER] Kindgerechte Variante – kein Gruseln, keine Gewalt." }
+    },
+    "outro": { "all": { "de": "[PLATZHALTER] Die Auflösung des Falls." } }
+  },
+  "stations": ["01-start"],
+  "access": { "requireUnlockCode": false }
+}

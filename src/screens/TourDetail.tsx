@@ -1,5 +1,9 @@
 import { useState } from 'preact/hooks';
+import { access } from '../adapters';
 import { OfflineButton } from '../components/OfflineButton';
+import { Results } from '../components/Results';
+import { UnlockGate } from '../components/UnlockGate';
+import { useAsync } from '../hooks';
 import { LoadError, Loading } from '../components/Status';
 import { DIFFICULTIES, type Difficulty } from '../content/types';
 import { useTour } from '../content/useTour';
@@ -16,6 +20,10 @@ interface Props {
 
 export function TourDetail({ tourId, session, onSessionChange }: Props) {
   const [state, reload] = useTour(tourId);
+  const [unlocked, reloadUnlocked] = useAsync(
+    () => (state.status === 'ok' ? access.isUnlocked(state.data) : Promise.resolve(true)),
+    [state.status],
+  );
   const [difficulty, setDifficulty] = useState<Difficulty>(session?.tourId === tourId ? session.difficulty : 'medium');
   const lang = getLang();
   const running = session?.tourId === tourId && session.phase !== 'finished';
@@ -58,7 +66,11 @@ export function TourDetail({ tourId, session, onSessionChange }: Props) {
         💡 {ui('knowledge')}
       </a>
 
-      {running ? (
+      <Results tourId={tour.id} />
+
+      {!running && unlocked.status === 'ok' && !unlocked.data ? (
+        <UnlockGate tour={tour} onUnlocked={reloadUnlocked} />
+      ) : running ? (
         <div class="action-bar">
           <button class="btn" onClick={() => navigate('play')}>
             {ui('continueCase')}

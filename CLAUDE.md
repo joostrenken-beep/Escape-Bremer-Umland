@@ -13,7 +13,7 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
 | 3 Worpswede-Content v1 + Entwickler-Ansicht + Navigation | ✅ fertig |
 | 4 Digitale Rätsel (Mini-Games, Audio, Kamera, AR) | ✅ fertig |
 | 5 Finale, Urkunde, Design, Gerätetests | ✅ fertig (echte Gerätetests: docs/GERAETETEST.md) |
-| 6 Backend-Vorbereitung, Freischaltmodul, Anleitung neue Stadt | offen |
+| 6 Backend-Vorbereitung, Freischaltmodul, Anleitung neue Stadt | ✅ fertig |
 
 ## Entscheidungen (mit Nutzer abgestimmt)
 
@@ -56,12 +56,17 @@ content/<stadt>/            Inhalte (nur JSON + Medien, kein Code)
   codes.example.json        Platzhalter-Codes (im Repo)
   codes.json                echte Klartext-Codes (gitignored!)
 schema/*.schema.json        JSON-Schema (Draft 2020-12), Prüfung beim Build mit Ajv
-scripts/build-content.ts    content/ → public/tours/ (prüfen, Codes hashen, index.json)
+scripts/build-content.ts    content/ → public/tours/ (prüfen, Codes + Freischaltcodes hashen, index.json)
+scripts/new-city.ts         npm run new-city -- <id> "<Name>" → kopiert templates/neue-stadt/ nach content/<id>
+templates/neue-stadt/       Vorlage einer gültigen Mini-Tour (unveröffentlicht, Platzhalter)
+docs/                       API.md (Server-Vertrag), GERAETETEST.md (Checkliste echte Geräte)
 src/
   content/types.ts          TS-Typen (Source = Autorendaten, Built = ausgeliefertes Paket) – synchron zum Schema halten!
   content/verification.ts   sammelt alle `verified: false` (für Entwickler-Ansicht)
-  adapters/                 ContentAdapter + StorageAdapter (Interfaces); heute Static/LocalStorage, später ApiAdapter
-  adapters/index.ts         EINZIGE Stelle, an der Adapter ausgewählt werden
+  adapters/types.ts         Interfaces: ContentAdapter, StorageAdapter, ScoreAdapter, AccessAdapter
+  adapters/Local*, Static*  heutige Umsetzung (statische Dateien, localStorage, Bestenliste + Freischaltung lokal)
+  adapters/api.ts           Api*-Adapter für späteres Backend (Vertrag: docs/API.md)
+  adapters/index.ts         EINZIGE Stelle, an der Adapter ausgewählt werden (VITE_API_URL gesetzt → Api*)
   game/codes.ts             Normalisierung + SHA-256-Hash + verschleierte Auflösung (Browser & Node)
   game/session.ts           Spielstand (schemaVersion 2, migrateSession für alte Stände) + Speichern
   game/engine.ts            REINE Spiellogik: reduce(session, tour, action, now) → neue session (gut testbar)
@@ -105,6 +110,9 @@ tests/                      Vitest; tests/fixtures/content/testtour = feste 2-St
 - **Notizbuch** speichert nur Verweise (stationId/entryId) + gelöste Codes, Texte kommen aus der Tour.
 - **Testmodus** (⚙️ Einstellungen): unveröffentlichte Touren, „Test: Schritt lösen“, Sprung zu Station; setzt `usedTestMode`.
   Im Testmodus erscheint in den Einstellungen der Link zur Entwickler-Ansicht (#/dev).
+- **Freischaltcode-Modul** (Standard aus): tour.access.requireUnlockCode + codes.access.codes → tour.accessHashes;
+  UnlockGate in TourDetail. Lokal umgehbar – für Verkauf ApiAccessAdapter.
+- **Bestenliste:** bei Spielende `scores.submit()` (useGame), Anzeige `components/Results.tsx` (ohne Testmodus-Spiele).
 - **BuiltTour.codesSource** = secret | local | example → Entwickler-Ansicht warnt bei Platzhalter-Codes.
 - Ersatzfrage (fallback) hat keine eigenen Hinweise – nur Auflösung.
 
@@ -115,7 +123,16 @@ tests/                      Vitest; tests/fixtures/content/testtour = feste 2-St
 - Kamera/GPS/Sensoren nur nach Nutzer-Tap aktivieren, immer Fallback ohne.
 - Imports, die vom Build-Skript (Node) erreicht werden, mit `.ts`-Endung.
 
+## Offene Punkte (Stand nach M6)
+- Vor Ort prüfen: Koordinaten, Wegbeschreibungen ([PLATZHALTER]), Orts-Codes + Ersatzfragen, „Wusstest du?“-Fakten
+  (Entwickler-Ansicht → Prüfliste). Echte Codes als Secret TOUR_CODES hinterlegen.
+- Gemeinfreies historisches Foto für den Barkenhoff (St. 9) + Frage/Antwort/Hinweise dazu.
+- Optional: eigene Audioaufnahme der Zeugenaussage (St. 5, Feld `audio`), Bildausschnitt-Rätsel (code + `image`).
+- Tests auf echten Geräten (docs/GERAETETEST.md). Englische Texte (`en`) ergänzen.
+
 ## Befehle
 - `npm run dev` – Dev-Server (baut Content automatisch, lädt bei Änderungen neu)
 - `npm test` – Tests · `npm run typecheck` · `npm run content` – nur Content prüfen/bauen
 - `npm run build` / `npm run preview` · `npm run icons` – Icons aus `public/icon.svg` erzeugen
+- `npm run new-city -- <id> "<Name>"` – neue Stadt aus Vorlage
+- Lokaler Build für Pages-Pfad: `BASE_PATH=/Escape-Bremer-Umland/ npx vite build` (sonst stimmen die Pfade nicht)

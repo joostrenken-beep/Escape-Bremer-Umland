@@ -30,7 +30,7 @@ import type {
   TourSummary,
 } from '../src/content/types.ts';
 import { codeIdsOfStep, DIFFICULTIES } from '../src/content/types.ts';
-import { hashAnswer, obscureReveal } from '../src/game/codes.ts';
+import { ACCESS_CODE_ID, hashAnswer, obscureReveal } from '../src/game/codes.ts';
 import { leveled } from '../src/i18n/text.ts';
 import { collectUnverified } from '../src/content/verification.ts';
 
@@ -233,6 +233,14 @@ async function buildTour(
     }
   }
 
+  // Freischaltcodes (optionales Modul)
+  let accessHashes: string[] | undefined;
+  if (tour.access?.requireUnlockCode) {
+    const list = codesFile?.access?.codes ?? [];
+    if (!list.length) errors.push(`${rel}: requireUnlockCode ist an, aber es gibt keine access.codes in den Codes`);
+    accessHashes = await Promise.all(list.map((c) => hashAnswer(tour.codeSalt, ACCESS_CODE_ID, c)));
+  }
+
   if (errors.length > errCount) return null;
 
   const unverified = collectUnverified({ tour, stations }).length;
@@ -245,6 +253,7 @@ async function buildTour(
     stations,
     codes,
     codesSource: loaded?.source ?? 'example',
+    ...(accessHashes ? { accessHashes } : {}),
     files: ['tour.json', ...mediaFiles],
     builtAt: new Date().toISOString(),
   };

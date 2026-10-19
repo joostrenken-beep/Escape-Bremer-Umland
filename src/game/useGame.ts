@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import type { BuiltTour } from '../content/types';
-import { currentStation, reconcile, reduce, type GameAction } from './engine';
+import { scores } from '../adapters';
+import { currentStation, elapsedMs, maxScore, reconcile, reduce, scoreOf, type GameAction } from './engine';
 import { addKnowledge } from './knowledge';
 import { saveSession, type GameSession } from './session';
 
@@ -15,6 +16,19 @@ export function useGame(session: GameSession, tour: BuiltTour, onChange: (s: Gam
       if (next === session) return;
       saveSession(next);
       onChange(next);
+      if (next.phase === 'finished' && session.phase !== 'finished') {
+        scores.submit({
+          tourId: tour.id,
+          tourVersion: tour.version,
+          difficulty: next.difficulty,
+          team: next.teamName,
+          score: scoreOf(tour, next),
+          maxScore: maxScore(tour),
+          timeMs: elapsedMs(next, Date.now()),
+          finishedAt: next.finishedAt ?? new Date().toISOString(),
+          usedTestMode: next.usedTestMode,
+        });
+      }
       if (next.phase === 'debrief') {
         const st = currentStation(tour, next);
         if (st) addKnowledge(tour.id, st.id);

@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "01-start",
+  "title": { "de": "[PLATZHALTER] Name der Station" },
+  "location": {
+    "name": { "de": "[PLATZHALTER] Ort / Adresse" },
+    "lat": 53.0,
+    "lng": 9.0,
+    "verified": false
+  },
+  "directions": { "all": { "de": "[PLATZHALTER] Wegbeschreibung von der vorherigen Station hierher." } },
+  "story": { "all": { "de": "[PLATZHALTER] Was passiert an dieser Station? (max. ca. 80 Wörter)" } },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": { "all": { "de": "[PLATZHALTER] Frage nach einer dauerhaft sichtbaren Angabe vor Ort (Jahreszahl, Inschrift, Anzahl …)" } },
+      "codeId": "s01-unlock",
+      "input": "number",
+      "hints": [
+        { "all": { "de": "[PLATZHALTER] Hinweis 1 (sanft)" } },
+        { "all": { "de": "[PLATZHALTER] Hinweis 2 (deutlicher)" } },
+        { "all": { "de": "[PLATZHALTER] Hinweis 3 (fast die Lösung)" } }
+      ],
+      "fallback": {
+        "prompt": { "all": { "de": "[PLATZHALTER] Ersatzfrage, falls die Angabe fehlt" } },
+        "codeId": "s01-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Was genau ist vor Ort zu prüfen?"
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-1",
+      "kind": "clue",
+      "title": { "de": "[PLATZHALTER] Erster Hinweis" },
+      "text": { "all": { "de": "[PLATZHALTER] Was landet im Notizbuch?" } }
+    }
+  ],
+  "didYouKnow": {
+    "text": { "de": "[PLATZHALTER] Echtes Ortswissen zu dieser Station." },
+    "verified": false,
+    "verifyNote": "Quelle angeben und prüfen"
+  }
+}

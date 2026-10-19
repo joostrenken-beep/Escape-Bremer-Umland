@@ -2,18 +2,80 @@
 
 Ein Krimi-Escape-Spiel für draußen, das gleichzeitig eine Stadtführung ist. Die Gruppe spielt mit **einem Handy**:
 An jeder Station findet sie eine echte Information vor Ort (Jahreszahl, Inschrift, Anzahl …), gibt sie als Code ein
-und löst Rätsel, bis der Fall aufgeklärt ist. Erste Tour: **Worpswede – „Die Mondnacht vom Weyerberg“**.
+und löst Rätsel – vom Logikrätsel über Morse-Töne bis zum Kompass mit Kamera –, bis der Fall aufgeklärt ist.
+Erste Tour: **Worpswede – „Die Mondnacht vom Weyerberg“**.
 
 👉 **Spielen:** https://joostrenken-beep.github.io/Escape-Bremer-Umland/
 
-## Auf dem iPhone testen
+## Spielen & teilen
 
-1. Link oben in **Safari** öffnen.
-2. Optional: Teilen → **„Zum Home-Bildschirm“** – dann startet sie wie eine App.
-3. Tour öffnen und **„Für offline speichern“** tippen (im WLAN). Danach funktioniert alles ohne Internet.
+- Link in **Safari** (iPhone) oder **Chrome** (Android) öffnen – das ist alles. Den Link kann man einfach weitergeben.
+- Optional: Teilen → **„Zum Home-Bildschirm“** – dann startet sie wie eine App.
+- Tour öffnen und **„Für offline speichern“** tippen (im WLAN). Danach funktioniert alles ohne Internet
+  (nur die Karte braucht Netz).
+- Spielstand, Notizbuch und Ergebnisse speichert jedes Handy für sich.
 
-Nach jedem Push auf `main` baut GitHub die App neu (Reiter **Actions**). Ist eine neue Version da, zeigt die App
-oben „Eine neue Version ist da – Aktualisieren“.
+**Testmodus:** Startseite → ⚙️ Einstellungen → Testmodus. Dann lassen sich Rätsel überspringen, Stationen anspringen
+und unveröffentlichte Touren spielen. Dort gibt es auch die **Entwickler-Ansicht** mit der Prüfliste für vor Ort.
+
+## Neue Stadt anlegen
+
+Jede Stadt ist ein eigener Ordner in `content/`. **Programmieren muss man dafür nichts.**
+
+1. **Ordner anlegen** (mit Node.js auf dem Rechner, oder Claude bitten):
+   ```bash
+   npm run new-city -- lilienthal "Lilienthal"
+   ```
+   Das erzeugt `content/lilienthal/` mit einer Beispiel-Station. Die Tour ist zunächst **unveröffentlicht**
+   (`"published": false`) – sie erscheint nur im Testmodus.
+2. **`tour.json` ausfüllen:** Titel, Teaser, Startpunkt, Story-Einleitung und Auflösung (je Stufe), Reihenfolge der
+   Stationen (`"stations": [...]`).
+3. **Stationen schreiben:** pro Station eine Datei `stations/<id>.json` (die Beispiel-Station kopieren).
+   Wichtig:
+   - Texte je Stufe: `"all"` gilt für alle, `"easy"`/`"medium"`/`"hard"` überschreiben einzelne Stufen.
+   - Story max. ca. 80 Wörter.
+   - Jede ortsbezogene Angabe bekommt `"verified": false`, bis sie vor Ort geprüft ist.
+   - Rätseltypen (`"type"`): `code`, `audio`, `morse`, `colorfilter`, `overlay`, `lock`, `slider`, `compass`,
+     `accuse` – Beispiele für alle Typen stehen in `content/worpswede/stations/`.
+   - Bilder und Audio in `media/` ablegen und als `"media/datei.jpg"` angeben (Lizenz beachten!).
+4. **Codes:** Platzhalter in `codes.example.json`. Echte Codes niemals ins Repo (siehe unten).
+5. **Prüfen:** `npm run content` – meldet verständlich, was fehlt oder falsch ist. Jeder Push prüft das automatisch.
+6. **Vor Ort prüfen:** Testmodus → Entwickler-Ansicht → Prüfliste abarbeiten, Koordinaten mit
+   „Meinen Standort anzeigen“ ablesen, dann `"verified": true` setzen.
+7. **Veröffentlichen:** in `tour.json` `"published": true` setzen und pushen.
+
+## Lösungscodes (wichtig – das Repo ist öffentlich!)
+
+Die Codes, die man **vor Ort** findet, stehen **nie** im Repo. Im Repo liegt nur `codes.example.json` mit
+Platzhaltern (und den Lösungen der reinen Denk-Rätsel, die sich ohnehin aus dem Rätseltext ergeben).
+
+- **Lokal:** `codes.example.json` kopieren zu `codes.json` und echte Antworten eintragen (wird von Git ignoriert).
+- **Für die veröffentlichte App:** GitHub → *Settings → Secrets and variables → Actions → New repository secret*,
+  Name **`TOUR_CODES`**, Inhalt: alle Städte in einem JSON:
+  ```json
+  {
+    "worpswede": { "codes": { "s01-unlock": { "answers": ["7"], "reveal": { "de": "Es sind 7 runde Fenster." } } } },
+    "lilienthal": { "codes": { "…": { "answers": ["…"], "reveal": { "de": "…" } } } }
+  }
+  ```
+  Tipp: Eine Kopie davon privat aufbewahren – GitHub zeigt Secrets nach dem Speichern nicht mehr an.
+- Mehrere richtige Antworten sind möglich (`"answers": ["Barkenhoff", "Barkenhof"]`), Groß-/Kleinschreibung,
+  Leerzeichen, Bindestriche und ä/ae/ß/ss werden automatisch toleriert.
+- In der ausgelieferten App stehen nur Hash-Werte der Antworten.
+
+## Freischaltcodes (optional, Standard: aus)
+
+Soll eine Tour nur mit Code spielbar sein (z. B. verkauftes Ticket):
+1. In `tour.json`: `"access": { "requireUnlockCode": true }`
+2. In den Codes (Secret bzw. `codes.json`) ergänzen: `"access": { "codes": ["MOOR-2026", "…"] }`
+
+Ohne Server lässt sich das von Technikkundigen umgehen. Für echten Verkauf einen Server nutzen (nächster Abschnitt).
+
+## Späteres Backend
+
+Alle Datenzugriffe laufen über Adapter (`src/adapters/`). Wird beim Build die Umgebungsvariable `VITE_API_URL`
+gesetzt, nutzt die App einen Server für Touren, Bestenliste und Freischaltcodes – sonst alles lokal.
+Die erwartete Schnittstelle steht in [`docs/API.md`](docs/API.md).
 
 ## Lokal entwickeln (optional, braucht Node.js ≥ 22)
 
@@ -21,30 +83,23 @@ oben „Eine neue Version ist da – Aktualisieren“.
 npm install
 npm run dev      # zeigt eine Adresse wie http://192.168.x.x:5173 – im selben WLAN auch auf dem Handy öffnen
 npm test         # automatische Tests
+npm run content  # nur Inhalte prüfen
 ```
 
-Hinweis: Kamera, Bewegungssensoren und Offline-Modus funktionieren auf dem iPhone nur über HTTPS – also über den
-GitHub-Pages-Link, nicht über die lokale Adresse.
-
-## Lösungscodes (wichtig – das Repo ist öffentlich!)
-
-Die echten Codes stehen **nie** im Repo. Im Repo liegt nur `content/<stadt>/codes.example.json` mit Platzhaltern.
-
-- **Lokal:** `codes.example.json` kopieren zu `codes.json` und echte Antworten eintragen (wird von Git ignoriert).
-- **Für die veröffentlichte App:** Auf GitHub unter *Settings → Secrets and variables → Actions → New repository
-  secret* ein Secret **`TOUR_CODES`** anlegen. Inhalt:
-  ```json
-  { "worpswede": { "codes": { "s01-unlock": { "answers": ["…"], "reveal": { "de": "…" } } } } }
-  ```
-
-In der ausgelieferten App stehen nur Hash-Werte der Antworten.
+Kamera, Bewegungssensoren und Offline-Modus funktionieren auf dem iPhone nur über HTTPS – also über den
+GitHub-Pages-Link. Checkliste für Tests auf echten Geräten: [`docs/GERAETETEST.md`](docs/GERAETETEST.md).
 
 ## Aufbau
 
-Siehe [`CLAUDE.md`](CLAUDE.md) für Architektur und Stand. Kurz:
+Siehe [`CLAUDE.md`](CLAUDE.md) für Architektur, Entscheidungen und Stand. Kurz:
 - `content/` – alle Inhalte als JSON, eine Stadt pro Ordner
 - `schema/` – Regeln, wie diese JSON-Dateien aussehen müssen (werden beim Build geprüft)
-- `src/` – die App (Preact + TypeScript)
-- `scripts/build-content.ts` – prüft die Inhalte und erzeugt daraus die Stadtpakete
+- `src/` – die App (Preact + TypeScript), Rätsel-Plugins in `src/puzzles/`
+- `scripts/` – Content-Build (prüfen, Codes hashen) und `new-city`
+- `templates/neue-stadt/` – Vorlage für neue Städte
 
-Die Anleitung „Neue Stadt anlegen“ folgt in Meilenstein 6.
+## Bildnachweis
+
+- „Mondnacht am Weyerberg“ (`content/worpswede/media/mondnacht.svg`): eigene Illustration für dieses Projekt –
+  das Gemälde und die Malerin Johanna Behrens sind erfunden.
+- Karten: © OpenStreetMap-Mitwirkende.

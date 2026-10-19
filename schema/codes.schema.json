@@ -3,35 +3,73 @@
   "$id": "https://escape-bremer-umland.local/schema/codes.schema.json",
   "title": "Lösungscodes im Klartext (content/<stadt>/codes.json – nie committen!)",
   "type": "object",
-  "required": ["codes"],
+  "required": [
+    "codes"
+  ],
   "additionalProperties": false,
   "properties": {
-    "$schema": { "type": "string" },
+    "$schema": {
+      "type": "string"
+    },
     "codes": {
       "type": "object",
-      "propertyNames": { "$ref": "common.schema.json#/$defs/id" },
+      "propertyNames": {
+        "$ref": "common.schema.json#/$defs/id"
+      },
       "additionalProperties": {
         "type": "object",
-        "required": ["answers", "reveal"],
+        "required": [
+          "answers",
+          "reveal"
+        ],
         "additionalProperties": false,
         "properties": {
           "answers": {
             "oneOf": [
-              { "$ref": "#/$defs/answerList" },
+              {
+                "$ref": "#/$defs/answerList"
+              },
               {
                 "type": "object",
                 "minProperties": 1,
                 "additionalProperties": false,
                 "properties": {
-                  "all": { "$ref": "#/$defs/answerList" },
-                  "easy": { "$ref": "#/$defs/answerList" },
-                  "medium": { "$ref": "#/$defs/answerList" },
-                  "hard": { "$ref": "#/$defs/answerList" }
+                  "all": {
+                    "$ref": "#/$defs/answerList"
+                  },
+                  "easy": {
+                    "$ref": "#/$defs/answerList"
+                  },
+                  "medium": {
+                    "$ref": "#/$defs/answerList"
+                  },
+                  "hard": {
+                    "$ref": "#/$defs/answerList"
+                  }
                 }
               }
             ]
           },
-          "reveal": { "$ref": "common.schema.json#/$defs/LocalizedText" }
+          "reveal": {
+            "$ref": "common.schema.json#/$defs/LocalizedText"
+          }
+        }
+      }
+    },
+    "access": {
+      "type": "object",
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false,
+      "description": "Freischaltcodes vor Tourbeginn (nur genutzt, wenn tour.access.requireUnlockCode = true)",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
         }
       }
     }
@@ -40,7 +78,10 @@
     "answerList": {
       "type": "array",
       "minItems": 1,
-      "items": { "type": "string", "minLength": 1 }
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
     }
   }
 }

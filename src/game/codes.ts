@@ -57,6 +57,14 @@ export function forLevel<T>(value: Leveled<T>, level: Difficulty): T | undefined
   return value[level] ?? value.all;
 }
 
+/** Freischaltcodes (Geschäftsmodell): gleiche Normalisierung, eigene „codeId“. */
+export const ACCESS_CODE_ID = '__access__';
+
+export async function checkAccessCode(salt: string, hashes: string[], input: string): Promise<boolean> {
+  if (normalizeAnswer(input) === '') return false;
+  return hashes.includes(await hashAnswer(salt, ACCESS_CODE_ID, input));
+}
+
 export async function checkAnswer(
   salt: string,
   codeId: string,

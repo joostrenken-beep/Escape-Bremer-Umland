@@ -138,6 +138,15 @@ const de = {
   left: 'links',
   accuseSubmit: 'Bericht abgeben',
   accuseWrong: '{correct} von {total} Antworten stimmen. Schaut noch einmal ins Notizbuch!',
+  // Freischaltung & Ergebnisse
+  unlockTitle: 'Freischaltcode',
+  unlockText: 'Diese Tour wird mit einem Code freigeschaltet. Ihr findet ihn auf eurem Ticket.',
+  unlockPlaceholder: 'Code eingeben',
+  unlockButton: 'Tour freischalten',
+  unlockWrong: 'Dieser Code ist nicht gültig.',
+  unlockError: 'Der Code konnte nicht geprüft werden. Bitte mit Internet erneut versuchen.',
+  results: 'Eure Ermittlungen',
+  resultsNoName: 'Ermittlerteam',
   // Notizbuch
   notebookEmpty: 'Noch keine Einträge. Löst die erste Station!',
   suspects: 'Verdächtige',
