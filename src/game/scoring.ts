@@ -1,6 +1,6 @@
 /**
  * Punkteregeln (mit dem Projektinhaber abgestimmt, siehe CLAUDE.md).
- *  - Jede Station bringt 100 Punkte.
+ *  - Punktekonto: Start mit 100 Punkten je Station, Hilfen ziehen davon ab.
  *  - Abzüge je Rätsel-Schritt: Hinweis 1/2/3 = −10/−20/−30, Auflösung −60, Überspringen −50.
  *  - „Hier stimmt etwas nicht“ + Ersatzfrage gelöst = kein Abzug.
  *  - Eine Station kann nicht unter 0 fallen.

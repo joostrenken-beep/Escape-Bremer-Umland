@@ -25,7 +25,8 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
 - **Route (Entwurf, vor Ort prüfen):** Kaffee Worpswede → Große Kunstschau → Käseglocke → Kunsthalle → Zionskirche
   (Friedhof nur „Wusstest du?“, keine Spielaktion an Gräbern) → Weyerberg/Niedersachsenstein → Barkenhoff →
   Alter Bahnhof → Haus im Schluh → Finale Ortsmitte. Alle Rätsel **draußen, ohne Eintritt** lösbar.
-- **Punkte:** 100/Station; Hinweise −10/−20/−30; Auflösung −60; Überspringen −50; „Hier stimmt etwas nicht“ +
+- **Punkte:** Punktekonto – Start mit 100/Station (volles Konto), Hilfen ziehen sofort ab (Nutzerwunsch, damit man
+  in Runde 1 nicht mit Punkten „bezahlt“, die man noch nicht hat); Hinweise −10/−20/−30; Auflösung −60; Überspringen −50; „Hier stimmt etwas nicht“ +
   Ersatzfrage gelöst = 0 Abzug; Finale-Bonus. Zeit wird nur angezeigt, kein Abzug.
 - **Karte:** Online Leaflet/OSM. **Keine Offline-Karte** (Nutzerwunsch). Offline: Wegbeschreibung + GPS-Pfeil.
 - **Audio:** vorerst Sprachausgabe des Geräts (speechSynthesis); Morse/Töne per WebAudio. Echte Aufnahmen später.

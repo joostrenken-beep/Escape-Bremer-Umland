@@ -69,7 +69,14 @@ describe('Spielablauf', () => {
   it('Ersatzfrage („Hier stimmt etwas nicht“) kostet nichts', () => {
     const s = play([{ type: 'begin' }, { type: 'arrive' }, { type: 'useFallback' }, { type: 'solve', answer: 'test' }]);
     expect(s.steps['01-kaffee-worpswede/unlock'].fallback).toBe(true);
-    expect(scoreOf(tour, s)).toBe(100);
+    expect(scoreOf(tour, s)).toBe(200);
+  });
+
+  it('startet mit vollem Punktekonto, Hinweise ziehen sofort ab', () => {
+    let s = play([{ type: 'begin' }, { type: 'arrive' }]);
+    expect(scoreOf(tour, s)).toBe(200);
+    s = reduce(s, tour, { type: 'hint' }, T0 + 10_000);
+    expect(scoreOf(tour, s)).toBe(190);
   });
 
   it('Notizbuch sammelt Station-Einträge und Codes', () => {

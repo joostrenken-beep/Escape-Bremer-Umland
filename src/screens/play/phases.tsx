@@ -2,7 +2,7 @@
 import type { BuiltTour, NotebookEntrySource, StationSource } from '../../content/types';
 import { mediaUrl } from '../../content/media';
 import { elapsedMs, progressOf, type GameAction } from '../../game/engine';
-import { stationScore } from '../../game/scoring';
+import { STATION_POINTS, stationScore } from '../../game/scoring';
 import type { GameSession } from '../../game/session';
 import { formatDuration } from '../../game/useGame';
 import { leveled, localize } from '../../i18n/text';
@@ -140,7 +140,7 @@ export function DebriefView({ tour, session, dispatch }: PhaseProps) {
         <p class="stamp">{ui('stationSolved')}</p>
         <h1>{localize(station.title, lang)}</h1>
         <p class="lead">
-          ★ +{points} {ui('points')}
+          ★ {ui('stationPoints', { points, max: STATION_POINTS })}
         </p>
       </section>
       {station.notebook && station.notebook.length > 0 && (

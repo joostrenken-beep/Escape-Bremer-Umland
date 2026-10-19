@@ -69,10 +69,13 @@ function startClock(s: GameSession, now: number): GameSession {
 
 // --- Punkte -------------------------------------------------------------
 
+/**
+ * Punktekonto: Man startet mit dem vollen Konto (100 je Station) und jede
+ * Hilfe zieht ab. Noch nicht gespielte Stationen zählen also voll – so
+ * „bezahlt“ man Hinweise nie mit Punkten, die man noch gar nicht hat.
+ */
 export function scoreOf(tour: BuiltTour, s: GameSession): number {
-  return tour.stations.reduce((sum, station, i) => {
-    const done = i < s.stationIndex || (i === s.stationIndex && (s.phase === 'debrief' || s.phase === 'finished'));
-    if (!done) return sum;
+  return tour.stations.reduce((sum, station) => {
     const steps: StepScoreInput[] = station.steps.map((st) => progressOf(s, station.id, st.id));
     return sum + stationScore(steps);
   }, 0);

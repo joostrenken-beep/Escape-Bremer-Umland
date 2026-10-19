@@ -64,6 +64,7 @@ const de = {
   testJump: '🧪 Test: Springe zu Station',
   testModeBadge: 'Testmodus',
   stationSolved: 'Station gelöst!',
+  stationPoints: '{points} von {max} Punkten an dieser Station',
   newInNotebook: 'Neu im Notizbuch',
   didYouKnow: 'Wusstest du?',
   notVerifiedYet: 'Noch nicht vor Ort geprüft',
