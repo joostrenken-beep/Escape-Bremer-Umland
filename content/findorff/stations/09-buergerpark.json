@@ -6,16 +6,16 @@
   },
   "location": {
     "name": {
-      "de": "Rand des Bürgerparks am Torfkanal"
+      "de": "Rand des Bürgerparks am Torfhafen"
     },
-    "lat": 53.0915,
-    "lng": 8.82,
+    "lat": 53.0912,
+    "lng": 8.8165,
     "verified": false,
-    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen"
   },
   "directions": {
     "all": {
-      "de": "[PLATZHALTER] Geht zurück Richtung Torfkanal bis zum Rand des Bürgerparks."
+      "de": "[PLATZHALTER] Geht von der Bürgerweide nach Norden Richtung Bürgerpark bis zum Parkrand gleich neben dem Torfhafen."
     }
   },
   "story": {

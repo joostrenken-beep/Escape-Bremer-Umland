@@ -8,10 +8,10 @@
     "name": {
       "de": "Niedersachsenstein auf dem Weyerberg"
     },
-    "lat": 53.2245,
-    "lng": 8.9236,
+    "lat": 53.21611,
+    "lng": 8.92361,
     "verified": false,
-    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Wikidata/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen (Koordinate ist die des Weyerberg-Gipfels – Denkmal genau einmessen)"
   },
   "directions": {
     "all": {

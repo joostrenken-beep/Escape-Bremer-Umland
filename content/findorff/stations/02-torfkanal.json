@@ -6,16 +6,16 @@
   },
   "location": {
     "name": {
-      "de": "Ufer des Torfkanals"
+      "de": "Ufer des Torfkanals am Bürgerpark"
     },
-    "lat": 53.0965,
-    "lng": 8.81,
+    "lat": 53.0935,
+    "lng": 8.815,
     "verified": false,
-    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen"
   },
   "directions": {
     "all": {
-      "de": "[PLATZHALTER] Folgt dem Ufer des Torfkanals ein Stück nach Westen."
+      "de": "[PLATZHALTER] Geht vom Hafen am Ufer des Torfkanals entlang nach Norden – links liegt Findorff, rechts der Bürgerpark. Nach wenigen Minuten seid ihr da."
     }
   },
   "story": {

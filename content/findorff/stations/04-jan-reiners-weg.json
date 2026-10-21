@@ -6,16 +6,16 @@
   },
   "location": {
     "name": {
-      "de": "Jan-Reiners-Weg (alte Bahntrasse)"
+      "de": "Jan-Reiners-Grünzug an der Fürther Straße"
     },
-    "lat": 53.0985,
-    "lng": 8.806,
+    "lat": 53.0958,
+    "lng": 8.8068,
     "verified": false,
-    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen"
   },
   "directions": {
     "all": {
-      "de": "[PLATZHALTER] Folgt der alten Bahntrasse – heute ein Fuß- und Radweg."
+      "de": "[PLATZHALTER] Direkt hinter der Lok beginnt parallel zur Fürther Straße der Jan-Reiners-Grünzug auf der alten Bahntrasse. Geht ein Stück hinein."
     }
   },
   "story": {

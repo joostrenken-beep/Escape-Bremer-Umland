@@ -115,7 +115,7 @@ Aus `content/worpswede/stations/05-zionskirche.json`:
 
 Morse-Töne + Blinklicht. `message` nur Großbuchstaben/Ziffern. `showTable`: Morse-Tabelle direkt zeigen (sonst erst nach Hinweis 1).
 
-Aus `content/worpswede/stations/08-alter-bahnhof.json`:
+Aus `content/worpswede/stations/09-alter-bahnhof.json`:
 
 ```json
 {
@@ -221,7 +221,7 @@ Aus `content/worpswede/stations/02-grosse-kunstschau.json`:
 
 Historisches Foto halbtransparent über dem Kamerabild (Schieberegler). Braucht ein Foto in `media/` mit Quelle/Lizenz in `credit`. (Aus Worpswede Station 9 vorerst entfernt, bis ein gemeinfreies Foto da ist.)
 
-Aus `content/worpswede/stations/09-barkenhoff.json`:
+Früher in `content/worpswede/stations/07-barkenhoff.json` (dort vorerst entfernt):
 
 ```json
 {
@@ -318,7 +318,7 @@ Aus `content/worpswede/stations/10-finale.json`:
 
 Schiebepuzzle eines Bildes. `size` = Raster je Stufe (3 = 3×3). Kein Code – `solutionText` ist die Auflösung.
 
-Aus `content/worpswede/stations/07-haus-im-schluh.json`:
+Aus `content/worpswede/stations/08-haus-im-schluh.json`:
 
 ```json
 {

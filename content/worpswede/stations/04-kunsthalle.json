@@ -6,12 +6,12 @@
   },
   "location": {
     "name": {
-      "de": "Worpsweder Kunsthalle, Bergstraße"
+      "de": "Worpsweder Kunsthalle, Bergstraße 17"
     },
-    "lat": 53.2192,
-    "lng": 8.9284,
+    "lat": 53.22097,
+    "lng": 8.92547,
     "verified": false,
-    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Wikidata/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen"
   },
   "directions": {
     "all": {

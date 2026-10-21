@@ -8,10 +8,10 @@
     "name": {
       "de": "Kaffee Worpswede, Lindenallee"
     },
-    "lat": 53.2203,
-    "lng": 8.9311,
+    "lat": 53.22028,
+    "lng": 8.92833,
     "verified": false,
-    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Wikidata/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen"
   },
   "directions": {
     "all": {
@@ -20,10 +20,10 @@
   },
   "story": {
     "all": {
-      "de": "Hier saß die Restauratorin Greta Vogt gestern Abend – „bis kurz vor Mitternacht“, sagt sie. Auf der Skizzenbuchseite vom Tatort ist genau dieses Haus gezeichnet. Daneben steht in feiner Handschrift: „Wo die Wände nicht gerade sein wollen, beginnt die Spur.“"
+      "de": "Vor dem Kaffee Worpswede saß die Restauratorin Greta Vogt gestern Abend auf der Bank und skizzierte – „bis kurz vor Mitternacht“, sagt sie. Auf der Skizzenbuchseite vom Tatort ist genau dieses Haus gezeichnet. Daneben steht in feiner Handschrift: „Wo die Wände nicht gerade sein wollen, beginnt die Spur.“"
     },
     "easy": {
-      "de": "Schaut euch dieses lustige Haus an – kaum eine Wand ist gerade! Genau dieses Haus ist auf dem geheimen Zettel gemalt. Daneben steht: „Wo die Wände nicht gerade sein wollen, beginnt die Spur.“ Hier hat Greta gestern Kuchen gegessen."
+      "de": "Schaut euch dieses lustige Haus an – kaum eine Wand ist gerade! Genau dieses Haus ist auf dem geheimen Zettel gemalt. Daneben steht: „Wo die Wände nicht gerade sein wollen, beginnt die Spur.“ Hier hat Greta gestern auf der Bank gesessen und gemalt."
     }
   },
   "steps": [
@@ -64,7 +64,7 @@
         "input": "text"
       },
       "verified": false,
-      "verifyNote": "Gibt es eine gut sichtbare, zählbare Eigenschaft an der Fassade (z. B. runde Fenster)? Zahl notieren. Ersatzfrage ebenfalls prüfen."
+      "verifyNote": "Gibt es eine gut sichtbare, zählbare Eigenschaft an der Fassade (z. B. runde Fenster)? Zahl notieren. Ersatzfrage ebenfalls prüfen. Achtung: Laut einer Quelle ist das Kaffee seit 2019 geschlossen/in Renovierung – Story setzt KEIN geöffnetes Café voraus; prüfen, ob Fassade zugänglich und unverhüllt ist."
     }
   ],
   "notebook": [
@@ -76,10 +76,10 @@
       },
       "text": {
         "all": {
-          "de": "Restauriert die „Mondnacht“ für die Ausstellung und hat einen Schlüssel zum Haus Lindenhof. Trägt immer einen langen grünen Schal. Alibi: Kaffee Worpswede bis kurz vor Mitternacht."
+          "de": "Restauriert die „Mondnacht“ für die Ausstellung und hat einen Schlüssel zum Haus Lindenhof. Trägt immer einen langen grünen Schal. Alibi: Skizzieren vor dem Kaffee Worpswede bis kurz vor Mitternacht."
         },
         "easy": {
-          "de": "Sie repariert alte Bilder und hat einen Schlüssel zum Haus Lindenhof. Gestern Abend war sie hier im Café."
+          "de": "Sie repariert alte Bilder und hat einen Schlüssel zum Haus Lindenhof. Gestern Abend hat sie vor dem Café gemalt."
         }
       }
     }
@@ -89,6 +89,6 @@
       "de": "Das Kaffee Worpswede wurde Mitte der 1920er-Jahre nach Plänen des Bildhauers und Architekten Bernhard Hoetger gebaut. Wegen seiner eigenwilligen, schiefen Formen nennen es viele „Café Verrückt“."
     },
     "verified": false,
-    "verifyNote": "Baujahr (vermutlich 1925) und Architekt (Hoetger) prüfen."
+    "verifyNote": "Baujahr laut Denkmalliste 1925, Architekt Hoetger – prüfen. Aktuellen Status des Cafés (geschlossen seit 2019?) prüfen."
   }
 }

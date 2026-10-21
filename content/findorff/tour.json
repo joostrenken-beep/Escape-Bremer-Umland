@@ -1,7 +1,7 @@
 {
   "$schema": "../../schema/tour.schema.json",
   "id": "findorff",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "published": true,
   "town": {
     "de": "Bremen-Findorff"
@@ -16,19 +16,19 @@
     90,
     120
   ],
-  "distanceKm": 4,
+  "distanceKm": 4.5,
   "codeSalt": "959f23719dc92fb3d54d2648",
   "start": {
     "name": {
-      "de": "Torfhafen Findorff"
+      "de": "Torfhafen Findorff, Eickedorfer Straße"
     },
-    "lat": 53.095,
-    "lng": 8.816,
+    "lat": 53.0906,
+    "lng": 8.8137,
     "verified": false,
-    "note": "Startpunkt und Koordinaten vor Ort prüfen (Haltestelle in der Nähe?)",
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen. Haltestelle in der Nähe?",
     "description": {
       "all": {
-        "de": "Trefft euch am Torfhafen am Ende des Torfkanals, dort wo die schwarzen Torfkähne liegen."
+        "de": "Trefft euch am Torfhafen an der Eickedorfer Straße, am Ende des Torfkanals – dort, wo die schwarzen Torfkähne liegen."
       }
     }
   },

@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schema/station.schema.json",
-  "id": "09-barkenhoff",
+  "id": "07-barkenhoff",
   "title": {
     "de": "Barkenhoff"
   },
@@ -8,14 +8,14 @@
     "name": {
       "de": "Barkenhoff, Ostendorfer Straße 10"
     },
-    "lat": 53.2177,
-    "lng": 8.9333,
+    "lat": 53.21572,
+    "lng": 8.93166,
     "verified": false,
-    "note": "Koordinaten geschätzt – vor Ort mit „Meinen Standort anzeigen“ (Entwickler-Ansicht) ermitteln"
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Wikidata/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen"
   },
   "directions": {
     "all": {
-      "de": "[PLATZHALTER] Geht zurück Richtung Ortsmitte und biegt in die Ostendorfer Straße ein. Der Barkenhoff liegt am Hang zwischen Birken."
+      "de": "[PLATZHALTER] Steigt vom Weyerberg nach Südosten hinab zur Ostendorfer Straße. Der Barkenhoff liegt am Hang zwischen Birken."
     }
   },
   "story": {

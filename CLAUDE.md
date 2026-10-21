@@ -23,22 +23,23 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
   (Modersohn-Becker, Vogeler, Modersohn, Mackensen, Hoetger) nur als Hintergrund, nie Täter. Echte Einrichtungen nie negativ.
   Auflösung (mittel/schwer): Greta hat das Bild versteckt, um es vor Albers' Fälschungstausch zu schützen.
   Leicht: kein Verbrechen – Lotte hat es für eine Geburtstagsüberraschung ausgeliehen.
-- **Route (Entwurf, vor Ort prüfen):** 1 Kaffee Worpswede → 2 Große Kunstschau → 3 Käseglocke → 4 Kunsthalle →
-  5 Zionskirche (Friedhof nur „Wusstest du?“, keine Spielaktion an Gräbern) → 6 Niedersachsenstein → 7 Haus im Schluh →
-  8 Alter Bahnhof → 9 Barkenhoff → 10 Finale Ortsmitte. (Schluh/Bahnhof/Barkenhoff ggü. erstem Entwurf umsortiert,
-  damit ein Rundweg entsteht – Koordinaten sind GESCHÄTZT, Netz-Zugriff auf OSM/Wikipedia war in der Cloud gesperrt.)
-  Alle Rätsel **draußen, ohne Eintritt**, keine privaten Grundstücke betreten.
+- **Route Worpswede (Koordinaten aus Online-Quellen, vor Ort bestätigen):** 1 Kaffee Worpswede → 2 Große Kunstschau →
+  3 Käseglocke → 4 Kunsthalle → 5 Zionskirche (Friedhof nur „Wusstest du?“, keine Spielaktion an Gräbern) →
+  6 Niedersachsenstein → 7 Barkenhoff → 8 Haus im Schluh → 9 Alter Bahnhof → 10 Finale Lindenallee.
+  Rundweg ca. 6 km zu Fuß (Bahnhof liegt ~1,2 km außerhalb). Kaffee Worpswede evtl. seit 2019 geschlossen – Story
+  setzt kein geöffnetes Café voraus. Alle Rätsel **draußen, ohne Eintritt**, keine privaten Grundstücke betreten.
 - **Rätsel-Kette Worpswede:** Station 3 Logikrätsel (Albers + Greta im Haus, Albers lügt), Station 4 Caesar (mittel +3,
-  schwer +5 „Paula“, leicht rückwärts) → „neun“. Notizbuch-Fragmente A=1 (St. 3), B=9 (St. 4), C=0 (St. 8), D=2 (St. 9)
+  schwer +5 „Paula“, leicht rückwärts) → „neun“. Notizbuch-Fragmente A=1 (St. 3 Käseglocke), B=9 (St. 4 Kunsthalle), C=0 (Alter Bahnhof), D=2 (Barkenhoff)
   → Finale-Zahlenschloss **1902** (= Entstehungsjahr der Mondnacht; schwer: Reihenfolge aus Fallakte ableiten).
   Digitale Rätsel (M4): St. 2 Rotfilter (KOPIE/leicht TORTE), St. 5 Zeugenaussage Audio (grüner Schal/leicht Dackel
   Bruno), St. 6 Kompass+AR (225° SW), St. 7 Schiebepuzzle (media/mondnacht.svg – eigene Illustration, Bild ist fiktiv),
   St. 8 Morse (NULL), St. 10 Zahlenschloss 1902 + Anklage (wer/warum/wer2; Finale-Bonus).
-  Foto-Vergleich (overlay) an St. 9 wieder entfernt, bis ein gemeinfreies Foto da ist (Beispiel in docs/RAETSELTYPEN.md).
+  Foto-Vergleich (overlay) am Barkenhoff wieder entfernt, bis ein gemeinfreies Foto da ist (Beispiel in docs/RAETSELTYPEN.md).
 - **Findorff („Die Glocke der Moorlilie“, content/findorff):** Messingglocke (1924) des erfundenen Torfkahns
   „Moorlilie“ verschwindet vor dem Hafenfest. Erfunden: Boot, Verdächtige (Henning Brakhage – Antiquitätenhändler,
   TÄTER mittel/schwer, Verkauf an Sammler in Hamburg; Svea Lindemann – Bootsbauerin, leicht: hat Glocke zum Polieren
-  mitgenommen; Dr. Ole Kück – Heimatforscher; Mira Tietjen – Blumenhändlerin, Zeugin). Route (geschätzt):
+  mitgenommen; Dr. Ole Kück – Heimatforscher; Mira Tietjen – Blumenhändlerin, Zeugin). Route (Koordinaten aus
+  Online-Quellen, ca. 4,5 km zu Fuß):
   1 Torfhafen → 2 Torfkanal (Audio: blauer Lieferwagen / leicht gelbes Putztuch) → 3 Lok „Jan Reiners“ (Morse EINS, A=1)
   → 4 Jan-Reiners-Weg (Logik, eindeutig Brakhage / leicht Svea; B=9) → 5 Findorffmarkt/Marktbunker-Wandbild
   (Rotfilter HAMBURG / leicht GLANZ) → 6 Hemmstraße (Caesar +3, schwer +4 „TORF“, leicht rückwärts; C=2)
@@ -49,6 +50,8 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
 - **Punkte:** Punktekonto – Start mit 100/Station (volles Konto), Hilfen ziehen sofort ab (Nutzerwunsch, damit man
   in Runde 1 nicht mit Punkten „bezahlt“, die man noch nicht hat); Hinweise −10/−20/−30; Auflösung −60; Überspringen −50; „Hier stimmt etwas nicht“ +
   Ersatzfrage gelöst = 0 Abzug; Finale-Bonus. Zeit wird nur angezeigt, kein Abzug.
+- **Koordinaten** immer aus Quellen recherchieren (WebSearch: Wikipedia/Wikidata/Denkmallisten), nie schätzen –
+  OSM/Wikipedia direkt sind in der Cloud-Umgebung gesperrt, die Websuche funktioniert.
 - **Karte:** Online Leaflet/OSM. **Keine Offline-Karte** (Nutzerwunsch). Offline: Wegbeschreibung + GPS-Pfeil.
 - **Audio:** vorerst Sprachausgabe des Geräts (speechSynthesis); Morse/Töne per WebAudio. Echte Aufnahmen später.
 - **Bilder:** gemeinfreie Werke/Fotos (Wikimedia Commons), Lizenz je Bild prüfen und vermerken.

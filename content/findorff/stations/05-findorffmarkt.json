@@ -6,16 +6,16 @@
   },
   "location": {
     "name": {
-      "de": "Findorffmarkt mit Marktbunker"
+      "de": "Findorffmarkt, Neukirchstraße"
     },
-    "lat": 53.0925,
-    "lng": 8.802,
+    "lat": 53.0937,
+    "lng": 8.811,
     "verified": false,
-    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen"
   },
   "directions": {
     "all": {
-      "de": "[PLATZHALTER] Geht zum Findorffmarkt – ihr erkennt ihn am bunt bemalten Bunker."
+      "de": "[PLATZHALTER] Geht zurück zur Hemmstraße, an der Martin-Luther-Kirche vorbei, und folgt der Neukirchstraße zum Findorffmarkt."
     }
   },
   "story": {

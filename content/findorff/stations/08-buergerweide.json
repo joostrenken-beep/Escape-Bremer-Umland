@@ -8,14 +8,14 @@
     "name": {
       "de": "Bürgerweide"
     },
-    "lat": 53.0865,
-    "lng": 8.815,
+    "lat": 53.087,
+    "lng": 8.8128,
     "verified": false,
-    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen"
   },
   "directions": {
     "all": {
-      "de": "[PLATZHALTER] Hinter dem Tunnel liegt die große, offene Bürgerweide."
+      "de": "[PLATZHALTER] Geht vom Tunnel nach Osten zur Bürgerweide, dem großen Platz zwischen Hauptbahnhof und Bürgerpark."
     }
   },
   "story": {

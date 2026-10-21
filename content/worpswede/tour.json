@@ -1,7 +1,7 @@
 {
   "$schema": "../../schema/tour.schema.json",
   "id": "worpswede",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "published": true,
   "town": {
     "de": "Worpswede"
@@ -13,19 +13,19 @@
     "de": "Ein Gemälde aus der Zeit der Künstlerkolonie ist verschwunden. Folgt den Spuren durch das Künstlerdorf – vom Weyerberg bis ins Moor."
   },
   "durationMinutes": [
-    90,
-    120
+    120,
+    150
   ],
-  "distanceKm": 3.5,
+  "distanceKm": 6,
   "codeSalt": "c664320a26f7c14975e00197",
   "start": {
     "name": {
       "de": "Ortsmitte, vor dem Kaffee Worpswede (Lindenallee)"
     },
-    "lat": 53.2203,
-    "lng": 8.9311,
+    "lat": 53.22028,
+    "lng": 8.92833,
     "verified": false,
-    "note": "Startpunkt und Koordinaten vor Ort prüfen (Parken, Bushaltestelle in der Nähe?). Gesamtstrecke (ca. 3,5 km) beim Ablaufen messen.",
+    "note": "Koordinaten aus Online-Quellen ermittelt (Wikipedia/Wikidata/Verzeichnisse) – vor Ort mit der Vor-Ort-Erfassung bestätigen. Parken / Bushaltestelle in der Nähe?",
     "description": {
       "all": {
         "de": "Trefft euch vor dem Kaffee Worpswede in der Lindenallee – das Haus mit den ungewöhnlichen, runden Formen."
@@ -86,9 +86,9 @@
     "04-kunsthalle",
     "05-zionskirche",
     "06-niedersachsenstein",
-    "07-haus-im-schluh",
-    "08-alter-bahnhof",
-    "09-barkenhoff",
+    "07-barkenhoff",
+    "08-haus-im-schluh",
+    "09-alter-bahnhof",
     "10-finale"
   ],
   "access": {
