@@ -1,0 +1,154 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "04-jan-reiners-weg",
+  "title": {
+    "de": "Jan-Reiners-Weg"
+  },
+  "location": {
+    "name": {
+      "de": "Jan-Reiners-Weg (alte Bahntrasse)"
+    },
+    "lat": 53.0985,
+    "lng": 8.806,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Folgt der alten Bahntrasse – heute ein Fuß- und Radweg."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Auf dem Weg trefft ihr die Nachbarin des Bootsschuppens. Sie ist sicher: Zwischen 23 und 24 Uhr war genau eine Person am Schuppen. Die vier Verdächtigen haben ausgesagt – aber genau eine Person lügt."
+    },
+    "easy": {
+      "de": "Hier fuhr früher die kleine Bahn. Heute spazieren hier Hunde und Fahrräder. Eine Nachbarin erzählt euch, wer einen Schlüssel zum Bootsschuppen hat. Findet heraus, wer die Glocke geholt hat!"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Welche Zahl steht auf dem Wegweiser am Jan-Reiners-Weg?"
+        }
+      },
+      "codeId": "s04-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Sucht ein Schild oder einen Wegweiser am Weg."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Zahl ist eine Entfernung oder Nummer."
+          }
+        },
+        {
+          "all": {
+            "de": "Schaut genau auf die Ziffern."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Wie heißt die nächste Querstraße?"
+          }
+        },
+        "codeId": "s04-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Dauerhafte Angabe am Weg finden (Wegweiser, Straßenschild, Gedenktafel zur Kleinbahn?)."
+    },
+    {
+      "type": "code",
+      "id": "alibi",
+      "prompt": {
+        "medium": {
+          "de": "Genau eine Person war am Schuppen, genau eine Person lügt.\n• Brakhage: „Kück war es.“\n• Svea: „Weder Mira noch ich waren es.“\n• Kück: „Brakhage lügt.“\n• Mira: „Kück war es nicht.“\nWer war am Bootsschuppen?"
+        },
+        "hard": {
+          "de": "Genau eine Person war am Schuppen, genau eine Person lügt.\n• Brakhage: „Kück war es.“\n• Svea: „Weder Mira noch ich waren es.“\n• Kück: „Brakhage lügt.“\n• Mira: „Kück war es nicht.“\nWer lügt?"
+        },
+        "easy": {
+          "de": "Nur Svea und Herr Kück haben einen Schlüssel zum Bootsschuppen. Herr Kück war gestern den ganzen Tag verreist. Wer hat die Glocke mitgenommen?"
+        }
+      },
+      "codeId": "s04-alibi",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Brakhage und Kück widersprechen sich direkt – einer von beiden lügt."
+          },
+          "easy": {
+            "de": "Wer hat einen Schlüssel?"
+          }
+        },
+        {
+          "all": {
+            "de": "Also sagen Svea und Mira die Wahrheit. Was folgt aus Miras Aussage für Kück?"
+          },
+          "easy": {
+            "de": "Herr Kück war nicht da."
+          }
+        },
+        {
+          "all": {
+            "de": "Kück war es nicht – also stimmt Brakhages Aussage nicht."
+          },
+          "easy": {
+            "de": "Es ist die Bootsbauerin."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Logikrätsel ohne Ortsbezug (per Programm geprüft: eindeutig Brakhage)."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-alibi",
+      "kind": "clue",
+      "title": {
+        "de": "Wer war am Schuppen?"
+      },
+      "text": {
+        "all": {
+          "de": "Henning Brakhage war zwischen 23 und 24 Uhr am Bootsschuppen – und hat gelogen."
+        },
+        "easy": {
+          "de": "Svea hat die Glocke mitgenommen. Aber warum?"
+        }
+      }
+    },
+    {
+      "id": "fragment-b",
+      "kind": "clue",
+      "title": {
+        "de": "Glocken-Fragment B"
+      },
+      "text": {
+        "all": {
+          "de": "In den Sand am Weg gekratzt: „B = 9“"
+        },
+        "hard": {
+          "de": "In den Sand am Weg gekratzt: eine 9."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Wo heute der Jan-Reiners-Weg verläuft, lagen früher die Gleise der Kleinbahn nach Tarmstedt. Nach der Stilllegung wurde aus der Trasse ein autofreier Weg zum Spazieren und Radfahren."
+    },
+    "verified": false,
+    "verifyNote": "Verlauf des Weges in Findorff prüfen."
+  }
+}

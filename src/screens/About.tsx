@@ -78,7 +78,8 @@ export function About() {
       <section class="card">
         <h2 class="h3">Bildnachweis</h2>
         <p class="small">
-          „Mondnacht am Weyerberg“: eigene Illustration – das Gemälde und die Malerin Johanna Behrens sind erfunden. Karten: ©{' '}
+          „Mondnacht am Weyerberg“ und Torfkahn „Moorlilie“: eigene Illustrationen – Gemälde, Malerin, Boot und Glocke sind
+          erfunden. Karten: ©{' '}
           <a href="https://www.openstreetmap.org/copyright" rel="noopener">
             OpenStreetMap-Mitwirkende
           </a>

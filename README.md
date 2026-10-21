@@ -3,7 +3,7 @@
 Ein Krimi-Escape-Spiel für draußen, das gleichzeitig eine Stadtführung ist. Die Gruppe spielt mit **einem Handy**:
 An jeder Station findet sie eine echte Information vor Ort (Jahreszahl, Inschrift, Anzahl …), gibt sie als Code ein
 und löst Rätsel – vom Logikrätsel über Morse-Töne bis zum Kompass mit Kamera –, bis der Fall aufgeklärt ist.
-Erste Tour: **Worpswede – „Die Mondnacht vom Weyerberg“**.
+Touren: **Worpswede – „Die Mondnacht vom Weyerberg“** und **Bremen-Findorff – „Die Glocke der Moorlilie“**.
 
 👉 **Spielen:** https://joostrenken-beep.github.io/Escape-Bremer-Umland/
 
@@ -18,12 +18,12 @@ Erste Tour: **Worpswede – „Die Mondnacht vom Weyerberg“**.
 **Testmodus:** Startseite → ⚙️ Einstellungen → Testmodus. Dann lassen sich Rätsel überspringen, Stationen anspringen
 und unveröffentlichte Touren spielen. Dort gibt es auch die **Entwickler-Ansicht** mit der Prüfliste für vor Ort.
 
-## Tour vor Ort fertigstellen (Worpswede)
+## Tour vor Ort fertigstellen (Worpswede, Findorff)
 
 Die App ist fertig – nur die Angaben, die man **vor Ort** sieht, kann niemand vom Schreibtisch aus kennen.
 Solange sie fehlen, erwartet die App an diesen Stellen „0000“ (Ersatzfrage: „test“).
 
-1. Handy: ⚙️ Einstellungen → **Testmodus** an → **Entwickler-Ansicht** → Worpswede.
+1. Handy: ⚙️ Einstellungen → **Testmodus** an → **Entwickler-Ansicht** → Stadt wählen.
 2. Route ablaufen. In der **Vor-Ort-Erfassung** je Station:
    **„Standort übernehmen“**, die gefundenen **Antworten** eintragen (mehrere Schreibweisen mit Komma),
    Notizen machen, **„Station geprüft“** abhaken. Alles bleibt auf dem Handy gespeichert.
@@ -121,4 +121,5 @@ Siehe [`CLAUDE.md`](CLAUDE.md) für Architektur, Entscheidungen und Stand. Kurz:
 
 - „Mondnacht am Weyerberg“ (`content/worpswede/media/mondnacht.svg`): eigene Illustration für dieses Projekt –
   das Gemälde und die Malerin Johanna Behrens sind erfunden.
+- Torfkahn „Moorlilie“ (`content/findorff/media/moorlilie.svg`): eigene Illustration – Boot und Glocke sind erfunden.
 - Karten: © OpenStreetMap-Mitwirkende.

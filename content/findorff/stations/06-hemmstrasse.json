@@ -1,0 +1,163 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "06-hemmstrasse",
+  "title": {
+    "de": "Hemmstraße"
+  },
+  "location": {
+    "name": {
+      "de": "Hemmstraße"
+    },
+    "lat": 53.0905,
+    "lng": 8.804,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Geht vom Markt auf die Hemmstraße, die Einkaufsstraße von Findorff."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Hier hat Henning Brakhage seinen Antiquitätenladen. Er ist nicht da, aber im Schaufenster liegt sein Notizbuch – aufgeschlagen, in Geheimschrift. Ein Händler, der seine Notizen verschlüsselt? Das ist verdächtig."
+    },
+    "easy": {
+      "de": "In der Hemmstraße gibt es viele Läden. Svea hat hier gestern Messingputzmittel gekauft – der Verkäufer hat ihr einen Zettel mit einer Geheimschrift mitgegeben. Könnt ihr sie lesen?"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Welche Hausnummer hat das Eckhaus an der nächsten Kreuzung?"
+        }
+      },
+      "codeId": "s06-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Schaut auf die Hausnummern an der Ecke."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Nummer steht neben der Tür."
+          }
+        },
+        {
+          "all": {
+            "de": "Sucht die Ecke mit der nächsten Querstraße."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Wie heißt die Querstraße an der nächsten Kreuzung?"
+          }
+        },
+        "codeId": "s06-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Konkrete, dauerhafte Angabe in der Hemmstraße festlegen (Hausnummer, Straßenschild). Nichts, was zu einem echten Geschäft gehört!"
+    },
+    {
+      "type": "code",
+      "id": "cipher",
+      "prompt": {
+        "medium": {
+          "de": "Brakhages Notiz: GULWWH CLIIHU CZHL\nJeder Buchstabe ist um 3 Stellen nach hinten verschoben (A wurde zu D). Welche Ziffer verrät die Notiz?"
+        },
+        "hard": {
+          "de": "Brakhages Notiz: HVMXXI DMJJIV DAIM\nVerschoben um so viele Stellen, wie das Wort TORF Buchstaben hat. Welche Ziffer verrät die Notiz?"
+        },
+        "easy": {
+          "de": "Lies rückwärts: IEWZ\nWelche Zahl ist das?"
+        }
+      },
+      "codeId": "s06-cipher",
+      "input": "text",
+      "hints": [
+        {
+          "medium": {
+            "de": "Geht 3 Buchstaben zurück: D → A, E → B …"
+          },
+          "hard": {
+            "de": "TORF hat 4 Buchstaben. Geht 4 Stellen zurück."
+          },
+          "easy": {
+            "de": "Lies von rechts nach links: Z – W – E – I."
+          }
+        },
+        {
+          "medium": {
+            "de": "G wird zu D. Das erste Wort beginnt mit „DR…“."
+          },
+          "hard": {
+            "de": "H wird zu D. Das erste Wort beginnt mit „DR…“."
+          },
+          "easy": {
+            "de": "Die Zahl ist kleiner als drei."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Notiz lautet: DRITTE ZIFFER …"
+          },
+          "easy": {
+            "de": "Die Zahl heißt zwei."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Chiffre ohne Ortsbezug (per Programm berechnet)."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "suspect-brakhage",
+      "kind": "suspect",
+      "title": {
+        "de": "Henning Brakhage, Antiquitätenhändler"
+      },
+      "text": {
+        "all": {
+          "de": "Hat einen Antiquitätenladen in der Hemmstraße. Trägt gern einen breitkrempigen Hut. Verschlüsselt seine Notizen."
+        },
+        "easy": {
+          "de": "Er verkauft alte Sachen und hätte die Glocke gern in seinem Laden gehabt."
+        }
+      }
+    },
+    {
+      "id": "fragment-c",
+      "kind": "clue",
+      "title": {
+        "de": "Glocken-Fragment C"
+      },
+      "text": {
+        "all": {
+          "de": "Die Notiz lautet: DRITTE ZIFFER ZWEI → „C = 2“"
+        },
+        "hard": {
+          "de": "Die Notiz verrät eine 2."
+        },
+        "easy": {
+          "de": "Der Zettel sagt: ZWEI → „C = 2“"
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Findorff ist im 19. Jahrhundert mit der Industrialisierung gewachsen. Die Hemmstraße ist bis heute die Einkaufsstraße des Stadtteils mit vielen kleinen Läden."
+    },
+    "verified": false,
+    "verifyNote": "Aussage zur Entstehung und zur Hemmstraße prüfen."
+  }
+}

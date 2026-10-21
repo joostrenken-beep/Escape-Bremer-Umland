@@ -1,0 +1,98 @@
+{
+  "$schema": "../../schema/tour.schema.json",
+  "id": "findorff",
+  "version": "0.1.0",
+  "published": true,
+  "town": {
+    "de": "Bremen-Findorff"
+  },
+  "title": {
+    "de": "Die Glocke der Moorlilie"
+  },
+  "teaser": {
+    "de": "Am Abend vor dem Hafenfest verschwindet die Glocke eines Torfkahns. Folgt der Spur vom Torfhafen über den Findorffmarkt bis zur Bürgerweide."
+  },
+  "durationMinutes": [
+    90,
+    120
+  ],
+  "distanceKm": 4,
+  "codeSalt": "959f23719dc92fb3d54d2648",
+  "start": {
+    "name": {
+      "de": "Torfhafen Findorff"
+    },
+    "lat": 53.095,
+    "lng": 8.816,
+    "verified": false,
+    "note": "Startpunkt und Koordinaten vor Ort prüfen (Haltestelle in der Nähe?)",
+    "description": {
+      "all": {
+        "de": "Trefft euch am Torfhafen am Ende des Torfkanals, dort wo die schwarzen Torfkähne liegen."
+      }
+    }
+  },
+  "difficulties": {
+    "easy": {
+      "label": {
+        "de": "Leicht"
+      },
+      "description": {
+        "de": "Für Familien mit Grundschulkindern."
+      }
+    },
+    "medium": {
+      "label": {
+        "de": "Mittel"
+      },
+      "description": {
+        "de": "Für alle, die den Ort entdecken wollen."
+      }
+    },
+    "hard": {
+      "label": {
+        "de": "Schwer"
+      },
+      "description": {
+        "de": "Für Rätselprofis."
+      }
+    }
+  },
+  "story": {
+    "intro": {
+      "medium": {
+        "de": "Bremen-Findorff, heute Morgen: Vom Torfkahn „Moorlilie“ ist die Messingglocke verschwunden – gegossen 1924, mit den Namen der alten Moorschiffer-Familien. Morgen soll die Moorlilie beim Hafenfest vorneweg fahren. Vier Personen wussten, wo der Ersatzschlüssel zum Bootsschuppen hängt. Ihr übernehmt die Ermittlungen."
+      },
+      "hard": {
+        "de": "Findorff, Torfhafen, 7 Uhr früh: Der Haken am Mast der „Moorlilie“ ist leer. Die Glocke – Messing, gegossen 1924 – ist weg, und morgen ist Hafenfest. Vier Verdächtige, eine leere Halterung, ein paar Kratzer am Mast. Merkt euch jedes Detail – auch die Jahreszahl."
+      },
+      "easy": {
+        "de": "Oh je! Vom schwarzen Torfboot „Moorlilie“ ist die glänzende Glocke verschwunden. Morgen ist Hafenfest – und ohne Glocke kann die Moorlilie nicht mitfahren. Wer hat die Glocke mitgenommen – und warum? Ihr seid die Detektive!"
+      }
+    },
+    "outro": {
+      "all": {
+        "de": "Klick – das Schloss springt auf. In der Kiste, dick in Decken gewickelt: die Glocke der Moorlilie! Henning Brakhage hatte sie abgeschraubt, um sie an einen Sammler in Hamburg zu verkaufen. Mira Tietjen hatte ihn beobachtet – und ihr habt die Spuren zusammengesetzt. Morgen läutet die Moorlilie beim Hafenfest. Fall gelöst!"
+      },
+      "easy": {
+        "de": "Klick – die Kiste geht auf! Darin liegt die Glocke und glänzt wie neu. Svea hatte sie heimlich poliert, damit sie beim Hafenfest besonders schön aussieht – nur ihr Zettel war verloren gegangen. Morgen läutet die Moorlilie lauter als je zuvor. Fall gelöst, liebe Detektive!"
+      }
+    }
+  },
+  "stations": [
+    "01-torfhafen",
+    "02-torfkanal",
+    "03-lok-jan-reiners",
+    "04-jan-reiners-weg",
+    "05-findorffmarkt",
+    "06-hemmstrasse",
+    "07-findorfftunnel",
+    "08-buergerweide",
+    "09-buergerpark",
+    "10-finale"
+  ],
+  "access": {
+    "requireUnlockCode": false
+  },
+  "cover": "media/moorlilie.svg"
+}

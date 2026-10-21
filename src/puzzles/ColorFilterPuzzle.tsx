@@ -45,24 +45,32 @@ export function ColorFilterPuzzle(props: PuzzleProps<ColorFilterStepSource>) {
         ctx.stroke();
       }
     };
-    // Tarnung: rosa-violette Linien, die der Schrift ähneln
-    scribble('rgb(215,120,225)', 70, 9);
+    // Tarnung: magenta-violette Linien, die der Schrift ähneln (viel Rot → verschwinden im Filter)
+    scribble('rgb(225,80,215)', 90, 10);
     // Die Nachricht in Dunkelviolett (wenig Rot → bleibt im Filter dunkel)
-    ctx.fillStyle = 'rgb(105,60,190)';
-    ctx.font = `bold ${Math.min(120, Math.floor((W * 1.5) / Math.max(4, message.length)))}px Georgia, serif`;
+    ctx.fillStyle = 'rgb(100,40,170)';
+    // Schriftgröße so wählen, dass das Wort sicher ins Bild passt (max. 85 % der Breite)
+    let size = 120;
+    ctx.font = `bold ${size}px Georgia, serif`;
+    const width = ctx.measureText(message).width;
+    if (width > W * 0.85) size = Math.floor((size * W * 0.85) / width);
+    ctx.font = `bold ${size}px Georgia, serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(message, W / 2, H / 2 + 6);
-    // Darüber dichtes rotes Gekritzel
-    scribble('rgb(235,60,60)', 160, 7);
-    scribble('rgb(215,120,225)', 50, 5);
+    // Darüber dichtes, halbtransparentes rotes Gekritzel: tarnt die Schrift,
+    // lässt aber genug „Dunkles“ im Rotkanal übrig, damit sie im Filter lesbar bleibt
+    ctx.globalAlpha = 0.8;
+    scribble('rgb(235,60,60)', 200, 7);
+    scribble('rgb(225,80,215)', 70, 6);
+    ctx.globalAlpha = 1;
 
     if (filter) {
       const img = ctx.getImageData(0, 0, W, H);
       const d = img.data;
       for (let i = 0; i < d.length; i += 4) {
         const r = d[i];
-        const v = r > 170 ? 255 : r * 0.6; // Kontrast etwas verstärken
+        const v = r > 215 ? 255 : r * 0.4; // Kontrast verstärken: Helles weg, Schrift dunkel
         d[i] = v;
         d[i + 1] = v * 0.92;
         d[i + 2] = v * 0.92;

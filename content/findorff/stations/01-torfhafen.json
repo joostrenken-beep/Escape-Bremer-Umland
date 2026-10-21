@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "01-torfhafen",
+  "title": {
+    "de": "Torfhafen"
+  },
+  "location": {
+    "name": {
+      "de": "Torfhafen am Ende des Torfkanals"
+    },
+    "lat": 53.095,
+    "lng": 8.816,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "Ihr steht schon richtig: Treffpunkt ist der Torfhafen am Ende des Torfkanals."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Hier liegt die „Moorlilie“, ein nachgebauter Torfkahn. Gestern Abend hing ihre Messingglocke noch am Mast – heute früh ist der Haken leer. Bootsbauerin Svea Lindemann ist ratlos: „Die Glocke wurde 1924 gegossen. Ohne sie fährt die Moorlilie morgen nicht beim Hafenfest mit!“"
+    },
+    "easy": {
+      "de": "Ahoi! Hier liegt die „Moorlilie“, ein schwarzes Torfboot. Gestern hing am Mast eine glänzende Glocke – heute ist sie weg! Svea, die das Boot repariert, ist traurig: „Ohne Glocke kann die Moorlilie morgen beim Hafenfest nicht mitfahren.“"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Welche Jahreszahl steht auf der Infotafel am Torfhafen?"
+        }
+      },
+      "codeId": "s01-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Sucht eine Tafel mit der Geschichte des Hafens."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Zahl gehört ins 19. Jahrhundert."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Zahl beginnt mit 18."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welche Farbe haben die Torfkähne?"
+          }
+        },
+        "codeId": "s01-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Gibt es eine Infotafel mit Jahreszahl? Sonst andere dauerhafte Angabe am Hafen wählen (KEINE Anzahl Boote – die wechselt)."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "suspect-svea",
+      "kind": "suspect",
+      "title": {
+        "de": "Svea Lindemann, Bootsbauerin"
+      },
+      "text": {
+        "all": {
+          "de": "Restauriert die Moorlilie. Nachts liegt der Kahn im Bootsschuppen – wo der Ersatzschlüssel hängt, wussten alle vier Verdächtigen. Sagt, sie war um 22 Uhr zu Hause."
+        },
+        "easy": {
+          "de": "Sie repariert die Moorlilie und hat einen Schlüssel zum Bootsschuppen."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Hier endeten früher die Fahrten der Torfkähne aus dem Teufelsmoor. Über Hamme, Wümme und den Torfkanal brachten Moorbauern Torf zum Heizen in die Stadt – bis der Handel um 1930 zum Erliegen kam. Seit der Umgestaltung 2006 legen hier wieder Nachbauten der schwarzen Torfkähne an."
+    },
+    "verified": false,
+    "verifyNote": "Jahreszahlen (Ende Torfhandel ~1930, Umgestaltung 2006) und Route der Kähne prüfen."
+  }
+}

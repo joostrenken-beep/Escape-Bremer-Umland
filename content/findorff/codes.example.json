@@ -1,0 +1,272 @@
+{
+  "$schema": "../../schema/codes.schema.json",
+  "codes": {
+    "s01-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s01-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s02-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s02-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s03-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s03-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s04-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s04-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s05-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s05-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s06-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s06-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s07-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s07-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s08-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s08-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s09-unlock": {
+      "answers": [
+        "0000"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet 0000."
+      }
+    },
+    "s09-fallback": {
+      "answers": [
+        "test"
+      ],
+      "reveal": {
+        "de": "[PLATZHALTER] Die richtige Antwort lautet „test“."
+      }
+    },
+    "s02-witness": {
+      "answers": {
+        "medium": [
+          "blau",
+          "dunkelblau",
+          "hellblau"
+        ],
+        "hard": [
+          "blau",
+          "dunkelblau",
+          "hellblau"
+        ],
+        "easy": [
+          "gelb"
+        ]
+      },
+      "reveal": {
+        "de": "Der Lieferwagen war blau (Leicht: Das Putztuch war gelb)."
+      }
+    },
+    "s03-morse": {
+      "answers": [
+        "eins",
+        "1"
+      ],
+      "reveal": {
+        "de": "Gepfiffen wird EINS: • / •• / –• / •••"
+      }
+    },
+    "s04-alibi": {
+      "answers": {
+        "medium": [
+          "Brakhage",
+          "Henning Brakhage",
+          "Henning"
+        ],
+        "hard": [
+          "Brakhage",
+          "Henning Brakhage",
+          "Henning"
+        ],
+        "easy": [
+          "Svea",
+          "Svea Lindemann"
+        ]
+      },
+      "reveal": {
+        "de": "Brakhage und Kück widersprechen sich – einer lügt, also sagen Svea und Mira die Wahrheit. Laut Mira war Kück es nicht, also lügt Brakhage. Laut Svea waren es weder Mira noch sie – bleibt Brakhage. (Leicht: Svea, denn nur sie und Kück haben einen Schlüssel.)"
+      }
+    },
+    "s05-filter": {
+      "answers": {
+        "medium": [
+          "hamburg"
+        ],
+        "hard": [
+          "hamburg"
+        ],
+        "easy": [
+          "glanz"
+        ]
+      },
+      "reveal": {
+        "de": "Mit Rotfilter wird HAMBURG lesbar (Leicht: GLANZ)."
+      }
+    },
+    "s06-cipher": {
+      "answers": [
+        "2",
+        "zwei"
+      ],
+      "reveal": {
+        "de": "Die Antwort ist 2 (zwei). Die Notiz lautet DRITTE ZIFFER ZWEI; Leicht: IEWZ rückwärts = ZWEI."
+      }
+    },
+    "s10-lock": {
+      "answers": [
+        "1924"
+      ],
+      "reveal": {
+        "de": "A = 1, B = 9, C = 2, D = 4 – die Kombination 1924 ist das Jahr, in dem die Glocke gegossen wurde."
+      }
+    },
+    "s10-who": {
+      "answers": {
+        "medium": [
+          "brakhage"
+        ],
+        "hard": [
+          "brakhage"
+        ],
+        "easy": [
+          "svea"
+        ]
+      },
+      "reveal": {
+        "de": "Mittel/Schwer: Brakhage. Leicht: Svea."
+      }
+    },
+    "s10-why": {
+      "answers": {
+        "medium": [
+          "verkaufen"
+        ],
+        "hard": [
+          "verkaufen"
+        ],
+        "easy": [
+          "polieren"
+        ]
+      },
+      "reveal": {
+        "de": "Mittel/Schwer: verkaufen. Leicht: polieren."
+      }
+    },
+    "s10-who2": {
+      "answers": [
+        "mira"
+      ],
+      "reveal": {
+        "de": "Mira Tietjen."
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <!-- Torfkahn „Moorlilie“ mit Messingglocke – eigene Illustration (Boot und Glocke sind erfunden) -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9cc3dc"/><stop offset="1" stop-color="#e9e2c8"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5d7f86"/><stop offset="1" stop-color="#2f4a52"/>
+    </linearGradient>
+    <radialGradient id="brass" cx="0.35" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#fff2a8"/><stop offset="0.5" stop-color="#d9a92e"/><stop offset="1" stop-color="#8a6312"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#sky)"/>
+  <!-- Wolken -->
+  <g fill="#fff" opacity="0.8"><ellipse cx="110" cy="90" rx="60" ry="18"/><ellipse cx="150" cy="78" rx="40" ry="16"/><ellipse cx="470" cy="120" rx="70" ry="16"/></g>
+  <!-- Ufer mit Bäumen (Bürgerpark) -->
+  <path d="M0 330 C120 300 220 320 300 310 S500 300 600 320 V380 H0Z" fill="#4d6b3a"/>
+  <g fill="#3a5a2c"><circle cx="60" cy="300" r="40"/><circle cx="120" cy="290" r="34"/><circle cx="520" cy="295" r="42"/><circle cx="575" cy="305" r="30"/></g>
+  <!-- Wasser -->
+  <rect y="370" width="600" height="230" fill="url(#water)"/>
+  <g stroke="#a9c4c6" stroke-width="3" opacity="0.6" stroke-linecap="round">
+    <path d="M40 430 h60 M160 470 h80 M420 440 h70 M470 520 h60 M90 540 h50"/>
+  </g>
+  <!-- Mast -->
+  <rect x="292" y="70" width="10" height="330" fill="#3b2a1e"/>
+  <!-- schwarzes Segel -->
+  <path d="M302 85 L470 330 L302 330 Z" fill="#1d1a18"/>
+  <path d="M292 120 L170 330 L292 330 Z" fill="#2a2522"/>
+  <!-- Rumpf (Torfkahn, schwarz, flach) -->
+  <path d="M90 380 L510 380 L470 430 L140 430 Z" fill="#141210"/>
+  <path d="M90 380 L510 380" stroke="#6b5a45" stroke-width="5"/>
+  <!-- Torfsoden-Ladung -->
+  <g fill="#5a3b22"><rect x="170" y="352" width="40" height="28" rx="3"/><rect x="215" y="352" width="40" height="28" rx="3"/><rect x="190" y="326" width="40" height="28" rx="3"/><rect x="340" y="352" width="40" height="28" rx="3"/><rect x="385" y="352" width="40" height="28" rx="3"/></g>
+  <!-- Glocke am Mast -->
+  <path d="M302 210 h34" stroke="#3b2a1e" stroke-width="6"/>
+  <path d="M336 210 v10" stroke="#555" stroke-width="4"/>
+  <path d="M318 268 C318 238 326 220 336 220 C346 220 354 238 354 268 Z" fill="url(#brass)" stroke="#6d4f12" stroke-width="2"/>
+  <rect x="314" y="266" width="44" height="6" rx="3" fill="#b8891f"/>
+  <circle cx="336" cy="278" r="5" fill="#8a6312"/>
+  <text x="336" y="252" font-family="Georgia, serif" font-size="9" fill="#5e4210" text-anchor="middle">1924</text>
+  <!-- Name am Rumpf -->
+  <text x="300" y="414" font-family="Georgia, serif" font-size="22" fill="#e9e2c8" text-anchor="middle" font-style="italic">Moorlilie</text>
+  <!-- Spiegelung -->
+  <path d="M140 432 L470 432 L440 470 L170 470 Z" fill="#141210" opacity="0.25"/>
+</svg>

@@ -1,7 +1,8 @@
 # CLAUDE.md – Ermittlerakte (Escape-Stadtführungen Bremer Umland)
 
 Mobile Web-App (PWA): Outdoor-Krimi-Escape-Spiel, das gleichzeitig Stadtführung ist.
-Jede Stadt = eigene Tour = eigenes Content-Paket. Start: Worpswede („Die Mondnacht vom Weyerberg“).
+Jede Stadt = eigene Tour = eigenes Content-Paket. Touren: Worpswede („Die Mondnacht vom Weyerberg“),
+Bremen-Findorff („Die Glocke der Moorlilie“).
 Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilensteins in einfachen Worten erklären.
 
 ## Stand
@@ -34,6 +35,16 @@ Nutzer (Projektinhaber) übt Vibecoding → Änderungen am Ende jedes Meilenstei
   Bruno), St. 6 Kompass+AR (225° SW), St. 7 Schiebepuzzle (media/mondnacht.svg – eigene Illustration, Bild ist fiktiv),
   St. 8 Morse (NULL), St. 10 Zahlenschloss 1902 + Anklage (wer/warum/wer2; Finale-Bonus).
   Foto-Vergleich (overlay) an St. 9 wieder entfernt, bis ein gemeinfreies Foto da ist (Beispiel in docs/RAETSELTYPEN.md).
+- **Findorff („Die Glocke der Moorlilie“, content/findorff):** Messingglocke (1924) des erfundenen Torfkahns
+  „Moorlilie“ verschwindet vor dem Hafenfest. Erfunden: Boot, Verdächtige (Henning Brakhage – Antiquitätenhändler,
+  TÄTER mittel/schwer, Verkauf an Sammler in Hamburg; Svea Lindemann – Bootsbauerin, leicht: hat Glocke zum Polieren
+  mitgenommen; Dr. Ole Kück – Heimatforscher; Mira Tietjen – Blumenhändlerin, Zeugin). Route (geschätzt):
+  1 Torfhafen → 2 Torfkanal (Audio: blauer Lieferwagen / leicht gelbes Putztuch) → 3 Lok „Jan Reiners“ (Morse EINS, A=1)
+  → 4 Jan-Reiners-Weg (Logik, eindeutig Brakhage / leicht Svea; B=9) → 5 Findorffmarkt/Marktbunker-Wandbild
+  (Rotfilter HAMBURG / leicht GLANZ) → 6 Hemmstraße (Caesar +3, schwer +4 „TORF“, leicht rückwärts; C=2)
+  → 7 Findorfftunnel → 8 Bürgerweide (Kompass 315° NW; D=4) → 9 Bürgerpark-Rand (Schiebepuzzle media/moorlilie.svg)
+  → 10 Finale Torfhafen (Schloss 1924 + Anklage brakhage/verkaufen/mira, leicht svea/polieren/mira).
+  Brakhages Laden und Lager sind erfunden – keine Orts-Codes an echten Geschäften!
 - **Finale-Bonus:** Anklage (accuse) +100 beim ersten Versuch ohne Hinweis, +50 selbst gelöst, sonst 0.
 - **Punkte:** Punktekonto – Start mit 100/Station (volles Konto), Hilfen ziehen sofort ab (Nutzerwunsch, damit man
   in Runde 1 nicht mit Punkten „bezahlt“, die man noch nicht hat); Hinweise −10/−20/−30; Auflösung −60; Überspringen −50; „Hier stimmt etwas nicht“ +
@@ -130,7 +141,7 @@ tests/                      Vitest; tests/fixtures/content/testtour = feste 2-St
 - Imports, die vom Build-Skript (Node) erreicht werden, mit `.ts`-Endung.
 
 ## Offene Punkte (Stand: App fertig, v1.0.0)
-- Nur durch den Nutzer möglich: Route ablaufen, Vor-Ort-Erfassung ausfüllen → Secret TOUR_CODES setzen,
+- Nur durch den Nutzer möglich (Worpswede UND Findorff): Route ablaufen, Vor-Ort-Erfassung ausfüllen → Secret TOUR_CODES setzen,
   Prüfbericht an Claude → Koordinaten/Wege/Fakten eintragen, verified: true setzen. Impressum in src/legal.ts.
 - Optional: gemeinfreies historisches Foto für den Barkenhoff (St. 9, overlay wieder einbauen).
 - Optional: eigene Audioaufnahme der Zeugenaussage (St. 5, Feld `audio`), Bildausschnitt-Rätsel (code + `image`).

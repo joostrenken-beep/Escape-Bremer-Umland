@@ -1,0 +1,94 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "07-findorfftunnel",
+  "title": {
+    "de": "Findorfftunnel"
+  },
+  "location": {
+    "name": {
+      "de": "Findorfftunnel unter den Gleisen"
+    },
+    "lat": 53.087,
+    "lng": 8.808,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Geht Richtung Hauptbahnhof bis zum Findorfftunnel, der unter den Gleisen hindurchführt."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Am Tunneleingang findet ihr eine Quittung im Gebüsch: „Transportkiste, 40 × 40 cm, gepolstert – Abholung morgen 6 Uhr, Bürgerweide. Auftraggeber: H. B.“ H. B. – Henning Brakhage?"
+    },
+    "easy": {
+      "de": "Im Tunnel hallt jedes Wort! Ruft mal „Glocke“! Am Eingang liegt ein Kassenzettel: „1 Dose Messingputz, 2 Tücher – gekauft von S. L.“ Wer könnte S. L. sein?"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Wie viele Stufen führen zum Tunneleingang?"
+        }
+      },
+      "codeId": "s07-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Schaut euch den Zugang zum Tunnel an."
+          }
+        },
+        {
+          "all": {
+            "de": "Zählt jede Stufe."
+          }
+        },
+        {
+          "all": {
+            "de": "Geht die Stufen langsam und zählt laut mit."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welche Farbe haben die Wände im Tunnel?"
+          }
+        },
+        "codeId": "s07-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Gibt es Stufen/Rampe? Sichere, dauerhafte Angabe am Tunnel wählen (Verkehr beachten!)."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-receipt",
+      "kind": "clue",
+      "title": {
+        "de": "Quittung am Tunnel"
+      },
+      "text": {
+        "all": {
+          "de": "Transportkiste für etwas Glockengroßes, Abholung morgen 6 Uhr an der Bürgerweide, Auftraggeber „H. B.“"
+        },
+        "easy": {
+          "de": "Kassenzettel: Messingputz und Tücher, gekauft von „S. L.“ – Svea Lindemann?"
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Die Bahngleise rund um den Hauptbahnhof trennen Findorff von den Nachbarstadtteilen. Tunnel wie dieser verbinden Findorff mit der Bürgerweide und dem Hauptbahnhof."
+    },
+    "verified": false,
+    "verifyNote": "Lage und Funktion des Findorfftunnels prüfen."
+  }
+}

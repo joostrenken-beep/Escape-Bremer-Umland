@@ -1,0 +1,150 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "03-lok-jan-reiners",
+  "title": {
+    "de": "Lok „Jan Reiners“"
+  },
+  "location": {
+    "name": {
+      "de": "Denkmal-Lok „Jan Reiners“"
+    },
+    "lat": 53.0965,
+    "lng": 8.801,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Geht weiter Richtung Westen zur alten Dampflok, die als Denkmal in Findorff steht."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Heimatforscher Dr. Ole Kück steht an der alten Lok und macht Notizen. „Die Glocke? Die Inschrift darauf ist einzigartig – ich hätte sie zu gern einmal abgezeichnet.“ Dann zeigt er auf die Lok: „Die Lokführer gaben früher Pfeifsignale. Hört mal!“"
+    },
+    "easy": {
+      "de": "Tschu-tschu! Hier steht eine echte alte Dampflok. Herr Kück, der alles über Findorff weiß, sagt: „Früher hat die Lok mit Pfeiftönen Nachrichten geschickt. Hört mal – sie pfeift euch eine Zahl!“"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Welche Nummer steht an der Lok?"
+        }
+      },
+      "codeId": "s03-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Geht einmal um die Lok herum."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Nummer steht gut sichtbar am Führerhaus oder vorne."
+          }
+        },
+        {
+          "all": {
+            "de": "Es ist eine kleine Zahl."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welche Farbe hat das Führerhaus der Lok?"
+          }
+        },
+        "codeId": "s03-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Lok-Standort, Nummer/Beschriftung prüfen (laut Quelle Lok 1 der Kleinbahn Bremen–Tarmstedt)."
+    },
+    {
+      "type": "morse",
+      "id": "whistle",
+      "message": {
+        "all": "EINS"
+      },
+      "showTable": {
+        "easy": true,
+        "medium": true,
+        "hard": false
+      },
+      "prompt": {
+        "all": {
+          "de": "Was pfeift die Lok? Schreibt das Wort auf."
+        },
+        "easy": {
+          "de": "Welche Zahl pfeift die Lok?"
+        }
+      },
+      "codeId": "s03-morse",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Die Morse-Tabelle ist jetzt freigeschaltet. Kurz = •, lang = –."
+          }
+        },
+        {
+          "all": {
+            "de": "Der erste Buchstabe ist ein einzelner kurzer Ton: E."
+          }
+        },
+        {
+          "all": {
+            "de": "Das Wort ist eine Zahl mit vier Buchstaben."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Morse-Rätsel ohne Ortsbezug."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "suspect-kueck",
+      "kind": "suspect",
+      "title": {
+        "de": "Dr. Ole Kück, Heimatforscher"
+      },
+      "text": {
+        "all": {
+          "de": "Schreibt ein Buch über die Torfschiffer und wollte die Inschrift der Glocke abzeichnen. Kennt das Versteck des Ersatzschlüssels."
+        },
+        "easy": {
+          "de": "Er weiß alles über Findorff und die alte Lok."
+        }
+      }
+    },
+    {
+      "id": "fragment-a",
+      "kind": "clue",
+      "title": {
+        "de": "Glocken-Fragment A"
+      },
+      "text": {
+        "all": {
+          "de": "Die Lok pfiff: EINS → „A = 1“"
+        },
+        "hard": {
+          "de": "Die Lok pfiff: EINS."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Von 1900 bis in die 1950er-Jahre fuhr die Kleinbahn „Jan Reiners“ von Findorff nach Tarmstedt und verband die Moordörfer mit Bremen – mit Torf, Waren und Ausflüglern. Benannt ist sie nach Johann „Jan“ Reiners, der den Bau vorangetrieben hat. Eine Lok der Bahn ist in Findorff als Denkmal erhalten."
+    },
+    "verified": false,
+    "verifyNote": "Betriebszeit (Ende 1954 oder 1956?), Standort und Name der Lok prüfen."
+  }
+}

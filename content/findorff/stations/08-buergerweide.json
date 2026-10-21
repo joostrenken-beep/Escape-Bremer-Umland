@@ -1,0 +1,148 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "08-buergerweide",
+  "title": {
+    "de": "Bürgerweide"
+  },
+  "location": {
+    "name": {
+      "de": "Bürgerweide"
+    },
+    "lat": 53.0865,
+    "lng": 8.815,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Hinter dem Tunnel liegt die große, offene Bürgerweide."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Auf der Bürgerweide steht morgen um 6 Uhr ein Transporter bereit – das weiß Mira von einem Bekannten. Von hier aus kann man den Hof von Brakhages Lager sehen, sagt sie. Aber in welcher Richtung?"
+    },
+    "easy": {
+      "de": "Wie riesig der Platz ist! Hier steht im Herbst der Freimarkt mit Riesenrad. Svea hat Mira erzählt, dass ihre Werkstatt von hier aus im Nordwesten liegt. Findet die Richtung!"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Welche Zahl findet ihr auf dem Schild am Rand der Bürgerweide?"
+        }
+      },
+      "codeId": "s08-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Sucht ein Schild am Platzrand."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Zahl kann eine Hausnummer oder Jahreszahl sein."
+          }
+        },
+        {
+          "all": {
+            "de": "Schaut genau auf die Ziffern."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welches große Gebäude steht am Rand der Bürgerweide?"
+          }
+        },
+        "codeId": "s08-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Dauerhafte Angabe an der Bürgerweide festlegen (Schild, Gebäude). Bei Freimarkt/Veranstaltungen evtl. verdeckt – Ersatzfrage!"
+    },
+    {
+      "type": "compass",
+      "id": "lookout",
+      "prompt": {
+        "medium": {
+          "de": "Brakhages Lager liegt im Nordwesten. Richtet das Handy in diese Richtung und haltet es still."
+        },
+        "hard": {
+          "de": "Das Lager liegt in Richtung 315°. Richtet das Handy genau dorthin."
+        },
+        "easy": {
+          "de": "Sveas Werkstatt liegt im Nordwesten. Dreht euch langsam, bis der Kreis grün leuchtet!"
+        }
+      },
+      "bearing": 315,
+      "tolerance": {
+        "easy": 30,
+        "medium": 20,
+        "hard": 12
+      },
+      "ar": true,
+      "revealText": {
+        "all": {
+          "de": "Da hinten, hinter den Gleisen: ein Hof mit Rolltor, davor eine gepolsterte Kiste. Auf dem Rolltor steht „B…hage Antik – Lager“. Und auf der Kiste ist mit Kreide eine 4 gemalt."
+        },
+        "easy": {
+          "de": "Da hinten! Ein Fenster mit einem großen Schild: „Sveas Bootswerkstatt“. Auf dem Schild ist eine 4 gemalt."
+        }
+      },
+      "solutionText": {
+        "all": {
+          "de": "Die gesuchte Richtung ist Nordwesten (315°). Dort liegt das Lager – auf der Kiste steht eine 4."
+        }
+      },
+      "hints": [
+        {
+          "all": {
+            "de": "Mittags steht die Sonne im Süden – Nordwesten liegt hinter euch, etwas links."
+          }
+        },
+        {
+          "all": {
+            "de": "Haltet das Handy flach vor euch und dreht euch langsam."
+          }
+        },
+        {
+          "all": {
+            "de": "Kein Kompass? Tippt auf „Ohne Kompass lösen“ und wählt Nordwesten."
+          }
+        }
+      ],
+      "verified": false,
+      "verifyNote": "Richtung ist erfunden (Lager fiktiv) – nur prüfen, ob man auf der Bürgerweide gefahrlos stehen und sich drehen kann."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "fragment-d",
+      "kind": "clue",
+      "title": {
+        "de": "Glocken-Fragment D"
+      },
+      "text": {
+        "all": {
+          "de": "Mit Kreide auf die Kiste gemalt: „D = 4“"
+        },
+        "hard": {
+          "de": "Mit Kreide auf die Kiste gemalt: eine 4."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Auf der Bürgerweide findet jedes Jahr im Herbst der Bremer Freimarkt statt – eines der ältesten Volksfeste Deutschlands, das auf ein Marktrecht aus dem Jahr 1035 zurückgeht."
+    },
+    "verified": false,
+    "verifyNote": "Freimarkt-Ort und Jahr 1035 prüfen."
+  }
+}

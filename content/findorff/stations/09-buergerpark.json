@@ -1,0 +1,133 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "09-buergerpark",
+  "title": {
+    "de": "Am Bürgerpark"
+  },
+  "location": {
+    "name": {
+      "de": "Rand des Bürgerparks am Torfkanal"
+    },
+    "lat": 53.0915,
+    "lng": 8.82,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Geht zurück Richtung Torfkanal bis zum Rand des Bürgerparks."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Auf einer Parkbank liegt ein zerrissenes Foto der Moorlilie – mit Glocke. Dr. Kück hatte es für sein Buch gemacht. Setzt es zusammen: Auf dem Foto sieht man, wie die Glocke befestigt war. Wer sie abnehmen wollte, brauchte Werkzeug – und einen Plan."
+    },
+    "easy": {
+      "de": "Auf einer Bank im Park liegt ein zerschnittenes Foto der Moorlilie. Setzt es wieder zusammen, dann seht ihr, wie schön die Glocke aussieht!"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Wie heißt der Weg, der hier am Parkrand entlangführt?"
+        }
+      },
+      "codeId": "s09-unlock",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Sucht ein Straßen- oder Wegschild."
+          }
+        },
+        {
+          "all": {
+            "de": "Der Name steht auf einem Schild am Weg."
+          }
+        },
+        {
+          "all": {
+            "de": "Schaut an der nächsten Kreuzung nach."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welche Baumart steht direkt am Eingang (Laubbaum oder Nadelbaum)?"
+          }
+        },
+        "codeId": "s09-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Geeigneten Ort am Bürgerpark-Rand nahe Torfkanal wählen, dauerhafte Angabe festlegen."
+    },
+    {
+      "type": "slider",
+      "id": "photo",
+      "image": "media/moorlilie.svg",
+      "size": {
+        "easy": 3,
+        "medium": 3,
+        "hard": 4
+      },
+      "prompt": {
+        "all": {
+          "de": "Setzt das Foto der Moorlilie wieder zusammen!"
+        }
+      },
+      "solutionText": {
+        "all": {
+          "de": "Das Foto zeigt die Moorlilie mit schwarzem Segel und der Messingglocke am Mast – darauf die Jahreszahl 1924."
+        }
+      },
+      "hints": [
+        {
+          "all": {
+            "de": "Beginnt mit der obersten Reihe: Himmel und Segelspitze."
+          }
+        },
+        {
+          "all": {
+            "de": "Löst erst die oberen Reihen, dann die unteren."
+          }
+        },
+        {
+          "all": {
+            "de": "Unten rechts ist Wasser – dieses Teil gehört ganz nach unten rechts."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Digitales Rätsel (eigene Illustration)."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-photo",
+      "kind": "clue",
+      "title": {
+        "de": "Foto der Moorlilie"
+      },
+      "text": {
+        "all": {
+          "de": "Die Glocke hing mit einem Schäkel am Mast – ohne Werkzeug bekommt man sie nicht ab. Auf der Glocke: 1924."
+        },
+        "easy": {
+          "de": "Die Glocke glänzt auf dem Foto wie Gold. Auf ihr steht 1924."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Der Bürgerpark wurde im 19. Jahrhundert von Bremer Bürgerinnen und Bürgern angelegt und wird bis heute von einem Verein mit Spenden gepflegt. Er grenzt direkt an Findorff – der Torfkanal bildet hier die Grenze."
+    },
+    "verified": false,
+    "verifyNote": "Gründungsdaten und Trägerschaft des Bürgerparks prüfen."
+  }
+}

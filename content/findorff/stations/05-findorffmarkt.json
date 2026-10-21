@@ -1,0 +1,147 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "05-findorffmarkt",
+  "title": {
+    "de": "Findorffmarkt"
+  },
+  "location": {
+    "name": {
+      "de": "Findorffmarkt mit Marktbunker"
+    },
+    "lat": 53.0925,
+    "lng": 8.802,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Geht zum Findorffmarkt – ihr erkennt ihn am bunt bemalten Bunker."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Blumenhändlerin Mira Tietjen erinnert sich: „Brakhage hat gestern hier telefoniert und sich Notizen gemacht. Den Zettel hat er weggeworfen – meine Kinder haben ihn mit Rot vollgekritzelt.“ Sie gibt euch den Zettel."
+    },
+    "easy": {
+      "de": "Auf dem Markt verkauft Mira Blumen. „Svea war gestern hier und hat einen Zettel verloren“, sagt sie. „Meine Kinder haben ihn mit Rot vollgemalt. Vielleicht könnt ihr ihn noch lesen?“"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Wie viele Waggons hat der Zug auf dem Wandbild am Marktbunker?"
+        }
+      },
+      "codeId": "s05-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Schaut euch das große Wandbild am Bunker an."
+          }
+        },
+        {
+          "all": {
+            "de": "Es zeigt die Kleinbahn „Jan Reiners“."
+          }
+        },
+        {
+          "all": {
+            "de": "Zählt nur die Wagen hinter der Lok."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Welches Tier ist auf dem Wandbild zu sehen?"
+          }
+        },
+        "codeId": "s05-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Wandbild am Marktbunker: zählbares Motiv (Waggons?) prüfen. Achtung: Wandbilder können übermalt werden – Ersatzfrage wichtig."
+    },
+    {
+      "type": "colorfilter",
+      "id": "note",
+      "message": {
+        "medium": "HAMBURG",
+        "hard": "HAMBURG",
+        "easy": "GLANZ"
+      },
+      "prompt": {
+        "all": {
+          "de": "Legt den Rotfilter auf! Welches Wort stand auf dem Zettel?"
+        }
+      },
+      "codeId": "s05-filter",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Tippt auf „Rotfilter auflegen“."
+          }
+        },
+        {
+          "all": {
+            "de": "Mit Filter verschwindet das Rote – das dunkle Wort bleibt."
+          }
+        },
+        {
+          "all": {
+            "de": "Eine große Stadt an der Elbe."
+          },
+          "easy": {
+            "de": "Das Wort hat fünf Buchstaben und beginnt mit G."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Digitales Rätsel ohne Ortsbezug."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "suspect-mira",
+      "kind": "suspect",
+      "title": {
+        "de": "Mira Tietjen, Blumenhändlerin"
+      },
+      "text": {
+        "all": {
+          "de": "Hat einen Stand auf dem Findorffmarkt und beobachtet viel. Hat Brakhage beim Telefonieren gesehen."
+        },
+        "easy": {
+          "de": "Sie verkauft Blumen und hat Sveas Zettel gefunden."
+        }
+      }
+    },
+    {
+      "id": "clue-note",
+      "kind": "clue",
+      "title": {
+        "de": "Zettel mit Gekritzel"
+      },
+      "text": {
+        "all": {
+          "de": "Unter dem Gekritzel: HAMBURG. Wartet dort ein Käufer?"
+        },
+        "easy": {
+          "de": "Unter dem Gekritzel: GLANZ. Was soll glänzen?"
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Der Findorffmarkt ist seit vielen Jahrzehnten der Treffpunkt des Stadtteils. Das große Wandbild am Marktbunker erzählt die Geschichte der Kleinbahn „Jan Reiners“. Benannt ist Findorff nach Jürgen Christian Findorff, der im 18. Jahrhundert die Besiedlung des Teufelsmoors organisierte – offiziell heißt der Stadtteil erst seit 1951 so."
+    },
+    "verified": false,
+    "verifyNote": "Markttage, Wandbild-Motiv, Benennung 1951 prüfen."
+  }
+}

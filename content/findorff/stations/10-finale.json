@@ -1,0 +1,262 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "10-finale",
+  "title": {
+    "de": "Finale: Die Kiste"
+  },
+  "location": {
+    "name": {
+      "de": "Zurück am Torfhafen"
+    },
+    "lat": 53.095,
+    "lng": 8.816,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Kehrt zurück zum Torfhafen. Schlagt euer Notizbuch auf."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Am Torfhafen wartet die Polizei – mit der gepolsterten Kiste, die heute früh an der Bürgerweide abgeholt werden sollte. Sie ist mit einem Zahlenschloss gesichert. Svea flüstert: „Die Glocke wurde 1924 gegossen …“"
+    },
+    "easy": {
+      "de": "Zurück am Hafen! Vor Sveas Werkstatt steht eine Kiste mit Zahlenschloss und ein Zettel: „Für die Moorlilie – nur wer alle Zahlen gesammelt hat, darf hineinschauen!“ Schaut in euer Notizbuch."
+    }
+  },
+  "steps": [
+    {
+      "type": "lock",
+      "id": "lock",
+      "codeId": "s10-lock",
+      "digits": 4,
+      "prompt": {
+        "medium": {
+          "de": "Öffnet das Zahlenschloss! Setzt die Ziffern der Glocken-Fragmente A, B, C und D in dieser Reihenfolge zusammen."
+        },
+        "easy": {
+          "de": "Öffnet das Zahlenschloss! Sucht im Notizbuch die Fragmente A, B, C und D und setzt ihre Zahlen der Reihe nach zusammen."
+        },
+        "hard": {
+          "de": "Ihr habt vier Ziffern gefunden. In der richtigen Reihenfolge ergeben sie das Jahr, in dem die Glocke gegossen wurde."
+        }
+      },
+      "hints": [
+        {
+          "all": {
+            "de": "Öffnet das Notizbuch – oben rechts – und sucht die Fragmente."
+          },
+          "hard": {
+            "de": "Die Ziffern sind 1, 9, 2 und 4. Lest noch einmal die erste Station."
+          }
+        },
+        {
+          "all": {
+            "de": "A = 1 und B = 9."
+          },
+          "hard": {
+            "de": "Die Glocke wurde 1924 gegossen."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Kombination beginnt mit 19…"
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Kombinationsrätsel (A=1, B=9, C=2, D=4)."
+    },
+    {
+      "type": "accuse",
+      "id": "report",
+      "prompt": {
+        "all": {
+          "de": "Die Glocke ist gefunden! Jetzt fehlt euer Ermittlungsbericht. Beim ersten Versuch ohne Hinweis gibt es 100 Bonuspunkte."
+        },
+        "easy": {
+          "de": "Die Glocke ist da! Jetzt noch drei Detektiv-Fragen – alles beim ersten Mal richtig gibt 100 Bonuspunkte!"
+        }
+      },
+      "questions": [
+        {
+          "id": "who",
+          "codeId": "s10-who",
+          "prompt": {
+            "all": {
+              "de": "Wer hat die Glocke von der Moorlilie geholt?"
+            }
+          },
+          "options": [
+            {
+              "id": "brakhage",
+              "label": {
+                "all": {
+                  "de": "Henning Brakhage, Antiquitätenhändler"
+                }
+              }
+            },
+            {
+              "id": "svea",
+              "label": {
+                "all": {
+                  "de": "Svea Lindemann, Bootsbauerin"
+                }
+              }
+            },
+            {
+              "id": "kueck",
+              "label": {
+                "all": {
+                  "de": "Dr. Ole Kück, Heimatforscher"
+                }
+              }
+            },
+            {
+              "id": "mira",
+              "label": {
+                "all": {
+                  "de": "Mira Tietjen, Blumenhändlerin"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "why",
+          "codeId": "s10-why",
+          "prompt": {
+            "all": {
+              "de": "Warum?"
+            }
+          },
+          "options": [
+            {
+              "id": "verkaufen",
+              "label": {
+                "all": {
+                  "de": "Um sie an einen Sammler in Hamburg zu verkaufen"
+                }
+              }
+            },
+            {
+              "id": "buch",
+              "label": {
+                "all": {
+                  "de": "Um die Inschrift für ein Buch abzuzeichnen"
+                }
+              }
+            },
+            {
+              "id": "polieren",
+              "label": {
+                "all": {
+                  "de": "Um sie für das Hafenfest zu polieren"
+                }
+              }
+            },
+            {
+              "id": "streich",
+              "label": {
+                "all": {
+                  "de": "Als Streich"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "who2",
+          "codeId": "s10-who2",
+          "prompt": {
+            "all": {
+              "de": "Wer hat die entscheidende Beobachtung gemacht und euch geholfen?"
+            },
+            "easy": {
+              "de": "Wer hat Sveas Zettel gefunden?"
+            }
+          },
+          "options": [
+            {
+              "id": "brakhage",
+              "label": {
+                "all": {
+                  "de": "Henning Brakhage"
+                }
+              }
+            },
+            {
+              "id": "svea",
+              "label": {
+                "all": {
+                  "de": "Svea Lindemann"
+                }
+              }
+            },
+            {
+              "id": "kueck",
+              "label": {
+                "all": {
+                  "de": "Dr. Ole Kück"
+                }
+              }
+            },
+            {
+              "id": "mira",
+              "label": {
+                "all": {
+                  "de": "Mira Tietjen"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "solutionText": {
+        "all": {
+          "de": "Henning Brakhage hat die Glocke abgeschraubt, um sie an einen Sammler in Hamburg zu verkaufen. Mira Tietjen hat ihn beim Telefonieren beobachtet."
+        },
+        "easy": {
+          "de": "Svea hat die Glocke mitgenommen, um sie für das Hafenfest zu polieren. Mira hat ihren Zettel gefunden."
+        }
+      },
+      "hints": [
+        {
+          "all": {
+            "de": "Lest im Notizbuch den Zettel, die Quittung und die Zeugenaussage."
+          },
+          "easy": {
+            "de": "Wer hat Messingputz gekauft?"
+          }
+        },
+        {
+          "all": {
+            "de": "Wer trägt einen breitkrempigen Hut – wie die Person mit der Sackkarre?"
+          },
+          "easy": {
+            "de": "GLANZ – was soll glänzen?"
+          }
+        },
+        {
+          "all": {
+            "de": "Brakhage hat gelogen. Und wohin sollte die Kiste?"
+          },
+          "easy": {
+            "de": "Es war Svea – und Mira hat den Zettel gefunden."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Abschlussfragen ohne Ortsbezug."
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Bis zu mehrere hundert Torfkähne sollen früher an manchen Tagen den Findorffer Torfhafen angelaufen haben. Alle paar Jahre fährt heute eine Flotte nachgebauter Torfkähne von Worpswede bis nach Findorff – ein Stück lebendige Geschichte zwischen Moor und Stadt."
+    },
+    "verified": false,
+    "verifyNote": "Zahlen zur historischen Torfschifffahrt und zur heutigen Kahn-Flotte (Torfkahnarmada) prüfen."
+  }
+}

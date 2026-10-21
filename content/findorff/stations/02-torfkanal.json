@@ -1,0 +1,141 @@
+{
+  "$schema": "../../../schema/station.schema.json",
+  "id": "02-torfkanal",
+  "title": {
+    "de": "Am Torfkanal"
+  },
+  "location": {
+    "name": {
+      "de": "Ufer des Torfkanals"
+    },
+    "lat": 53.0965,
+    "lng": 8.81,
+    "verified": false,
+    "note": "Koordinaten geschätzt – vor Ort mit der Vor-Ort-Erfassung übernehmen"
+  },
+  "directions": {
+    "all": {
+      "de": "[PLATZHALTER] Folgt dem Ufer des Torfkanals ein Stück nach Westen."
+    }
+  },
+  "story": {
+    "all": {
+      "de": "Am Kanal angelt Herr Pundt jeden Abend – auch gestern. Er hat etwas gehört und gesehen. Hört euch seine Aussage genau an."
+    },
+    "easy": {
+      "de": "Am Kanal sitzt Herr Pundt mit seiner Angel. Er hat gestern Abend etwas beobachtet. Hört gut zu!"
+    }
+  },
+  "steps": [
+    {
+      "type": "code",
+      "id": "unlock",
+      "prompt": {
+        "all": {
+          "de": "[PLATZHALTER] Wie viele Bänke stehen hier am Ufer in Sichtweite?"
+        }
+      },
+      "codeId": "s02-unlock",
+      "input": "number",
+      "hints": [
+        {
+          "all": {
+            "de": "Schaut euch in beide Richtungen am Ufer um."
+          }
+        },
+        {
+          "all": {
+            "de": "Zählt nur Bänke direkt am Wasser."
+          }
+        },
+        {
+          "all": {
+            "de": "Geht ein paar Schritte, um alle zu sehen."
+          }
+        }
+      ],
+      "fallback": {
+        "prompt": {
+          "all": {
+            "de": "[PLATZHALTER] Wie heißt die Brücke in der Nähe?"
+          }
+        },
+        "codeId": "s02-fallback",
+        "input": "text"
+      },
+      "verified": false,
+      "verifyNote": "Dauerhafte, zählbare Angabe am Ufer finden (Bänke, Laternen, Brückenname)."
+    },
+    {
+      "type": "audio",
+      "id": "witness",
+      "speaker": {
+        "de": "Herr Pundt, Angler"
+      },
+      "speech": {
+        "all": {
+          "de": "Also, so gegen zwanzig vor zwölf hat es hinter mir geklingelt – ganz kurz, wie eine Schiffsglocke. Dann hat jemand eine Sackkarre über den Weg geschoben, Richtung Hemmstraße. Vorne an der Straße stand ein blauer Lieferwagen mit Hamburger Kennzeichen. Das Gesicht hab ich nicht gesehen, nur einen Hut mit breiter Krempe."
+        },
+        "easy": {
+          "de": "Gestern Abend kam eine Frau mit einer großen Tasche vorbei. Sie hatte ein gelbes Putztuch in der Hand und hat fröhlich gepfiffen. Dann ist sie Richtung Werkstatt gegangen."
+        }
+      },
+      "prompt": {
+        "all": {
+          "de": "Welche Farbe hatte der Lieferwagen?"
+        },
+        "easy": {
+          "de": "Welche Farbe hatte das Putztuch?"
+        }
+      },
+      "codeId": "s02-witness",
+      "input": "text",
+      "hints": [
+        {
+          "all": {
+            "de": "Hört euch die Aussage noch einmal an – oder lest sie als Text."
+          }
+        },
+        {
+          "all": {
+            "de": "Es geht um ein Fahrzeug an der Straße."
+          }
+        },
+        {
+          "all": {
+            "de": "Die Farbe des Himmels an einem klaren Tag."
+          },
+          "easy": {
+            "de": "Die Farbe einer Banane."
+          }
+        }
+      ],
+      "verified": true,
+      "verifyNote": "Audio-Rätsel ohne Ortsbezug."
+    }
+  ],
+  "notebook": [
+    {
+      "id": "clue-angler",
+      "kind": "clue",
+      "title": {
+        "de": "Zeuge Herr Pundt"
+      },
+      "text": {
+        "all": {
+          "de": "Gegen 23:40 Uhr: kurzes Glockenklingeln, Sackkarre Richtung Hemmstraße, blauer Lieferwagen mit Hamburger Kennzeichen, Person mit breitkrempigem Hut."
+        },
+        "easy": {
+          "de": "Eine Frau mit gelbem Putztuch ging fröhlich pfeifend Richtung Werkstatt."
+        }
+      }
+    }
+  ],
+  "didYouKnow": {
+    "text": {
+      "de": "Der Torfkanal wurde Anfang des 19. Jahrhunderts gegraben, damit die Torfkähne aus dem Teufelsmoor bis nah an die Stadt fahren konnten. Heute ist er eine grüne Grenze zwischen Findorff und dem Bürgerpark."
+    },
+    "verified": false,
+    "verifyNote": "Bauzeit des Kanals prüfen (Quellen nennen 1817–1826 bzw. 1819)."
+  }
+}
